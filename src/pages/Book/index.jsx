@@ -14,7 +14,7 @@ const Book = () => {
   const halfLength = Math.ceil(pageArr.length / 2);
 
   return (
-    <div>
+    <div className="container">
       <div className="pages">
         <img className="img1" src={bookview_img1} />
         <img className="img2" src={bookview_img2} />

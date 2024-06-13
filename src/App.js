@@ -1,12 +1,12 @@
 import { RecoilRoot } from 'recoil';
-import Main from './pages/Main';
+import Router from './Router';
 
 import './styles/reset.css';
 
 function App() {
   return (
     <RecoilRoot>
-      <Main />
+      <Router />
     </RecoilRoot>
   );
 }
