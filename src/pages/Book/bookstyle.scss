@@ -1,0 +1,56 @@
+$totalPages: 10;
+
+$input: '+ input + input';
+$p: 0;
+
+@for $i from 1 through (($totalPages / 2) - 2) {
+  $input: $input + '+ input';
+}
+
+@for $i from 1 through ($totalPages / 2) {
+  @debug $i;
+
+  $lpage: '';
+  $rpage: '+ div ';
+
+  @if ($i == $totalPages / 2) {
+    $input: str_slice($input, 0, -9);
+  } @else {
+    $input: str_slice($input, 0, -8);
+  }
+
+  @for $j from 1 through $p {
+    @if ($i == 1) {
+      $lpage: $lpage + '';
+      $rpage: $lpage + '';
+    } @else {
+      $lpage: $lpage + '+ div ';
+      $rpage: $lpage + '+ div  ';
+
+      input[type='radio']:nth-of-type(#{$i}) {
+        &:checked {
+          & #{$input} #{$rpage} {
+            pointer-events: all;
+            transform: rotateY(-180deg);
+            z-index: 15;
+            transition: var(--transition);
+
+            .control {
+              box-shadow: 0 0 0 200px rgba(0, 0, 0, 0);
+            }
+          }
+
+          & #{$input} #{$rpage} + div {
+            pointer-events: all;
+          }
+
+          & #{$input} #{$lpage} {
+            pointer-events: none;
+            z-index: 14;
+          }
+        }
+      }
+    }
+  }
+  $p: $p + 2;
+}
