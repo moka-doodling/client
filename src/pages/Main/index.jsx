@@ -1,7 +1,12 @@
 import { Container } from './styled';
+import { Header } from '../../components';
 
 const Main = () => {
-  return <Container>Main</Container>;
+  return (
+    <Container>
+      <Header />
+    </Container>
+  );
 };
 
 export default Main;

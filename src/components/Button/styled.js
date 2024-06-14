@@ -1,25 +1,37 @@
 import styled, { css } from 'styled-components';
 
+const commonStyles = css`
+  width: 5vw;
+  height: 6vh;
+  border-radius: 5px;
+  border: 3px solid black;
+  box-shadow: 4px 4px 0px 0px black;
+  transition: background-color 0.3s ease;
+  &:active,
+  &:focus {
+    transform: scale(0.95);
+  }
+  &:hover {
+    transform: scale(1);
+    cursor: pointer;
+  }
+`;
+
 const buttonStyles = {
   CanvasSettingBtn: css`
-    width: 5vw;
-    height: 6vh;
-    border-radius: 5px;
+    ${commonStyles}
     background: white;
-    border: 3px solid black;
-    box-shadow: 4px 4px 0px 0px black;
-    transition: background-color 0.3s ease;
-
-    &:active,
-    &:focus {
-      transform: scale(0.95);
-    }
-
     &:hover {
-      transform: scale(1);
       background-color: #fcf390;
-      cursor: pointer;
     }
+  `,
+  yellowBtn: css`
+    ${commonStyles}
+    background: #fcf390;
+  `,
+  whiteBtn: css`
+    ${commonStyles}
+    background: white;
   `,
 };
 
