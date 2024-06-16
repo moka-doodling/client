@@ -1,4 +1,4 @@
-import styled, { css } from "styled-components";
+import styled, { css } from 'styled-components';
 
 const commonStyles = css`
   width: 10vw;
@@ -19,7 +19,6 @@ const inputFieldStyles = {
     font-size: 20px;
     &::placeholder {
       color: gray;
-      font-family: crayon;
     },
   `,
 };
