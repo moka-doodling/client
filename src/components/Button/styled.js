@@ -33,6 +33,13 @@ const buttonStyles = {
     ${commonStyles}
     background: white;
   `,
+  loginBtn: css`
+    ${commonStyles}
+    background: white;
+    font-size: 2vh;
+    font-weight: bold;
+    width: 10vw;
+  `,
 };
 
 export const StyledButton = styled.button`

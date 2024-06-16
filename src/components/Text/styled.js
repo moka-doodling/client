@@ -6,6 +6,11 @@ const textStyles = {
     fontSize: '12px',
     color: 'white',
   },
+  loginTitle: {
+    fontWeight: 'bold',
+    fontSize: '50px',
+    color: 'black',
+  },
 };
 
 export const StyledText = styled.p`
