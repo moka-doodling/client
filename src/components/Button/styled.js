@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components';
+import styled, { css } from "styled-components";
 
 const commonStyles = css`
   width: 5vw;
@@ -32,6 +32,14 @@ const buttonStyles = {
   whiteBtn: css`
     ${commonStyles}
     background: white;
+  `,
+  loginBtn: css`
+    ${commonStyles}
+    background: white;
+    font-size: 20px;
+    font-weight: bold;
+    font-family: crayon;
+    width: 10vw;
   `,
 };
 
