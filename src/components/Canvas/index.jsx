@@ -1,4 +1,10 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, {
+  useState,
+  useRef,
+  useEffect,
+  forwardRef,
+  useImperativeHandle,
+} from 'react';
 import { Stage, Layer, Line } from 'react-konva';
 import { HexColorPicker } from 'react-colorful';
 import { Button } from '../index';
@@ -10,7 +16,7 @@ import {
   StyledStage,
 } from './styled';
 
-const Canvas = () => {
+const Canvas = forwardRef((props, ref) => {
   const stageRef = useRef(null);
   const [mode, setMode] = useState('brush');
   const [color, setColor] = useState('#000000');
@@ -34,6 +40,12 @@ const Canvas = () => {
 
     return () => window.removeEventListener('resize', handleResize);
   }, []);
+
+  useImperativeHandle(ref, () => ({
+    getImage: () => {
+      return stageRef.current.toDataURL();
+    },
+  }));
 
   const handleMouseDown = () => {
     setDrawing(true);
@@ -64,7 +76,7 @@ const Canvas = () => {
     setColor(newColor);
   };
 
-  const handleSave = () => {
+  const handleDownload = () => {
     const dataURL = stageRef.current.toDataURL();
     const link = document.createElement('a');
     link.href = dataURL;
@@ -118,7 +130,7 @@ const Canvas = () => {
           >
             지우기
           </Button>
-          <Button theme={'CanvasSettingBtn'} onClick={handleSave}>
+          <Button theme={'CanvasSettingBtn'} onClick={handleDownload}>
             다운로드
           </Button>
           <Button theme={'CanvasSettingBtn'} onClick={handleUndo}>
@@ -155,7 +167,7 @@ const Canvas = () => {
                 }
               />
             ))}
-            {drawing && (
+            {drawing && lines.length > 0 && (
               <Line
                 points={lines[lines.length - 1].points}
                 stroke={lines[lines.length - 1].color}
@@ -172,6 +184,6 @@ const Canvas = () => {
       </StyledStage>
     </CanvasContainer>
   );
-};
+});
 
 export default Canvas;

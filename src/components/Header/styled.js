@@ -1,5 +1,15 @@
 import styled from 'styled-components';
 
+export const WhiteBox = styled.div`
+  width: 100vw;
+  height: 21vh;
+  background-color: white;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 10;
+`;
+
 export const Container = styled.div`
   width: 80vw;
   height: 15vh;
@@ -13,6 +23,7 @@ export const Container = styled.div`
   justify-content: space-between;
   align-items: center;
   margin: 0 10vw;
+  background-color: white;
 `;
 
 export const LogoWrapper = styled.div`

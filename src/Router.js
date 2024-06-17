@@ -6,6 +6,7 @@ import NotFound from './pages/NotFound';
 import Book from './pages/Book';
 import SignUp from './pages/SignUp';
 import Login from './pages/Login';
+import RelayDetail from './pages/RelayDetail';
 import List from './pages/List';
 
 const Router = () => {
@@ -15,8 +16,9 @@ const Router = () => {
         <Route path="/" element={<Main />} />
         <Route path="*" element={<NotFound />} />
         <Route path="/bookview/:id" element={<Book />} />
-        <Route path="/sign-up" element={<SignUp />}></Route>
+        <Route path="/signup" element={<SignUp />}></Route>
         <Route path="/login" element={<Login />} />
+        <Route path="/relaydetail/:id" element={<RelayDetail />} />
         <Route path="/list" element={<List />} />
       </Routes>
     </BrowserRouter>
