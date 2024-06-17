@@ -11,6 +11,17 @@ const textStyles = {
     fontSize: '50px',
     color: 'black',
   },
+  text2: {
+    fontFamily: 'Crayon',
+    fontSize: '30px',
+    color: 'black',
+    textAlign: 'center',
+  },
+  text3: {
+    fontSize: '20px',
+    color: 'black',
+    textAlign: 'center',
+  },
 };
 
 export const StyledText = styled.p`
