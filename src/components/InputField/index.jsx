@@ -1,5 +1,5 @@
-import React from "react";
-import { StyledButton, StyledInputField } from "./styled";
+import React from 'react';
+import { StyledInputField } from './styled';
 
 const InputField = ({ theme, placeholder, children }) => {
   return (

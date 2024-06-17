@@ -13,13 +13,11 @@ const inputFieldStyles = {
   loginForm: css`
     ${commonStyles}
     width: 20vw;
-    padding: 5px;
-    padding-left: 10px;
-    padding-right: 10px;
-    font-size: 20px;
+    padding: 0.5vh 1vh;
+    font-size: 2vh;
     &::placeholder {
       color: gray;
-    },
+    }
   `,
 };
 
