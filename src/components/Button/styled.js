@@ -1,7 +1,6 @@
 import styled, { css } from 'styled-components';
 
 const commonStyles = css`
-  width: 5vw;
   height: 6vh;
   border-radius: 5px;
   border: 3px solid black;
@@ -20,6 +19,7 @@ const commonStyles = css`
 const buttonStyles = {
   CanvasSettingBtn: css`
     ${commonStyles}
+    width: 5vw;
     background: white;
     &:hover {
       background-color: #fcf390;
@@ -27,10 +27,17 @@ const buttonStyles = {
   `,
   yellowBtn: css`
     ${commonStyles}
+    width: 5vw;
     background: #fcf390;
   `,
   whiteBtn: css`
     ${commonStyles}
+    width: 5vw;
+    background: white;
+  `,
+  extendedWhiteBtn: css`
+    ${commonStyles}
+    width: 10vw;
     background: white;
   `,
   loginBtn: css`
