@@ -6,6 +6,7 @@ import NotFound from './pages/NotFound';
 import Book from './pages/Book';
 import SignUp from './pages/SignUp';
 import Login from './pages/Login';
+import List from './pages/List';
 
 const Router = () => {
   return (
@@ -16,6 +17,7 @@ const Router = () => {
         <Route path="/bookview/:id" element={<Book />} />
         <Route path="/sign-up" element={<SignUp />}></Route>
         <Route path="/login" element={<Login />} />
+        <Route path="/list" element={<List />} />
       </Routes>
     </BrowserRouter>
   );
