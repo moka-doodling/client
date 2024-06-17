@@ -26,7 +26,7 @@ export const Img = styled.img`
 
 export const Category = styled.div`
   margin-top: 10px;
-  font-size: 1rem;
+  font-size: 0.9rem;
   text-align: center;
   font-weight: bold;
 `;
