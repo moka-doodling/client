@@ -3,15 +3,18 @@ import {
     StyledTable,
     StyledThTitle,
     StyledThDate,
+    StyledThWriter,
     StyledTdTitle,
-    StyledTdDate
+    StyledTdDate,
+    StyledTdWriter
  } from './styled';
 
 const ListItem = ({ item }) => {
     return (
         <tr>
             <StyledTdTitle>{item.title}</StyledTdTitle>
-            <StyledTdDate>{item.date}</StyledTdDate>
+            <StyledTdDate>{item.regdate}</StyledTdDate>
+            <StyledTdWriter>관리자</StyledTdWriter>
         </tr>
     );
 };
@@ -23,6 +26,7 @@ const ItemList = ({ items }) => {
                 <tr>
                     <StyledThTitle>공지사항 제목</StyledThTitle>
                     <StyledThDate>등록 날짜</StyledThDate>
+                    <StyledThWriter>작성자</StyledThWriter>
                 </tr>
             </thead>
             <tbody>

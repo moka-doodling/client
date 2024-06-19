@@ -8,29 +8,42 @@ export const StyledTable = styled.table`
 `;
 
 export const StyledThTitle = styled.th`
-    padding: 10px;
-    width: 70%; /* 제목 셀 너비를 70%로 설정 */
+    padding: 20px;
+    width: 60%; /* 제목 셀 너비를 70%로 설정 */
     border: 2px solid black;
     word-wrap: break-word; /* 긴 단어가 있을 경우 줄 바꿈 처리 */
     background-color: #fcf390;
 `;
 
 export const StyledThDate = styled.th`
-    padding: 10px;
-    width: 30%; /* 날짜 셀 너비를 30%로 설정 */
+    padding: 20px;
+    width: 20%; /* 날짜 셀 너비를 30%로 설정 */
+    border: 2px solid black;
+    background-color: #fcf390;
+`;
+
+export const StyledThWriter = styled.th`
+    padding: 20px;
+    width: 20%; /* 날짜 셀 너비를 30%로 설정 */
     border: 2px solid black;
     background-color: #fcf390;
 `;
 
 export const StyledTdTitle = styled.td`
-    padding: 10px;
-    width: 70%; /* 제목 셀 너비를 70%로 설정 */
+    padding: 15px;
+    width: 60%; /* 제목 셀 너비를 70%로 설정 */
     border: 2px solid black;
     word-wrap: break-word; /* 긴 단어가 있을 경우 줄 바꿈 처리 */
 `;
 
 export const StyledTdDate = styled.td`
-    padding: 10px;
-    width: 30%; /* 날짜 셀 너비를 30%로 설정 */
+    padding: 15px;
+    width: 20%; /* 날짜 셀 너비를 30%로 설정 */
+    border: 2px solid black;
+`;
+
+export const StyledTdWriter = styled.td`
+    padding: 15px;
+    width: 20%; /* 날짜 셀 너비를 30%로 설정 */
     border: 2px solid black;
 `;
