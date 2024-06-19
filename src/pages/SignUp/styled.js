@@ -31,7 +31,7 @@ export const Box = styled.div`
   background: #fef380;
 `;
 
-export const Title = styled.h1`
+export const Title = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
