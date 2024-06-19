@@ -10,6 +10,7 @@ import RelayDetail from './pages/RelayDetail';
 import List from './pages/List';
 import Admin from './pages/Admin';
 import Notice from './pages/Notice';
+import NoticeDetail from './pages/NoticeDetail';
 
 const Router = () => {
   return (
@@ -24,6 +25,7 @@ const Router = () => {
         <Route path="/list" element={<List />} />
         <Route path="/admin" element={<Admin />}/>
         <Route path="/notice" element={<Notice />}/>
+        <Route path="/noticedetail/:noticeId" element={<NoticeDetail />} />
       </Routes>
     </BrowserRouter>
   );
