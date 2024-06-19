@@ -9,11 +9,24 @@ import {
     StyledTdWriter
  } from './styled';
 
+ import { Link } from 'react-router-dom';
+
 const ListItem = ({ item }) => {
+    const formatDate = (timestamp) => {
+        const date = new Date(timestamp);
+        return date.toLocaleDateString('en-US', {
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric',
+        });
+    };
+
     return (
         <tr>
-            <StyledTdTitle>{item.title}</StyledTdTitle>
-            <StyledTdDate>{item.regdate}</StyledTdDate>
+            <StyledTdTitle>
+                <Link to={`/noticedetail/${item.noticeId}`}>{item.title}</Link>
+            </StyledTdTitle>
+            <StyledTdDate>{formatDate(item.regdate)}</StyledTdDate>
             <StyledTdWriter>관리자</StyledTdWriter>
         </tr>
     );
