@@ -16,7 +16,7 @@ export const Image = styled.img`
 `;
 
 export const Box = styled.div`
-  width: 35vw;
+  width: 30vw;
   min-height: 70vh;
   border-radius: 5px;
   border: 3px solid black;
@@ -47,7 +47,7 @@ export const InputFieldGroup = styled.div`
   align-items: center;
   width: 100%;
   margin-top: 20vh;
-  gap: 30px;
+  gap: 22px;
 `;
 
 export const ButtonGroup = styled.div`

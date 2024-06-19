@@ -8,7 +8,7 @@ const textStyles = {
   },
   loginTitle: {
     fontWeight: 'bold',
-    fontSize: '50px',
+    fontSize: '40px',
     color: 'black',
   },
   text2: {
