@@ -24,14 +24,12 @@ export const ListWrapper = styled.div `
 
 export const AgeWrapper = styled.div `
   width: 15vw;
-  height: 20vh;
+  height: 30vh;
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  justify-content: flex-start;
   position: relative;
   display: flex;
-  top: center;
 
   ${(props) => props.theme === 'age1' && `
     left: -30px; 
@@ -52,17 +50,16 @@ export const StyledRectangle = styled.div`
   flex-direction: row;
   border-radius: 30px;
   position: relative;
-  gap: 50px;
-  margin-bottom: 25px;
+  gap: 5vh;
+  margin-bottom: 5vh;
 `;
 
 
 export const Img= styled.img`
-  width: 70%;
-  height: 70%;
+  width: 15vw;
+  height: auto;
   align-self: center; 
   justify-self: center;
-  margin-top: 20px;
 `;
 
 
