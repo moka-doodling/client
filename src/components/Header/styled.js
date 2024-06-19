@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const WhiteBox = styled.div`
   width: 100vw;
-  height: 21vh;
+  height: 20vh;
   background-color: white;
   position: fixed;
   top: 0;
@@ -17,7 +17,7 @@ export const Container = styled.div`
   z-index: 10;
   border-top: 3px solid black;
   border-bottom: 3px solid black;
-  top: 6vh;
+  top: 5vh;
   left: 0;
   display: flex;
   justify-content: space-between;
