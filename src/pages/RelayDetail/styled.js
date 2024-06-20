@@ -8,7 +8,7 @@ export const Container = styled.div`
   align-items: center;
   justify-content: center;
   margin-top: 22vh;
-  padding-top: 8vh;
+  padding-top: 5vh;
 `;
 
 export const Wrapper = styled.div`

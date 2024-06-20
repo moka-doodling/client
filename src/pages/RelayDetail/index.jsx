@@ -1,6 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useParams } from 'react-router-dom';
 import { axiosInstance } from '../../apis';
+import { useRecoilValue } from 'recoil';
+import { loginInfo } from '../../store/atoms';
 import {
   Header,
   Carousel,
@@ -20,6 +22,9 @@ const RelayDetail = () => {
   const [isMySubmissionLoad, setIsMySubmissionLoad] = useState(false);
   const [thisWeek, setThisWeek] = useState(null);
 
+  const loginInfoData = useRecoilValue(loginInfo);
+  const memberId = loginInfoData.memberId;
+
   const fetchSubmissionData = async () => {
     try {
       const response = await axiosInstance.get(
@@ -38,7 +43,7 @@ const RelayDetail = () => {
   const fetchMySubmissionData = async (week) => {
     try {
       const response = await axiosInstance.get(
-        `/submission/my?relayId=${id}&week=${week}&memberId=1`
+        `/submission/my?relayId=${id}&week=${week}&memberId=${memberId}`
       );
       console.log(response.data);
       setIsMySubmission(response.data);
@@ -69,7 +74,7 @@ const RelayDetail = () => {
     axiosInstance
       .post('/submission', {
         relayId: id,
-        memberId: 1,
+        memberId: memberId,
         week: thisWeek,
         content: text,
         sketch: sketch,
@@ -78,6 +83,9 @@ const RelayDetail = () => {
         console.log(response.data);
         fetchMySubmissionData(thisWeek);
         alert('등록이 완료되었습니다.');
+
+        setText('');
+        canvasRef.current.clearCanvas();
       })
       .catch((error) => {
         console.error('Error saving data:', error);
@@ -86,13 +94,18 @@ const RelayDetail = () => {
 
   useEffect(() => {
     fetchSubmissionData();
+    window.scrollTo(0, 0);
   }, []);
 
   return (
     <>
       <Header />
       <Container>
-        <Title theme={'blue'} date={'6월 3주차'} title={'릴레이 동화 만들기'} />
+        <Title
+          theme={'blue'}
+          date={`${thisWeek}주차`}
+          title={'릴레이 동화 만들기'}
+        />
         {isMySubmissionLoad && isSelectedSubmission.length > 0 && (
           <Carousel
             submissions={isSelectedSubmission}
@@ -113,7 +126,7 @@ const RelayDetail = () => {
             </Button>
           </ButtonContainer>
         </Wrapper>
-        <OtherItemList />
+        {thisWeek && <OtherItemList relayId={id} week={thisWeek} />}
       </Container>
     </>
   );
