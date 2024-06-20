@@ -34,16 +34,15 @@ const Header = ({ theme }) => {
       .post('/member/logout', {})
       .then((response) => {
         console.log(response);
+        /**
+         * recoil로 관리되는 사용자 정보 업데이트
+         */
         setLoginUserState({ isLogin: false });
         setLoginUserInfo({
           memberId: '',
           username: '',
         });
         navigate('/login');
-        /**
-         * auth 관련 cookie 삭제 필요
-         * recoil로 관리되는 사용자 정보 업데이트 필요
-         */
       })
       .catch((error) => {
         console.error(error);
@@ -72,8 +71,10 @@ const Header = ({ theme }) => {
         <ButtonGroup>
           {loginUserState.isLogin ? (
             <>
-              <Link to="/">
-                <Button theme="yellowBtn">마이페이지</Button>
+              <Link to="/myPage">
+                <Button theme="yellowBtn">
+                  마이페이지
+                </Button>
               </Link>
               <Button theme="whiteBtn" onClick={onLogout}>
                 로그아웃
