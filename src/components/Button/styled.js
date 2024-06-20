@@ -47,6 +47,18 @@ const buttonStyles = {
     font-weight: bold;
     width: 10vw;
   `,
+  withdrawBtn: css`
+    ${commonStyles}
+    background: white;
+    font-size: 1rem;
+    width: 10vw;
+  `,
+  changePwBtn: css`
+    ${commonStyles}
+    background: #fcf390;
+    font-size: 1rem;
+    width: 10vw;
+  `,
 };
 
 export const StyledButton = styled.button`

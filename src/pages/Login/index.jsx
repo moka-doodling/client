@@ -14,10 +14,10 @@ import {
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { axiosInstance } from '../../apis';
-import { useCookie } from '../../hooks/CookieUtils';
 import { jwtDecode } from 'jwt-decode';
 import { loginInfo, loginState } from '../../store/atoms';
 import { useRecoilState } from 'recoil';
+import { Header } from '../../components';
 
 const Login = () => {
   const [username, setUsername] = useState('');
@@ -79,16 +79,17 @@ const Login = () => {
         password: password,
       })
       .then((response) => {
+        console.log(response);
         const authToken = response.headers['auth'];
         const refreshToken = response.headers['refresh'];
 
         onLoginSuccess(authToken, refreshToken);
         setLoginUserInfo({
           username: username,
-          memberId: response.data // TODO: memberId 받아오도록 수정 필요
+          memberId: response.data,
         });
         setLoginUserState({
-          isLogin: true
+          isLogin: true,
         });
         console.log(loginUserInfo);
         navigate('/');
@@ -99,35 +100,38 @@ const Login = () => {
   };
 
   return (
-    <Container>
-      <Image src={logo}></Image>
-      <Box>
-        <Title>
-          <Text theme={'loginTitle'}>로그인</Text>
-        </Title>
-        <InputFieldGroup>
-          <InputField
-            placeholder={'닉네임'}
-            theme={'loginForm'}
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-            type={'text'}
-          ></InputField>
-          <InputField
-            placeholder={'비밀번호'}
-            theme={'loginForm'}
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            type={'password'}
-          ></InputField>
-        </InputFieldGroup>
-        <ButtonGroup>
-          <Button theme={'loginBtn'} onClick={handleLogin}>
-            시작하기
-          </Button>
-        </ButtonGroup>
-      </Box>
-    </Container>
+    <>
+    <Header />
+      <Container>
+        {/* <Image src={logo}></Image> */}
+        <Box>
+          <Title>
+            <Text theme={'loginTitle'}>로그인</Text>
+          </Title>
+          <InputFieldGroup>
+            <InputField
+              placeholder={'닉네임'}
+              theme={'loginForm'}
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+              type={'text'}
+            ></InputField>
+            <InputField
+              placeholder={'비밀번호'}
+              theme={'loginForm'}
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              type={'password'}
+            ></InputField>
+          </InputFieldGroup>
+          <ButtonGroup>
+            <Button theme={'loginBtn'} onClick={handleLogin}>
+              시작하기
+            </Button>
+          </ButtonGroup>
+        </Box>
+      </Container>
+    </>
   );
 };
 

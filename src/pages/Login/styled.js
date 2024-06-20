@@ -16,7 +16,7 @@ export const Image = styled.img`
 `;
 
 export const Box = styled.div`
-  width: 30vw;
+  width: 25vw;
   min-height: 60vh;
   border-radius: 5px;
   border: 3px solid black;
@@ -25,7 +25,7 @@ export const Box = styled.div`
   align-items: center;
   justify-content: center;
   position: absolute;
-  top: 20vh;
+  top: 28vh;
   left: 50%;
   transform: translateX(-50%);
   background: #fef380;

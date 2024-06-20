@@ -13,6 +13,7 @@ import {
 import { useState } from 'react';
 import { axiosInstance } from '../../apis';
 import { useNavigate } from 'react-router-dom';
+import { Header } from '../../components';
 
 const SignUp = () => {
   const [username, setUsername] = useState('');
@@ -42,7 +43,7 @@ const SignUp = () => {
         passwordValidation: passwordValidation,
       })
       .then((response) => {
-        navigate("/login");
+        navigate('/login');
         console.log(response.data);
       })
       .catch((error) => {
@@ -50,42 +51,45 @@ const SignUp = () => {
       });
   };
   return (
-    <Container>
-      <Image src={logo}></Image>
-      <Box>
-        <Title>
-          <Text theme={'loginTitle'}>회원가입</Text>
-        </Title>
-        <InputFieldGroup>
-          <InputField
-            placeholder={'닉네임'}
-            theme={'loginForm'}
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-            type={'text'}
-          ></InputField>
-          <InputField
-            placeholder={'비밀번호'}
-            theme={'loginForm'}
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            type={'password'}
-          ></InputField>
-          <InputField
-            placeholder={'비밀번호 확인'}
-            theme={'loginForm'}
-            value={passwordValidation}
-            onChange={(e) => setPasswordValidation(e.target.value)}
-            type={'password'}
-          ></InputField>
-        </InputFieldGroup>
-        <ButtonGroup>
-          <Button theme={'loginBtn'} onClick={handleSignUp}>
-            가입하기
-          </Button>
-        </ButtonGroup>
-      </Box>
-    </Container>
+    <>
+      <Header />
+      <Container>
+        <Image src={logo}></Image>
+        <Box>
+          <Title>
+            <Text theme={'loginTitle'}>회원가입</Text>
+          </Title>
+          <InputFieldGroup>
+            <InputField
+              placeholder={'닉네임'}
+              theme={'loginForm'}
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+              type={'text'}
+            ></InputField>
+            <InputField
+              placeholder={'비밀번호'}
+              theme={'loginForm'}
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              type={'password'}
+            ></InputField>
+            <InputField
+              placeholder={'비밀번호 확인'}
+              theme={'loginForm'}
+              value={passwordValidation}
+              onChange={(e) => setPasswordValidation(e.target.value)}
+              type={'password'}
+            ></InputField>
+          </InputFieldGroup>
+          <ButtonGroup>
+            <Button theme={'loginBtn'} onClick={handleSignUp}>
+              가입하기
+            </Button>
+          </ButtonGroup>
+        </Box>
+      </Container>
+    </>
   );
 };
 
