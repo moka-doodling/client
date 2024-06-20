@@ -22,8 +22,9 @@ export const ImgWrapper = styled.div`
 `;
 
 export const Image = styled.img`
-  width: 80%;
-  height: auto;
+  width: 90%;
+  max-height: 90%;
+  object-fit: contain;
 `;
 
 export const TextWrapper = styled.div`

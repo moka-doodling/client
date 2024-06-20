@@ -4,19 +4,17 @@ import { OtherItem } from '../../components';
 import { Container, Image } from './styled';
 import otherlist from '../../assets/images/otherlist.svg';
 
-const OtherItemList = () => {
+const OtherItemList = ({ relayId, week }) => {
   const [items, setItems] = useState([]);
 
   const fetchData = async () => {
     try {
       const response = await axiosInstance.get(
-        `/submission/list?relayId=1&week=1&sort=recommend`
+        `/submission/list?relayId=${relayId}&week=${week}&sort=recommend`
       );
-      console.log(response.data);
       setItems(response.data);
     } catch (error) {
-      console.error('로그인 중 오류가 발생했습니다.', error);
-      alert('로그인 중 오류가 발생했습니다.');
+      console.error('오류가 발생했습니다.', error);
     }
   };
 

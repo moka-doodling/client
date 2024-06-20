@@ -44,7 +44,31 @@ const Canvas = forwardRef((props, ref) => {
 
   useImperativeHandle(ref, () => ({
     getImage: () => {
-      return stageRef.current.toDataURL();
+      const originalCanvas = stageRef.current.toCanvas();
+
+      const smallCanvas = document.createElement('canvas');
+      const smallCanvasContext = smallCanvas.getContext('2d');
+
+      const scale = 0.5;
+      smallCanvas.width = originalCanvas.width * scale;
+      smallCanvas.height = originalCanvas.height * scale;
+
+      smallCanvasContext.drawImage(
+        originalCanvas,
+        0,
+        0,
+        originalCanvas.width,
+        originalCanvas.height,
+        0,
+        0,
+        smallCanvas.width,
+        smallCanvas.height
+      );
+
+      return smallCanvas.toDataURL('image/webp', 0.1);
+    },
+    clearCanvas: () => {
+      handleClearCanvas();
     },
   }));
 

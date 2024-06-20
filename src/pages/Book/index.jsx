@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { axiosInstance } from '../../apis';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 
 import './bookstyle.css';
 import './bookstyle.scss';
@@ -15,6 +15,7 @@ import bookview_img8 from '../../assets/images/bookview_vector_green.png';
 
 const Book = () => {
   const { id } = useParams();
+  const navigate = useNavigate();
   const pageArr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
   const halfLength = Math.ceil(pageArr.length / 2);
 
@@ -49,6 +50,9 @@ const Book = () => {
         <img className="img6" src={bookview_img6} />
         <img className="img7" src={bookview_img7} />
         <img className="img8" src={bookview_img8} />
+        <button className="backbtn" onClick={() => navigate(-1)}>
+          돌아가기
+        </button>
         {pageArr.slice(0, halfLength).map((_, index) => (
           <input key={index} id={index + 1} type="radio" name="trigger" />
         ))}

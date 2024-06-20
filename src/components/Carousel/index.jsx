@@ -50,11 +50,13 @@ const Carousel = ({ submissions, mysubmission, setIsMySubmission }) => {
     <CarouselContainer>
       <CarouselButton onClick={prevButton}>&lt;</CarouselButton>
       <ImageContainer ref={ref}>
-        {submissions.map((s, index) => (
-          <Wrapper key={index}>
-            <Item imgsrc={s.sketch} seq={index + 1} text={s.content} />
-          </Wrapper>
-        ))}
+        {submissions
+          .sort((a, b) => a.week - b.week)
+          .map((s, index) => (
+            <Wrapper key={index}>
+              <Item imgsrc={s.sketch} seq={s.week} text={s.content} />
+            </Wrapper>
+          ))}
         <Wrapper>
           {mySubmission ? (
             <Item
