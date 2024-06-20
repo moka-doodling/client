@@ -20,35 +20,53 @@ const Router = () => {
   return (
     <BrowserRouter>
       <Routes>
+        {/*누구나 접근 가능*/}
         <Route path="/" element={<Main />} />
         <Route path="*" element={<NotFound />} />
         <Route path="/bookview/:id" element={<Book />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/relaydetail/:id" element={<RelayDetail />} />
-        <Route path="/list" element={<List />} />
-        <Route 
+        <Route path="/notice" element={<Notice />} />
+        <Route path="/noticedetail/:noticeId" element={<NoticeDetail />} />
+
+        {/*로그인한 사용자만 접근 가능*/}
+        <Route path="/list" element={<ProtectedRoute element={<List />} />} />
+        <Route
+          path="/myPage"
+          element={<ProtectedRoute element={<MyPage />} />}
+        />
+        <Route
+          path="/relaydetail/:id"
+          element={<ProtectedRoute element={<RelayDetail />} />}
+        />
+
+        {/*관리자 권한만 접근 가능*/}
+        <Route
           path="/admin/noticelist"
           element={
-            <ProtectedRoute element={<AdminNoticeList />} requiredRole="ROLE_ADMIN" />
+            <ProtectedRoute
+              element={<AdminNoticeList />}
+              requiredRole="ROLE_ADMIN"
+            />
           }
         />
-        <Route 
+        <Route
           path="/admin/relaylist"
           element={
-            <ProtectedRoute element={<AdminRelayList />} requiredRole="ROLE_ADMIN" />
+            <ProtectedRoute
+              element={<AdminRelayList />}
+              requiredRole="ROLE_ADMIN"
+            />
           }
         />
         <Route
           path="/admin"
           element={
-            <ProtectedRoute element={<AdminNoticeList />} requiredRole="ROLE_ADMIN" />
+            <ProtectedRoute
+              element={<AdminNoticeList />}
+              requiredRole="ROLE_ADMIN"
+            />
           }
-        />
-        <Route path="/notice" element={<Notice />} />
-        <Route
-          path="/myPage"
-          element={<ProtectedRoute element={<MyPage />} />}
         />
         <Route
           path="/admin/submission"
@@ -59,7 +77,6 @@ const Router = () => {
             />
           }
         />
-        <Route path="/noticedetail/:noticeId" element={<NoticeDetail />} />
       </Routes>
     </BrowserRouter>
   );
