@@ -9,11 +9,12 @@ import SignUp from './pages/SignUp';
 import Login from './pages/Login';
 import RelayDetail from './pages/RelayDetail';
 import List from './pages/List';
-import Admin from './pages/Admin';
+import AdminNoticeList from './pages/AdminNoticeList';
 import Notice from './pages/Notice';
 import MyPage from './pages/MyPage';
 import NoticeDetail from './pages/NoticeDetail';
 import AdminSubmission from './pages/AdminSubmission';
+import AdminRelayList from './pages/AdminRelayList';
 
 const Router = () => {
   return (
@@ -26,10 +27,22 @@ const Router = () => {
         <Route path="/login" element={<Login />} />
         <Route path="/relaydetail/:id" element={<RelayDetail />} />
         <Route path="/list" element={<List />} />
+        <Route 
+          path="/admin/noticelist"
+          element={
+            <ProtectedRoute element={<AdminNoticeList />} requiredRole="ROLE_ADMIN" />
+          }
+        />
+        <Route 
+          path="/admin/relaylist"
+          element={
+            <ProtectedRoute element={<AdminRelayList />} requiredRole="ROLE_ADMIN" />
+          }
+        />
         <Route
           path="/admin"
           element={
-            <ProtectedRoute element={<Admin />} requiredRole="ROLE_ADMIN" />
+            <ProtectedRoute element={<AdminNoticeList />} requiredRole="ROLE_ADMIN" />
           }
         />
         <Route path="/notice" element={<Notice />} />
@@ -38,7 +51,7 @@ const Router = () => {
           element={<ProtectedRoute element={<MyPage />} />}
         />
         <Route
-          path="/adminsubmission"
+          path="/admin/submission"
           element={
             <ProtectedRoute
               element={<AdminSubmission />}

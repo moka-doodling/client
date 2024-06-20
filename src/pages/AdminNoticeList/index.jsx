@@ -2,22 +2,18 @@ import React, {useEffect, useState} from 'react';
 
 import {
     Container,
-    HeaderContainer,
     StyledRectangle,
-    ButtonGroup,
-    WhiteBox,
     TitleRectangle,
     TableWrapper
 } from './styled';
 
-import { Link } from 'react-router-dom';
 import Text from '../../components/Text';
-import Button from "../../components/Button";
 import Table from "../../components/Table";
+import AdminHeader from "../../components/AdminHeader"
 
 import { axiosInstance } from '../../apis';
 
-const Admin = () => {
+const AdminNoticeList = () => {
     const [items_notice, setItemsNotice] = useState([]);
     const [items_relay, setItemsRelay] = useState([]);
 
@@ -48,40 +44,15 @@ const Admin = () => {
 
     return (
         <>
-            <WhiteBox>
-                <HeaderContainer>
-                    <TitleRectangle theme="title">
-                        <Text theme="text3">관리자 페이지</Text>
-                    </TitleRectangle>
-                    <ButtonGroup>
-                        <Link to="/">
-                            <Button theme="extendedWhiteBtn">공지사항 등록</Button>
-                        </Link>
-                        <Link to="/">
-                            <Button theme="extendedWhiteBtn">공모전 등록</Button>
-                        </Link>
-                        <Link to="/admin/submission">
-                            <Button theme="extendedWhiteBtn">당선작 선정</Button>
-                        </Link>
-                    </ButtonGroup>
-                </HeaderContainer>
-            </WhiteBox>
+            <AdminHeader>
+            </AdminHeader>
             <Container>
                 <StyledRectangle>
-                    <TitleRectangle theme="subTitle">
+                    <TitleRectangle>
                         <Text theme="text3">공지사항</Text>
                     </TitleRectangle>
                     <TableWrapper>
                         <Table items={items_notice} isAdmin={true} type="notice" />
-                    </TableWrapper>
-                </StyledRectangle>
-
-                <StyledRectangle>
-                    <TitleRectangle theme="subTitle">
-                        <Text theme="text3">공모전 목록</Text>
-                    </TitleRectangle>
-                    <TableWrapper>                        
-                        <Table items={items_relay} />
                     </TableWrapper>
                 </StyledRectangle>
             </Container>
@@ -89,4 +60,4 @@ const Admin = () => {
     );
 };
 
-export default Admin;
+export default AdminNoticeList;

@@ -16,6 +16,7 @@ import {
 import { Link } from 'react-router-dom';
 import Text from '../../components/Text';
 import Button from "../../components/Button";
+import AdminHeader from "../../components/AdminHeader"
 
 import { axiosInstance } from '../../apis';
 
@@ -73,24 +74,7 @@ const AdminSubmission = () => {
 
     return (
         <>
-            <WhiteBox>
-                <HeaderContainer>
-                    <TitleRectangle theme="title">
-                        <Text theme="text3">관리자 페이지</Text>
-                    </TitleRectangle>
-                    <ButtonGroup>
-                        <Link to="/">
-                            <Button theme="extendedWhiteBtn">공지사항 등록</Button>
-                        </Link>
-                        <Link to="/">
-                            <Button theme="extendedWhiteBtn">공모전 등록</Button>
-                        </Link>
-                        <Link to="/">
-                            <Button theme="extendedWhiteBtn">당선작 선정</Button>
-                        </Link>
-                    </ButtonGroup>
-                </HeaderContainer>
-            </WhiteBox>
+            <AdminHeader />
             <Container>
                 <TitleRectangle theme="title">
                     <Text theme="text3">공모전 선택</Text>

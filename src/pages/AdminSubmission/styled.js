@@ -34,14 +34,13 @@ export const Container = styled.div`
   justify-content: center;
   flex-direction: column; 
   gap: 40px;
-  margin-top: 30vh;
+  margin-top: 5vh;
   margin-bottom: 5vh;
-  margin-left: auto; /* 화면 가운데 정렬을 위해 추가 */
-  margin-right: auto; /* 화면 가운데 정렬을 위해 추가 */
+  margin-left: 20vw; 
 `;
 
 export const StyledRectangle = styled.div`
-  width: 80vw;
+  width: 70vw;
   height: 50vh;
   background-color: #e5e5e5;
   display: flex;
@@ -106,8 +105,8 @@ export const ContestCard = styled.div`
   padding: 20px;
   border: 1px solid #ddd;
   border-radius: 10px;
-  margin-left: 3vw;
-  margin-right: 3vw;
+  margin-left: 2vw;
+  margin-right: 2vw;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 `;
 
