@@ -5,7 +5,7 @@ export const Container = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 8vw;
+  width: 9vw;
 `;
 
 export const Circle = styled.div`

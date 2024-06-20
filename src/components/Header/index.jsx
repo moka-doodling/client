@@ -73,8 +73,6 @@ const Header = ({ theme }) => {
             <>
               <Link to="/mypage">
                 <Button theme="yellowLoginBtn">마이페이지</Button>
-                  마이페이지
-                </Button>
               </Link>
               <Button theme="whiteLoginBtn" onClick={onLogout}>
                 로그아웃
