@@ -18,7 +18,7 @@ cover
 relayId
 title
  */
-const Preview = ({ cover, title }) => {
+const Preview = ({ cover, title, onClick }) => {
   return (
     <Container>
       <StyledRectangle>
@@ -29,7 +29,7 @@ const Preview = ({ cover, title }) => {
         <CoverImg src={cover}></CoverImg>
 
         <ButtonArea>
-          <CustomButton theme="extendedWhiteBtn">공모전 참여하기</CustomButton>
+          <CustomButton theme="extendedWhiteBtn" onClick={onClick}>공모전 참여하기</CustomButton>
           <ClickImg src={click}></ClickImg>
         </ButtonArea>
       </StyledRectangle>

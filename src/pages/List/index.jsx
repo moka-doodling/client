@@ -11,9 +11,12 @@ import child1 from '../../assets/images/child1.svg';
 import child2 from '../../assets/images/child2.svg';
 import { useEffect, useState } from 'react';
 import { axiosInstance } from '../../apis';
+import { useNavigate } from 'react-router-dom';
 
 const List = () => {
   const [relayList, setRelayList] = useState(null);
+
+  const navigate = useNavigate();
   
   useEffect(() => {
     getAllRelayList();
@@ -60,6 +63,7 @@ const List = () => {
                   key={relay.relayId}
                   cover={relay.cover}
                   title={relay.title}
+                  onClick={() => navigate(`/relaydetail/${relay.relayId}`)}
                 />
               ))}
         </StyledRectangle>
@@ -72,6 +76,7 @@ const List = () => {
                   key={relay.relayId}
                   cover={relay.cover}
                   title={relay.title}
+                  onClick={() => navigate(`/relaydetail/${relay.relayId}`)}
                 />
               ))}
           <AgeWrapper theme="age2">
