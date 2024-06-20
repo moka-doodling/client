@@ -46,7 +46,7 @@ const Notice = () => {
                         </TitleRectangle>
                     </TitleWrapper>
                     <TableWrapper>
-                        <Table items={items_notice} isAdmin={false} type="notice"/>
+                        {items_notice.length > 0 && <Table items={items_notice} isAdmin={false} type="notice"/>}
                     </TableWrapper>
                 </StyledRectangle>
             </Container>
