@@ -60,7 +60,7 @@ const Header = ({ theme }) => {
           <Link to="/">
             <NavMenu imgsrc={selected} category={'당선작 목록'} />
           </Link>
-          <Link to="/">
+          <Link to="/notice">
             <NavMenu imgsrc={notice} category={'공지사항'} />
           </Link>
         </NavGroup>

@@ -11,6 +11,7 @@ import List from './pages/List';
 import Admin from './pages/Admin';
 import Notice from './pages/Notice';
 import MyPage from './pages/MyPage';
+import NoticeDetail from './pages/NoticeDetail';
 
 const Router = () => {
   return (
@@ -26,6 +27,7 @@ const Router = () => {
         <Route path="/admin" element={<Admin />} />
         <Route path="/notice" element={<Notice />} />
         <Route path="/myPage" element={<MyPage />} />
+        <Route path="/noticedetail/:noticeId" element={<NoticeDetail />} />
       </Routes>
     </BrowserRouter>
   );
