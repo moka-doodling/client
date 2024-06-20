@@ -1,4 +1,7 @@
 import React, { useState, useEffect } from 'react';
+import { axiosInstance } from '../../apis';
+import { useRecoilValue } from 'recoil';
+import { loginInfo } from '../../store/atoms';
 import {
   Container,
   Tape,
@@ -18,11 +21,13 @@ import {
 } from './styled';
 import tape from '../../assets/images/tape.png';
 import spring from '../../assets/images/spring.svg';
-import { axiosInstance } from '../../apis';
 
 const OtherItem = ({ otherinfo }) => {
   const [isHeartFilled, setIsHeartFilled] = useState(false);
   const [isRecommendCnt, setIsRecommendCnt] = useState(otherinfo.recommendCnt);
+
+  const loginInfoData = useRecoilValue(loginInfo);
+  const memberId = loginInfoData.memberId;
 
   useEffect(() => {
     fetchData();
@@ -52,7 +57,7 @@ const OtherItem = ({ otherinfo }) => {
     try {
       const response = await axiosInstance.get(`/submission/recommend/check`, {
         params: {
-          memberId: 1,
+          memberId: memberId,
           submissionId: otherinfo.submissionId,
         },
       });
@@ -65,7 +70,7 @@ const OtherItem = ({ otherinfo }) => {
   const recommend = async () => {
     try {
       const response = await axiosInstance.post(`/submission/recommend`, {
-        memberId: 1,
+        memberId: memberId,
         submissionId: otherinfo.submissionId,
       });
       console.log(response.data);
@@ -79,7 +84,7 @@ const OtherItem = ({ otherinfo }) => {
     try {
       const response = await axiosInstance.delete(`/submission/recommend`, {
         data: {
-          memberId: 1,
+          memberId: memberId,
           submissionId: otherinfo.submissionId,
         },
       });
