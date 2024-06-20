@@ -18,10 +18,9 @@ export const InfoContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-top: 24vh;
-  margin-left: 10vw;
-  padding: 0 6vw;
-  gap: 20vw;
+  margin: 24vh 10vw 5vh 10vw;
+  gap: 25vw;
+  // border: 10px solid black;
 `;
 
 export const MyInfo = styled.div`
@@ -32,44 +31,46 @@ export const MyInfo = styled.div`
   justify-content: center;
   flex-direction: row;
   gap: 1vw;
+  // border: 10px solid black;
 `;
 
 export const BadgeImage = styled.img`
   width: 8vh;
   height: 8vh;
   background-color: white;
-  border: 1px solid black
+  border: 1px solid black;
 `;
 
 export const ButtonGroup = styled.div`
-  width: 40vw;
+  width: 30vw;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: row;
   gap: 2vw;
+  // border: 10px solid black;
 `;
 
 export const SubmissionContainer = styled.div`
   width: 80vw;
-  margin-top: 5vh;
   display: flex;
   position: relative;
-  margin-left: 10vw;
-  // border: 10px solid black
+  margin: 3vh 0 0 10vw;
+  // border: 10px solid black;
 `;
 
 export const OngoingSubmissionContainer = styled.div`
   margin: 0 auto;
   overflow: hidden;
-  padding: 3vh 3vw;
+  padding: 4vh 4vw;
   width: 80vw;
   height: 30vh;
   display: flex;
   gap: 3vw;
   flex-wrap: nowrap;
-  margin-top: 6vh;
+  margin-top: 2vh;
   overflow-x: auto;
+  // border: 10px solid black;
 `;
 
 export const Submission = styled.div`
@@ -82,4 +83,5 @@ export const SubmissionTitle = styled.div`
   position: absolute;
   top: 0;
   left: 4vw;
+  // border: 10px solid red;
 `;

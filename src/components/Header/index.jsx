@@ -34,9 +34,8 @@ const Header = ({ theme }) => {
       .post('/member/logout', {})
       .then((response) => {
         console.log(response);
-        /**
-         * recoil로 관리되는 사용자 정보 업데이트
-         */
+        delete axiosInstance.defaults.headers.common['Authorization'];
+        delete axiosInstance.defaults.headers.common['Refresh'];
         setLoginUserState({ isLogin: false });
         setLoginUserInfo({
           memberId: '',
