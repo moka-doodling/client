@@ -12,6 +12,7 @@ import Admin from './pages/Admin';
 import Notice from './pages/Notice';
 import MyPage from './pages/MyPage';
 import NoticeDetail from './pages/NoticeDetail';
+import AdminSubmission from './pages/AdminSubmission';
 
 const Router = () => {
   return (
@@ -28,6 +29,7 @@ const Router = () => {
         <Route path="/notice" element={<Notice />} />
         <Route path="/myPage" element={<MyPage />} />
         <Route path="/noticedetail/:noticeId" element={<NoticeDetail />} />
+        <Route path="/admin/submission" element={<AdminSubmission />} />
       </Routes>
     </BrowserRouter>
   );

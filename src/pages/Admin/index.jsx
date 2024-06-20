@@ -60,7 +60,7 @@ const Admin = () => {
                         <Link to="/">
                             <Button theme="extendedWhiteBtn">공모전 등록</Button>
                         </Link>
-                        <Link to="/">
+                        <Link to="/admin/submission">
                             <Button theme="extendedWhiteBtn">당선작 선정</Button>
                         </Link>
                     </ButtonGroup>
