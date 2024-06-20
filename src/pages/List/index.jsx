@@ -9,8 +9,32 @@ import { Header, Text, Title, Preview } from '../../components';
 
 import child1 from '../../assets/images/child1.svg';
 import child2 from '../../assets/images/child2.svg';
+import { useEffect, useState } from 'react';
+import { axiosInstance } from '../../apis';
 
 const List = () => {
+  const [relayList, setRelayList] = useState(null);
+
+  useEffect(() => {
+    getAllRelayList();
+  }, []);
+
+  useEffect(() => {
+    console.log('relay: ', relayList);
+  }, [relayList]);
+
+  const getAllRelayList = async () => {
+    await axiosInstance
+      .get(`/relay/all?filtering=ongoing`)
+      .then((response) => {
+        console.log(response.data);
+        setRelayList(response.data);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  };
+
   return (
     <>
       <Header />
@@ -28,12 +52,28 @@ const List = () => {
             <Img src={child1}></Img>
             <Text theme="text2">유아부</Text>
           </AgeWrapper>
-          <Preview age="age1"></Preview>
-          <Preview age="age1"></Preview>
+          {relayList &&
+            relayList
+              .filter((relay) => relay.age === 0)
+              .map((relay) => (
+                <Preview
+                  key={relay.relayId}
+                  cover={relay.cover}
+                  title={relay.title}
+                />
+              ))}
         </StyledRectangle>
         <StyledRectangle>
-          <Preview age="age1"></Preview>
-          <Preview age="age1"></Preview>
+          {relayList &&
+            relayList
+              .filter((relay) => relay.age === 1)
+              .map((relay) => (
+                <Preview
+                  key={relay.relayId}
+                  cover={relay.cover}
+                  title={relay.title}
+                />
+              ))}
           <AgeWrapper theme="age2">
             <Img src={child2}></Img>
             <Text theme="text2">초등부</Text>
