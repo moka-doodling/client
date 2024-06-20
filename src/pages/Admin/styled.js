@@ -2,7 +2,7 @@ import styled, { css } from 'styled-components';
 
 export const WhiteBox = styled.div`
   width: 100vw;
-  height: 30vh;
+  height: 20vh;
   background-color: white;
   position: fixed;
   top: 0;
@@ -12,7 +12,7 @@ export const WhiteBox = styled.div`
 
 export const HeaderContainer = styled.div`
   width: 80vw;
-  height: 25vh;
+  height: 15vh;
   position: fixed;
   z-index: 10;
   border-top: 3px solid black;
@@ -20,7 +20,7 @@ export const HeaderContainer = styled.div`
   top: 5vh;
   left: 0;
   display: flex;
-  flex-direction: column; 
+  flex-direction: row; 
   justify-content: center;
   align-items: center;
   margin: 0 10vw;
@@ -35,7 +35,7 @@ export const Container = styled.div`
   justify-content: center;
   flex-direction: column; 
   gap: 40px;
-  margin-top: 40vh;
+  margin-top: 20vh;
   margin-bottom: 10vh;
 `;
 
@@ -68,7 +68,7 @@ export const ButtonGroup = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding-top: 5vh;.
+  padding-left: 10vw;.
 `;
 
 const commonStyles = css`
