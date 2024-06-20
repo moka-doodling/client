@@ -14,7 +14,7 @@ import { axiosInstance } from '../../apis';
 
 const List = () => {
   const [relayList, setRelayList] = useState(null);
-
+  
   useEffect(() => {
     getAllRelayList();
   }, []);
@@ -41,7 +41,7 @@ const List = () => {
       <Container>
         <Title
           theme={'yellow'}
-          date={'6월 3주차'}
+          date={`연령대별`}
           title={'진행중인 공모전'}
           copy={'릴레이 동화를 만들어보세요!'}
         />
