@@ -2,9 +2,7 @@ import styled from 'styled-components';
 
 export const StyledTable = styled.table`
     width: 100%; /* 테이블 너비를 100%로 설정 */
-    max-width: 50vw; /* 최대 너비를 50vw로 제한 */
     border-collapse: collapse;
-    margin-top: 5vh;
 `;
 
 export const StyledThTitle = styled.th`

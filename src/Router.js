@@ -8,11 +8,12 @@ import SignUp from './pages/SignUp';
 import Login from './pages/Login';
 import RelayDetail from './pages/RelayDetail';
 import List from './pages/List';
-import Admin from './pages/Admin';
+import AdminNoticeList from './pages/AdminNoticeList';
 import Notice from './pages/Notice';
 import MyPage from './pages/MyPage';
 import NoticeDetail from './pages/NoticeDetail';
 import AdminSubmission from './pages/AdminSubmission';
+import AdminRelayList from './pages/AdminRelayList';
 
 const Router = () => {
   return (
@@ -25,7 +26,8 @@ const Router = () => {
         <Route path="/login" element={<Login />} />
         <Route path="/relaydetail/:id" element={<RelayDetail />} />
         <Route path="/list" element={<List />} />
-        <Route path="/admin" element={<Admin />} />
+        <Route path="/admin/noticelist" element={<AdminNoticeList />} />
+        <Route path="/admin/relaylist" element={<AdminRelayList />} />
         <Route path="/notice" element={<Notice />} />
         <Route path="/myPage" element={<MyPage />} />
         <Route path="/noticedetail/:noticeId" element={<NoticeDetail />} />
