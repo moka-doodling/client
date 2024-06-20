@@ -214,3 +214,39 @@ body .pages_page__inner .content {
   width: 100%;
   height: 100%;
 }
+
+.image_wrapper {
+  width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.content_wrapper {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  font-family: 'Crayon', sans-serif;
+  font-size: 1.4vw;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-image: url('../../assets/images/bookcontent.svg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.content_text {
+  width: 90%;
+  height: 70%;
+  padding: 5%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.content_username {
+  width: 70%;
+  height: 20%;
+  text-align: right;
+}
