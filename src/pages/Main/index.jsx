@@ -1,5 +1,6 @@
 import React from 'react';
 import { Header } from '../../components';
+import { Link } from 'react-router-dom';
 import {
   Container,
   Copy,
@@ -13,6 +14,7 @@ import {
   DummyBook,
   Pencil,
   InfoDetail,
+  StyledLink,
 } from './styled';
 import leftQuote from '../../assets/images/leftquote.png';
 import rightQuote from '../../assets/images/rightquote.png';
@@ -31,7 +33,9 @@ const Main = () => {
         <Copy>
           Doodling은 아이들의 상상이 동화로 이루어지는 공간입니다.
           <Leftquote src={leftQuote} />
-          <Rightquote src={rightQuote} />
+          <StyledLink to="/admin/noticelist">
+            <Rightquote src={rightQuote} />
+          </StyledLink>
         </Copy>
         <CopyDetail>
           <span className="yellow-highlight">유아부, 초등부</span>로 나뉘어 각각{' '}

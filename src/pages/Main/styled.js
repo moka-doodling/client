@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 export const Container = styled.div`
   width: 100vw;
@@ -46,6 +47,12 @@ export const Rightquote = styled.img`
   bottom: -10px;
   width: 40px;
   height: auto;
+`;
+
+export const StyledLink = styled(Link)`
+  &:hover {
+    cursor: auto;
+  }
 `;
 
 export const InfoWrapper = styled.div`

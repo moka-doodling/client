@@ -1,3 +1,7 @@
+import React, { useState, useEffect } from 'react';
+import { axiosInstance } from '../../apis';
+import { useParams } from 'react-router-dom';
+
 import './bookstyle.css';
 import './bookstyle.scss';
 import bookview_img1 from '../../assets/images/bookview_man.svg';
@@ -10,8 +14,29 @@ import bookview_img7 from '../../assets/images/bookview_vector_blue.png';
 import bookview_img8 from '../../assets/images/bookview_vector_green.png';
 
 const Book = () => {
+  const { id } = useParams();
   const pageArr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
   const halfLength = Math.ceil(pageArr.length / 2);
+
+  const [pageData, setPageData] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axiosInstance.get(`/relay/book/${id}`);
+        const data = response.data.submissions;
+        console.log(data);
+        setPageData(data);
+      } catch (error) {
+        console.error('Error fetching book data:', error);
+      }
+    };
+    fetchData();
+  }, [id]);
+
+  useEffect(() => {
+    console.log(pageData);
+  }, [pageData]);
 
   return (
     <div className="container">
@@ -34,7 +59,24 @@ const Book = () => {
                 num % 2 === 0 ? 'leftline' : 'rightline'
               }`}
             >
-              <div className="content">{num}</div>
+              <div className="content">
+                {Object.keys(pageData).length > 0 &&
+                  (num % 2 === 0 ? (
+                    <div className="content_wrapper">
+                      <div className="content_text">
+                        {pageData[Math.ceil(num / 2)].content}
+                      </div>
+                      <div className="content_username">
+                        작성자 : {pageData[Math.ceil(num / 2)].username}
+                      </div>
+                    </div>
+                  ) : (
+                    <img
+                      className="image_wrapper"
+                      src={pageData[Math.ceil(num / 2)].sketch}
+                    />
+                  ))}
+              </div>
               {num === 1 || num === pageArr.length ? (
                 <></>
               ) : num % 2 === 0 ? (
