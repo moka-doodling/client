@@ -9,6 +9,7 @@ import {
   ButtonGroup,
   Title,
   Box,
+  ErrorMessage,
 } from './styled';
 import { useState } from 'react';
 import { axiosInstance } from '../../apis';
@@ -20,13 +21,26 @@ const SignUp = () => {
   const [password, setPassword] = useState('');
   const [passwordValidation, setPasswordValidation] = useState('');
 
-  const navigate = useNavigate(); // useNavigate 훅 사용
+  // 쌍따옴표 대신 이런 식으로 작성 필요
+  const passwordReg = /^(?=.*[a-zA-Z])(?=.*[0-9]).{8,25}$/;
+
+  const navigate = useNavigate();
 
   const handleSignUp = () => {
     console.log(username, password, passwordValidation);
     // 간단한 입력 유효성 검사 예시
     if (!username || !password || !passwordValidation) {
       alert('닉네임과 비밀번호를 모두 입력해주세요.');
+      return;
+    }
+
+    if (username.length < 2 || 8 < username.length) {
+      alert("아이디 길이는 2~8글자여야 합니다.");
+      return;
+    }
+
+    if (!passwordReg.test(password)) {
+      alert('비밀번호는 영문, 숫자 포함 8자리 이상이어야 합니다.');
       return;
     }
 
@@ -47,7 +61,11 @@ const SignUp = () => {
         console.log(response.data);
       })
       .catch((error) => {
-        console.error('Error saving data:', error);
+        if (error.response && error.response.status === 409) {
+          alert('이미 존재하는 유저 아이디입니다.');
+        } else {
+          alert('로그인 중 오류가 발생했습니다.');
+        }
       });
   };
   return (

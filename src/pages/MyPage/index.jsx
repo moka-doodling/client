@@ -25,6 +25,7 @@ import badge_level4 from '../../assets/images/badge_level4.svg';
 import badge_level5 from '../../assets/images/badge_level5.svg';
 
 const MyPage = () => {
+  const [loginUserState, setLoginUserState] = useRecoilState(loginState);
   const [loginUserInfo, setLoginUserInfo] = useRecoilState(loginInfo);
   const [mySubmissionsOngoing, setMySubmissionsOngoing] = useState(null);
   const [mySubmissionsEnded, setMySubmissionsEnded] = useState(null);
@@ -66,12 +67,12 @@ const MyPage = () => {
 
   const getMySelectedCnt = async () => {
     await axiosInstance
-    .get(`/member/myinfo/${loginUserInfo['memberId']}`)
-    .then((response) => {
-      console.log('asdfasdf', response.data);
-      setSelectedCnt(response.data['selected_cnt']);
-    })
-  }
+      .get(`/member/myinfo/${loginUserInfo['memberId']}`)
+      .then((response) => {
+        console.log('asdfasdf', response.data);
+        setSelectedCnt(response.data['selected_cnt']);
+      });
+  };
 
   // filtering 조건에 따라 진행 중인/완료된 공모전에 내가 제출한 내역 전부 조회
   const getAllMySubmissions = async (filtering) => {
@@ -92,6 +93,26 @@ const MyPage = () => {
       });
   };
 
+  const withdrawUser = () => {
+    console.log('회원탈퇴!');
+    axiosInstance
+      .delete(`/member/${loginUserInfo['memberId']}`)
+      .then((response) => {
+        console.log(response.data);
+        delete axiosInstance.defaults.headers.common['Authorization'];
+        delete axiosInstance.defaults.headers.common['Refresh'];
+        setLoginUserState({ isLogin: false });
+        setLoginUserInfo({
+          memberId: '',
+          username: '',
+        });
+        navigate('/signup');
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
   return (
     <>
       <Header />
@@ -101,7 +122,9 @@ const MyPage = () => {
           <Text theme={'usernametext'}>{loginUserInfo['username']}</Text>
         </MyInfo>
         <ButtonGroup>
-          <Button theme={'withdrawBtn'}>회원탈퇴</Button>
+          <Button theme={'withdrawBtn'} onClick={withdrawUser}>
+            회원탈퇴
+          </Button>
           <Button theme={'changePwBtn'}>비밀번호 변경</Button>
         </ButtonGroup>
       </InfoContainer>
@@ -114,6 +137,7 @@ const MyPage = () => {
             mySubmissionsOngoing.map((submission) => (
               <Submission
                 title={submission.title}
+                isSelected={submission.isSelected}
                 thumbnail={submission.sketch}
                 onClick={() => navigate(`/relaydetail/${submission.relayId}`)} // 진행 중인 공모 페이지로 이동
               />
@@ -130,6 +154,7 @@ const MyPage = () => {
             mySubmissionsEnded.map((submission) => (
               <Submission
                 title={submission.title}
+                isSelected={submission.isSelected}
                 thumbnail={submission.sketch}
                 onClick={() => navigate(`/bookview/${submission.relayId}`)} // 완성된 책 뷰로 이동
               />

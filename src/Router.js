@@ -1,5 +1,6 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import ProtectedRoute from './ProtectedRoute';
 
 import Main from './pages/Main';
 import NotFound from './pages/NotFound';
@@ -26,12 +27,39 @@ const Router = () => {
         <Route path="/login" element={<Login />} />
         <Route path="/relaydetail/:id" element={<RelayDetail />} />
         <Route path="/list" element={<List />} />
-        <Route path="/admin/noticelist" element={<AdminNoticeList />} />
-        <Route path="/admin/relaylist" element={<AdminRelayList />} />
+        <Route 
+          path="/admin/noticelist"
+          element={
+            <ProtectedRoute element={<AdminNoticeList />} requiredRole="ROLE_ADMIN" />
+          }
+        />
+        <Route 
+          path="/admin/relaylist"
+          element={
+            <ProtectedRoute element={<AdminRelayList />} requiredRole="ROLE_ADMIN" />
+          }
+        />
+        <Route
+          path="/admin"
+          element={
+            <ProtectedRoute element={<AdminNoticeList />} requiredRole="ROLE_ADMIN" />
+          }
+        />
         <Route path="/notice" element={<Notice />} />
-        <Route path="/myPage" element={<MyPage />} />
+        <Route
+          path="/myPage"
+          element={<ProtectedRoute element={<MyPage />} />}
+        />
+        <Route
+          path="/admin/submission"
+          element={
+            <ProtectedRoute
+              element={<AdminSubmission />}
+              requiredRole="ROLE_ADMIN"
+            />
+          }
+        />
         <Route path="/noticedetail/:noticeId" element={<NoticeDetail />} />
-        <Route path="/admin/submission" element={<AdminSubmission />} />
       </Routes>
     </BrowserRouter>
   );

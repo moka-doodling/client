@@ -22,7 +22,7 @@ import { Header } from '../../components';
 const Login = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const navigate = useNavigate(); // useNavigate 훅 사용
+  const navigate = useNavigate();
 
   const [loginUserInfo, setLoginUserInfo] = useRecoilState(loginInfo);
   const [loginUserState, setLoginUserState] = useRecoilState(loginState);
@@ -40,6 +40,7 @@ const Login = () => {
 
     console.log('remainingTime: ', remainingTime);
     axiosInstance.defaults.headers.common['Authorization'] = `${accessToken}`;
+    axiosInstance.defaults.headers.common['Refresh'] = `${refreshToken}`;
 
     setTimeout(() => {
       console.log('토큰 생성', refreshToken);
@@ -50,6 +51,7 @@ const Login = () => {
   const onSilentRefresh = (refreshToken) => {
     console.log('onSilentRefresh: ', refreshToken);
     delete axiosInstance.defaults.headers.common['Authorization'];
+    delete axiosInstance.defaults.headers.common['Refresh'];
     axiosInstance
       .post('/member/refresh', {
         username: username,
@@ -87,6 +89,7 @@ const Login = () => {
         setLoginUserInfo({
           username: username,
           memberId: response.data,
+          role: jwtDecode(authToken).auth
         });
         setLoginUserState({
           isLogin: true,

@@ -19,6 +19,7 @@ export const loginInfo = atom({
   default: {
     memberId: '',
     username: '',
+    role: '',
   },
   effects_UNSTABLE: [persistAtom],
 });
