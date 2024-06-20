@@ -3,12 +3,13 @@ import styled from 'styled-components';
 export const CarouselContainer = styled.div`
   display: flex;
   align-items: center;
-  width: 70%;
-  height: 30vh;
+  width: 80vw;
+  height: 35vh;
   justify-content: space-between;
   padding: 10px;
   border-radius: 3vw;
   background: #e5e5e5;
+  margin-bottom: 3vh;
 `;
 
 export const ImageContainer = styled.div`
@@ -16,8 +17,8 @@ export const ImageContainer = styled.div`
   align-items: center;
   overflow-x: auto;
   scroll-behavior: smooth;
-  width: 60vw;
-  height: 30vh;
+  width: 62vw;
+  height: 35vh;
   gap: 1vw;
   &::-webkit-scrollbar {
     display: none;

@@ -71,22 +71,22 @@ const Header = ({ theme }) => {
         <ButtonGroup>
           {loginUserState.isLogin ? (
             <>
-              <Link to="/myPage">
-                <Button theme="yellowBtn">
+              <Link to="/mypage">
+                <Button theme="yellowLoginBtn">마이페이지</Button>
                   마이페이지
                 </Button>
               </Link>
-              <Button theme="whiteBtn" onClick={onLogout}>
+              <Button theme="whiteLoginBtn" onClick={onLogout}>
                 로그아웃
               </Button>
             </>
           ) : (
             <>
               <Link to="/login">
-                <Button theme="whiteBtn">로그인</Button>
+                <Button theme="whiteLoginBtn">로그인</Button>
               </Link>
               <Link to="/signup">
-                <Button theme="yellowBtn">회원가입</Button>
+                <Button theme="yellowLoginBtn">회원가입</Button>
               </Link>
             </>
           )}

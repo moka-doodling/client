@@ -1,18 +1,25 @@
 import React from 'react';
-import { Container, Rectangle, CustomText2, CustomText, Img1, Img2 } from './styled';
+import {
+  Container,
+  Rectangle,
+  CustomText2,
+  CustomText,
+  Img1,
+  Img2,
+} from './styled';
 import bling from '../../assets/images/bling.svg';
-import pencil from '../../assets/images/pencil.svg'
+import pencil from '../../assets/images/pencil.svg';
 
-const Title = () => {
+const Title = ({ theme, date, title, copy }) => {
   return (
     <Container>
       <Img1 src={bling} />
-      <CustomText>6월 3주차</CustomText>
-      <Rectangle>
-        <CustomText2>진행중인 공모전</CustomText2>
+      <CustomText>{date}</CustomText>
+      <Rectangle theme={theme}>
+        <CustomText2>{title}</CustomText2>
       </Rectangle>
       <Img2 src={pencil} />
-      <CustomText2>릴레이 동화를 만들어보세요!</CustomText2>
+      <CustomText2>{copy}</CustomText2>
     </Container>
   );
 };

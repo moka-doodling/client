@@ -5,3 +5,7 @@ export { default as Header } from './Header';
 export { default as Carousel } from './Carousel';
 export { default as Item } from './Item';
 export { default as Canvas } from './Canvas';
+export { default as OtherItem } from './OtherItem';
+export { default as OtherItemList } from './OtherItemList';
+export { default as Title } from './Title';
+export { default as Preview } from './Preview';

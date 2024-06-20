@@ -35,6 +35,27 @@ const buttonStyles = {
     width: 5vw;
     background: white;
   `,
+  yellowLoginBtn: css`
+    ${commonStyles}
+    width: 6vw;
+    height: 8vh;
+    font-size: 1vw;
+    font-weight: bold;
+    background: #fcf390;
+  `,
+  whiteLoginBtn: css`
+    ${commonStyles}
+    width: 6vw;
+    height: 8vh;
+    font-size: 1vw;
+    font-weight: bold;
+    background: white;
+  `,
+  grayBtn: css`
+    ${commonStyles}
+    width: 5vw;
+    background: lightgray;
+  `,
   extendedWhiteBtn: css`
     ${commonStyles}
     width: 10vw;
@@ -47,6 +68,21 @@ const buttonStyles = {
     font-weight: bold;
     width: 10vw;
   `,
+  submitYellowBtn: css`
+    ${commonStyles}
+    width: 5vw;
+    height: 10vh;
+    font-size: 1.6vw;
+    font-family: 'Crayon', sans-serif;
+    background: #fcf390;
+  `,
+  submitGrayBtn: css`
+    ${commonStyles}
+    width: 5vw;
+    height: 10vh;
+    font-size: 1.6vw;
+    font-family: 'Crayon', sans-serif;
+    background: lightgray;
   withdrawBtn: css`
     ${commonStyles}
     background: white;

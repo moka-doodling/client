@@ -55,7 +55,7 @@ export const NavGroup = styled.div`
 `;
 
 export const ButtonGroup = styled.div`
-  width: 13vw;
+  width: 15vw;
   padding-right: 3vw;
   display: flex;
   justify-content: space-between;
