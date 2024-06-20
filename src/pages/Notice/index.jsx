@@ -23,7 +23,7 @@ const Notice = () => {
     useEffect(() => {
         const fetchNotices = async() => {
             try {
-                const response = await axiosInstance.get('/admin/notice/list');
+                const response = await axiosInstance.get('/notice/list');
                 console.log('response : ' + response);
                 setItemsNotice(response.data);
             } catch (error) {
