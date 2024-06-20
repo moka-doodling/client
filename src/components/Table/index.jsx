@@ -109,7 +109,7 @@ const ItemList = ({ items, isAdmin, type }) => {
                 </tr>
             </thead>
             <tbody>
-                {items && items.map((item, index) => (
+                {items.length > 0 && items.map((item, index) => (
                     <ListItem
                         key={index}
                         item={item}

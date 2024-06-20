@@ -20,7 +20,7 @@ export const TableWrapper = styled.div`
   align-items: center;
   justify-content: center;
   overflow-y: auto;
-  margin: 0 auto;
+  margin: 0 auto;q
 `;
 
 export const StyledRectangle = styled.div`
