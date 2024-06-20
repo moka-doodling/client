@@ -1,3 +1,5 @@
+import React, {useEffect, useState} from 'react';
+
 import {
     Container,
     HeaderContainer,
@@ -13,33 +15,36 @@ import Text from '../../components/Text';
 import Button from "../../components/Button";
 import Table from "../../components/Table";
 
+import { axiosInstance } from '../../apis';
+
 const Admin = () => {
-    const items_notice = [];
+    const [items_notice, setItemsNotice] = useState([]);
+    const [items_relay, setItemsRelay] = useState([]);
 
-    for (let i = 1; i <= 20; i++) {
-        items_notice.push({
-            title: `Item ${i}`,
-            description: `This is the description for item ${i}`
-        });
-    } 
+    useEffect(() => {
+        const fetchNotices = async() => {
+            try {
+                const response = await axiosInstance.get('/admin/notice/list');
+                console.log('response : ' + response);
+                setItemsNotice(response.data);
+            } catch (error) {
+                console.error('Error fetching notice : ', error);
+            }
+        };
 
-    const items_relay = [
-        { title: 'Item 1', description: 'This is the description for item 1' },
-        { title: 'Item 2', description: 'This is the description for item 2' },
-        { title: 'Item 3', description: 'This is the description for item 3' },
-        { title: 'Item 1', description: 'This is the description for item 1' },
-        { title: 'Item 2', description: 'This is the description for item 2' },
-        { title: 'Item 3', description: 'This is the description for item 3' },
-        { title: 'Item 4', description: 'This is the description for item 4' },
-        { title: 'Item 3', description: 'This is the description for item 3' },
-        { title: 'Item 4', description: 'This is the description for item 4' },
-        { title: 'Item 1', description: 'This is the description for item 1' },
-        { title: 'Item 2', description: 'This is the description for item 2' },
-        { title: 'Item 3', description: 'This is the description for item 3' },
-        { title: 'Item 4', description: 'This is the description for item 4' },
-        { title: 'Item 3', description: 'This is the description for item 3' },
-        { title: 'Item 4', description: 'This is the description for item 4' },
-    ]; 
+        const fetchRelays = async() => {
+            try {
+                const response = await axiosInstance.get('/admin/relay/list');
+                console.log('response : ' + response);
+                setItemsRelay(response.data);
+            } catch (error) {
+                console.error('Error fetching relay : ', error);
+            }
+        }
+
+        fetchNotices();
+        fetchRelays();
+    }, []);
 
     return (
         <>
@@ -67,7 +72,7 @@ const Admin = () => {
                         <Text theme="text3">공지사항</Text>
                     </TitleRectangle>
                     <TableWrapper>
-                        <Table items={items_notice} />
+                        <Table items={items_notice} isAdmin={true} type="notice" />
                     </TableWrapper>
                 </StyledRectangle>
 
@@ -75,7 +80,7 @@ const Admin = () => {
                     <TitleRectangle theme="subTitle">
                         <Text theme="text3">공모전 목록</Text>
                     </TitleRectangle>
-                    <TableWrapper>
+                    <TableWrapper>                        
                         <Table items={items_relay} />
                     </TableWrapper>
                 </StyledRectangle>

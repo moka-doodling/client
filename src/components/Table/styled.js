@@ -32,6 +32,14 @@ export const StyledThWriter = styled.th`
     text-align: center;
 `;
 
+export const StyledThAge = styled.th`
+    padding: 20px;
+    width: 20%; /* 날짜 셀 너비를 30%로 설정 */
+    border: 2px solid black;
+    background-color: #fcf390;
+    text-align: center;
+`;
+
 export const StyledTdTitle = styled.td`
     padding: 15px;
     width: 60%; /* 제목 셀 너비를 70%로 설정 */
@@ -53,3 +61,18 @@ export const StyledTdWriter = styled.td`
     border: 2px solid black;
     text-align: center;
 `;
+
+export const StyledTdAge = styled.td`
+    padding: 15px;
+    width: 20%; /* 날짜 셀 너비를 30%로 설정 */
+    border: 2px solid black;
+    text-align: center;
+`;
+
+export const StyledTr = styled.tr`
+    background-color: ${({ isActive }) => (isActive ? '#FCF390' : 'white')};
+    &:hover {
+        background-color: #E5E5E5;
+    }
+`;
+
