@@ -24,6 +24,7 @@ const AdminSubmission = () => {
     const [selectedWeek, setSelectedWeek] = useState(null);
     const [selectedRelayId, setSelectedRelayId] = useState(null);
     const [items_submission, setItemsSubmission] = useState([]);
+    const [selectedSubmission, setSelectedSubmission] = useState(null);
 
     useEffect(() => {
         const fetchRelays = async() => {
@@ -54,6 +55,19 @@ const AdminSubmission = () => {
             setItemsSubmission(response.data);
         } catch (error) {
             console.error('Error selecting contest: ', error);
+        }
+    };
+
+    const handleSelectedSubmission = async (submissionId) => {
+        try {
+            const response = await axiosInstance.patch(`/admin/submission/${submissionId}`);
+            console.log('Select submission response: ', response);
+            // 성공적으로 선택한 경우 해당 공모전 상태를 업데이트
+            if (response.status === 200) {
+                setSelectedSubmission(submissionId);
+            }
+        } catch (error) {
+            console.error('Error selecting submission: ', error);
         }
     };
 
@@ -129,7 +143,7 @@ const AdminSubmission = () => {
                 <StyledRectangle>
                     {items_submission.length > 0 ? (
                         items_submission.map((submission, index) => (
-                            <ContestCard key={index}>
+                            <ContestCard key={index} onClick={() => handleSelectedSubmission(submission.submissionId)}>
                                 <ContestImage src={submission.sketch} alt={submission.title} />
                                 <ContestDetails>
                                     <Text theme="text3">{submission.title}</Text>
