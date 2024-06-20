@@ -89,6 +89,7 @@ const Login = () => {
         setLoginUserInfo({
           username: username,
           memberId: response.data,
+          role: jwtDecode(authToken).auth
         });
         setLoginUserState({
           isLogin: true,
