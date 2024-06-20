@@ -24,7 +24,7 @@ const NoticeDetail = () => {
     useEffect(() => {
         const fetchNoticeDetails = async() => {
             try {
-                const response = await axiosInstance.get(`/admin/notice/list/${noticeId}`);
+                const response = await axiosInstance.get(`/notice/list/${noticeId}`);
                 console.log('response : ' + response);
                 setDetailInfo(response.data);
             } catch (error) {

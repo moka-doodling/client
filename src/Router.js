@@ -15,6 +15,7 @@ import MyPage from './pages/MyPage';
 import NoticeDetail from './pages/NoticeDetail';
 import AdminSubmission from './pages/AdminSubmission';
 import AdminRelayList from './pages/AdminRelayList';
+import AdminAddRelay from './pages/AdminAddRelay';
 
 const Router = () => {
   return (
@@ -50,7 +51,13 @@ const Router = () => {
             />
           }
         />
-        <Route
+        <Route 
+          path="/admin/addrelay"
+          element={
+            <ProtectedRoute element={<AdminAddRelay />} requiredRole="ROLE_ADMIN" />
+          }
+        />
+        <Route 
           path="/admin/relaylist"
           element={
             <ProtectedRoute

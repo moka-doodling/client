@@ -30,7 +30,7 @@ const AdminHeader = () => {
           <Link to="/">
               <CustomBtn>공지사항 등록</CustomBtn>
           </Link>
-          <Link to="/">
+          <Link to="/admin/addrelay">
               <CustomBtn>공모전 등록</CustomBtn>
           </Link>
           <Link to="/admin/submission">

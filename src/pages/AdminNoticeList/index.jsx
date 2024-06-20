@@ -52,7 +52,7 @@ const AdminNoticeList = () => {
                         <Text theme="text3">공지사항</Text>
                     </TitleRectangle>
                     <TableWrapper>
-                        {items_notice.length > 0 && <Table items={items_notice} isAdmin={false} type="notice"/>}
+                        {items_notice.length > 0 && <Table items={items_notice} isAdmin={true} type="notice"/>}
                     </TableWrapper>
                 </StyledRectangle>
             </Container>
