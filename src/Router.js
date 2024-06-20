@@ -10,6 +10,7 @@ import RelayDetail from './pages/RelayDetail';
 import List from './pages/List';
 import Admin from './pages/Admin';
 import Notice from './pages/Notice';
+import MyPage from './pages/MyPage';
 
 const Router = () => {
   return (
@@ -18,12 +19,13 @@ const Router = () => {
         <Route path="/" element={<Main />} />
         <Route path="*" element={<NotFound />} />
         <Route path="/bookview/:id" element={<Book />} />
-        <Route path="/signup" element={<SignUp />}></Route>
+        <Route path="/signup" element={<SignUp />} />
         <Route path="/login" element={<Login />} />
         <Route path="/relaydetail/:id" element={<RelayDetail />} />
         <Route path="/list" element={<List />} />
-        <Route path="/admin" element={<Admin />}/>
-        <Route path="/notice" element={<Notice />}/>
+        <Route path="/admin" element={<Admin />} />
+        <Route path="/notice" element={<Notice />} />
+        <Route path="/myPage" element={<MyPage />} />
       </Routes>
     </BrowserRouter>
   );

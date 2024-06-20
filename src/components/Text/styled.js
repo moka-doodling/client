@@ -22,6 +22,20 @@ const textStyles = {
     color: 'black',
     textAlign: 'center',
   },
+  usernametext: {
+    fontFamily: 'Crayon',
+    fontSize: '3rem',
+    textAlign: 'center',
+  },
+  text4: {
+    fontFamily: 'Crayon',
+    fontSize: '2rem',
+    textAlign: 'center',
+  },
+  text5: {
+    fontSize: '1rem',
+    textAlign: 'center'
+  },
 };
 
 export const StyledText = styled.p`
