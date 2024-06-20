@@ -5,7 +5,6 @@ export const Container = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 40vw;
   position: relative;
 `;
 
@@ -44,16 +43,18 @@ export const CustomText2 = styled.p`
 
 export const Img1 = styled.img`
   position: absolute;
-  top: -60px;
-  left: 70px;
+  top: -20%;
+  left: 0%;
+  transform: translate(-50%, -50%);
   width: 55%;
   height: 55%;
 `;
 
 export const Img2 = styled.img`
   position: absolute;
-  top: 20px;
-  right: -20px;
+  bottom: 0%;
+  right: -70%;
+  transform: translate(-50%, -50%);
   width: 70%;
   height: 70%;
 `;
