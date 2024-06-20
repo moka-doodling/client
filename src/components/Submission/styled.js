@@ -7,7 +7,21 @@ export const Container = styled.div`
   justify-content: center;
   width: 20vw;
   position: relative;
-  // border: 8px solid red;
+  padding: 1vh 0;
+  // border: 10px solid red;
+`;
+
+export const BadgeImage = styled.img`
+  width: 12vh;
+  height: 12vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: -24%;
+  right: -16%;
+  z-index: 3;
+  transform: rotate(20deg);
 `;
 
 export const StyledRectangle = styled.div`
@@ -21,6 +35,7 @@ export const StyledRectangle = styled.div`
   box-shadow: 4px 4px 0px 0px black;
   transition: background-color 0.3s ease;
   background-color: white;
+  position: relative; /* Ensure relative positioning for absolute children */
 `;
 
 export const CoverImg = styled.img`
