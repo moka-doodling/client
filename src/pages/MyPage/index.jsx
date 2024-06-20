@@ -54,7 +54,7 @@ const MyPage = () => {
     getAllMySubmissions('ongoing');
     getAllMySubmissions('ended');
     getMySelectedCnt();
-  }, [loginUserInfo]);
+  }, []);
 
   useEffect(() => {
     console.log('mySubmission ongoing: ', mySubmissionsOngoing);
