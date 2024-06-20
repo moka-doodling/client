@@ -16,8 +16,8 @@ export const Image = styled.img`
 `;
 
 export const Box = styled.div`
-  width: 35vw;
-  min-height: 70vh;
+  width: 25vw;
+  min-height: 60vh;
   border-radius: 5px;
   border: 3px solid black;
   box-shadow: 4px 4px 0px 0px black;
@@ -25,18 +25,18 @@ export const Box = styled.div`
   align-items: center;
   justify-content: center;
   position: absolute;
-  top: 20vh;
+  top: 28vh;
   left: 50%;
   transform: translateX(-50%);
   background: #fef380;
 `;
 
-export const Title = styled.h1`
+export const Title = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
   position: absolute;
-  top: 8vh;
+  top: 6vh;
   left: 50%;
   transform: translateX(-50%);
 `;
@@ -46,8 +46,8 @@ export const InputFieldGroup = styled.div`
   flex-direction: column;
   align-items: center;
   width: 100%;
-  margin-top: 20vh;
-  gap: 30px;
+  margin-top: 16vh;
+  gap: 22px;
 `;
 
 export const ButtonGroup = styled.div`

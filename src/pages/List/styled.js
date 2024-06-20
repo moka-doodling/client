@@ -8,8 +8,7 @@ export const Container = styled.div`
   justify-content: center;
   flex-direction: row; 
   gap: 40px;
-  margin-top: 40vh;
-  margin-bottom: 10vh;
+  margin-top: 30vh;
 `;
 
 export const ListWrapper = styled.div `
@@ -41,7 +40,7 @@ export const AgeWrapper = styled.div `
 `
 
 export const StyledRectangle = styled.div`
-  width: 70vw;
+  width: 80vw;
   height: 100vh;
   background-color: #e5e5e5;
   display: flex;

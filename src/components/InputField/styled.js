@@ -12,7 +12,7 @@ const commonStyles = css`
 const inputFieldStyles = {
   loginForm: css`
     ${commonStyles}
-    width: 20vw;
+    width: 13vw;
     padding: 0.5vh 1vh;
     font-size: 2vh;
     &::placeholder {

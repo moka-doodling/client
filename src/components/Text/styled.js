@@ -8,7 +8,7 @@ const textStyles = {
   },
   loginTitle: {
     fontWeight: 'bold',
-    fontSize: '50px',
+    fontSize: '2.2rem',
     color: 'black',
   },
   text2: {
@@ -21,6 +21,20 @@ const textStyles = {
     fontSize: '20px',
     color: 'black',
     textAlign: 'center',
+  },
+  usernametext: {
+    fontFamily: 'Crayon',
+    fontSize: '3rem',
+    textAlign: 'center',
+  },
+  text4: {
+    fontFamily: 'Crayon',
+    fontSize: '2rem',
+    textAlign: 'center',
+  },
+  text5: {
+    fontSize: '1rem',
+    textAlign: 'center'
   },
 };
 

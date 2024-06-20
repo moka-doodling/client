@@ -83,6 +83,17 @@ const buttonStyles = {
     font-size: 1.6vw;
     font-family: 'Crayon', sans-serif;
     background: lightgray;
+  withdrawBtn: css`
+    ${commonStyles}
+    background: white;
+    font-size: 1rem;
+    width: 10vw;
+  `,
+  changePwBtn: css`
+    ${commonStyles}
+    background: #fcf390;
+    font-size: 1rem;
+    width: 10vw;
   `,
 };
 
