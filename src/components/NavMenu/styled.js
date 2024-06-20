@@ -9,8 +9,8 @@ export const Container = styled.div`
 `;
 
 export const Circle = styled.div`
-  width: 3vw;
-  height: 3vw;
+  width: 3.5vw;
+  height: 3.5vw;
   background-color: #fcf390;
   border-radius: 50%;
   display: flex;
@@ -26,7 +26,7 @@ export const Img = styled.img`
 
 export const Category = styled.div`
   margin-top: 10px;
-  font-size: 0.9rem;
+  font-size: 1rem;
   text-align: center;
   font-weight: bold;
 `;

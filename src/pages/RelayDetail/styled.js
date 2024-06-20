@@ -8,11 +8,21 @@ export const Container = styled.div`
   align-items: center;
   justify-content: center;
   margin-top: 22vh;
-  padding: 3vh;
+  padding-top: 8vh;
+`;
+
+export const Wrapper = styled.div`
+  width: 80vw;
+  margin-top: 2vh;
+  margin-bottom: 2vh;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 3vh;
 `;
 
 export const StyledTextArea = styled.textarea`
-  margin: 5vh 0;
+  margin: 3vh 0;
   width: 20vw;
   height: 12vw;
   background-image: url(${imgsrc});
@@ -25,4 +35,11 @@ export const StyledTextArea = styled.textarea`
   outline: none;
   padding: 5vw;
   overflow: hidden;
+`;
+
+export const ButtonContainer = styled.div`
+  height: 45vh;
+  margin-right: 1vw;
+  display: flex;
+  align-items: flex-end;
 `;

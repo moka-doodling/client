@@ -14,6 +14,7 @@ import {
   ColorWrapper,
   ButtonContainer,
   StyledStage,
+  StageWrapper,
 } from './styled';
 
 const Canvas = forwardRef((props, ref) => {
@@ -29,8 +30,8 @@ const Canvas = forwardRef((props, ref) => {
   useEffect(() => {
     const handleResize = () => {
       setStageSize({
-        width: window.innerWidth * 0.27, // 27vw
-        height: window.innerHeight * 0.5, // 50vh
+        width: window.innerWidth * 0.2, // 20vw
+        height: window.innerHeight * 0.45, // 45vh
       });
     };
 
@@ -144,44 +145,46 @@ const Canvas = forwardRef((props, ref) => {
           </Button>
         </ButtonContainer>
       </CanvasSetting>
-      <StyledStage>
-        <Stage
-          width={stageSize.width}
-          height={stageSize.height}
-          onMouseDown={handleMouseDown}
-          onMouseMove={handleMouseMove}
-          onMouseUp={handleMouseUp}
-          ref={stageRef}
-        >
-          <Layer>
-            {savedLines.map((line, i) => (
-              <Line
-                key={i}
-                points={line.points}
-                stroke={line.color}
-                strokeWidth={line.tool === 'eraser' ? 20 : 5}
-                tension={0.5}
-                lineCap="round"
-                globalCompositeOperation={
-                  line.tool === 'eraser' ? 'destination-out' : 'source-over'
-                }
-              />
-            ))}
-            {drawing && lines.length > 0 && (
-              <Line
-                points={lines[lines.length - 1].points}
-                stroke={lines[lines.length - 1].color}
-                strokeWidth={mode === 'eraser' ? 20 : 5}
-                tension={0.5}
-                lineCap="round"
-                globalCompositeOperation={
-                  mode === 'eraser' ? 'destination-out' : 'source-over'
-                }
-              />
-            )}
-          </Layer>
-        </Stage>
-      </StyledStage>
+      <StageWrapper>
+        <StyledStage>
+          <Stage
+            width={stageSize.width}
+            height={stageSize.height}
+            onMouseDown={handleMouseDown}
+            onMouseMove={handleMouseMove}
+            onMouseUp={handleMouseUp}
+            ref={stageRef}
+          >
+            <Layer>
+              {savedLines.map((line, i) => (
+                <Line
+                  key={i}
+                  points={line.points}
+                  stroke={line.color}
+                  strokeWidth={line.tool === 'eraser' ? 20 : 5}
+                  tension={0.5}
+                  lineCap="round"
+                  globalCompositeOperation={
+                    line.tool === 'eraser' ? 'destination-out' : 'source-over'
+                  }
+                />
+              ))}
+              {drawing && lines.length > 0 && (
+                <Line
+                  points={lines[lines.length - 1].points}
+                  stroke={lines[lines.length - 1].color}
+                  strokeWidth={mode === 'eraser' ? 20 : 5}
+                  tension={0.5}
+                  lineCap="round"
+                  globalCompositeOperation={
+                    mode === 'eraser' ? 'destination-out' : 'source-over'
+                  }
+                />
+              )}
+            </Layer>
+          </Stage>
+        </StyledStage>
+      </StageWrapper>
     </CanvasContainer>
   );
 });
