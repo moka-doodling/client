@@ -1,10 +1,10 @@
 import React from 'react';
 import { StyledButton } from './styled';
 
-const Button = ({ theme, onClick, children, disabled }) => {
+const Button = ({ theme, onClick, children, disabled, type="button" }) => {
   return (
     <StyledButton
-      type="button"
+      type={type}
       theme={theme}
       onClick={onClick}
       disabled={disabled}

@@ -61,42 +61,43 @@ export const TitleRectangle = styled.div`
 `;
 
 export const FormWrapper = styled.form`
-    width: 100%;
+    width: 80vw;
     height: 80%;
     display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+`;
+
+export const FormTitle = styled.div`
+    display: flex;
+    width: 100%;
+    height: 30%;
     flex-direction: row;
-    gap: 20px;
-    margin-bottom: 5vh;
-`;
-
-export const FormLeft = styled.div`
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
+    align-items: center;
     justify-content: center;
+    gap: 3vw;
 `;
 
-export const FormRight = styled.div`
-    flex: 1;
+export const FormContent = styled.div`
     display: flex;
-    flex-direction: column;
-    gap: 20px;
+    width: 100%;
+    height: 80%;
+    flex-direction: row;
+    align-items: center;
     justify-content: center;
-`;
-
-export const FormField = styled.div`
-    display: flex;
-    flex-direction: column;
+    margin-top: 3vh;
+    gap: 3vw;
 `;
 
 export const FormLabel = styled.label`
-    margin-bottom: 8px;
     font-weight: bold;
+    font-size: 20px;
 `;
 
 export const FormInput = styled.input`
-    height: 5vh;
+    width: 70%;
+    height: 40%;
     padding: 8px;
     border: 1px solid #ccc;
     border-radius: 4px;
@@ -104,7 +105,8 @@ export const FormInput = styled.input`
 `;
 
 export const FormText = styled.textarea`
-    height: 10vh;
+    width: 70%;
+    height: 60%;
     max-height: 175px;
     padding: 8px;
     border: 1px solid #ccc;
