@@ -17,6 +17,7 @@ import AdminSubmission from './pages/AdminSubmission';
 import AdminRelayList from './pages/AdminRelayList';
 import AdminAddRelay from './pages/AdminAddRelay';
 import BookList from './pages/BookList';
+import AdminAddNotice from './pages/AdminAddNotice';
 
 const Router = () => {
   return (
@@ -62,7 +63,13 @@ const Router = () => {
             />
           }
         />
-        <Route
+        <Route 
+          path="/admin/addnotice"
+          element={
+            <ProtectedRoute element={<AdminAddNotice />} requiredRole="ROLE_ADMIN" />
+          }
+        />
+        <Route 
           path="/admin/relaylist"
           element={
             <ProtectedRoute

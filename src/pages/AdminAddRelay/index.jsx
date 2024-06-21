@@ -10,6 +10,7 @@ import {
     FormLabel,
     FormInput,
     FormText,
+    Separator
 } from './styled';
 
 import Text from '../../components/Text';
@@ -109,6 +110,7 @@ const AdminAddRelay = () => {
             <Container>
                 <TitleRectangle>
                     <Text theme="text3">공모전 등록</Text>
+                    <Separator />
                 </TitleRectangle>
                 <StyledRectangle>
                     <FormWrapper onSubmit={handleSubmit}>

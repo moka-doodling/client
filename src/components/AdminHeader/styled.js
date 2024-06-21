@@ -3,8 +3,8 @@ import styled from 'styled-components';
 // styled-components 부분 수정
 
 export const Container = styled.div`
-  width: 20vw; 
-  height: 50vh;
+  width: 15vw; 
+  height: 60vh;
   position: fixed;
   z-index: 10;
   border-right: 3px solid black; 
@@ -13,7 +13,6 @@ export const Container = styled.div`
   left: 0;
   display: flex;
   flex-direction: column; 
-  justify-content: flex-start; 
   align-items: center;
   background-color: white;
 `;
@@ -22,7 +21,9 @@ export const ButtonGroup = styled.div`
   width: 15vw;
   display: flex;
   flex-direction: column; 
-  justify-content: flex-start; 
+  display: flex;
+  align-items: center;
+  justify-content: center;
   align-items: left; 
   gap: 3vh;
   padding-top: 1vh;
@@ -36,8 +37,8 @@ export const TitleWrapper = styled.div`
   width: 80%; 
   flex-direction: column; 
   height: 5vh;
-  margin-top: 1vh;
-  margin-bottom: 2vh; 
+  margin-top: 5vh;
+  gap: 1vh;
 `;
 
 export const CustomBtn = styled.button`
@@ -47,14 +48,20 @@ export const CustomBtn = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 100%; /* 변경: 전체 너비에 맞춤 */
+  width: 7vw;
   height: 5vh;
   background-color: white;
 `;
 
 export const Separator = styled.div`
   width: 100%;
-  height: 3px;
+  height: 2px;
   background-color: black; /* 선의 색상 */
-  margin-top: 1vh; /* 선 아래 여백 추가 */
+  margin-top: 5vh; 
+  margin-bottom: 3vh; 
+`;
+
+export const Image = styled.img`
+  width: 6vw;
+  height: auto;
 `;
