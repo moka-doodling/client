@@ -17,7 +17,7 @@ const List = () => {
   const [relayList, setRelayList] = useState(null);
 
   const navigate = useNavigate();
-  
+
   useEffect(() => {
     getAllRelayList();
   }, []);
@@ -58,6 +58,7 @@ const List = () => {
           {relayList &&
             relayList
               .filter((relay) => relay.age === 0)
+              .slice(0, 2)
               .map((relay) => (
                 <Preview
                   key={relay.relayId}
@@ -71,6 +72,7 @@ const List = () => {
           {relayList &&
             relayList
               .filter((relay) => relay.age === 1)
+              .slice(0, 2)
               .map((relay) => (
                 <Preview
                   key={relay.relayId}

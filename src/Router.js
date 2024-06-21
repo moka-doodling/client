@@ -16,6 +16,7 @@ import NoticeDetail from './pages/NoticeDetail';
 import AdminSubmission from './pages/AdminSubmission';
 import AdminRelayList from './pages/AdminRelayList';
 import AdminAddRelay from './pages/AdminAddRelay';
+import BookList from './pages/BookList';
 import AdminAddNotice from './pages/AdminAddNotice';
 
 const Router = () => {
@@ -25,6 +26,7 @@ const Router = () => {
         {/*누구나 접근 가능*/}
         <Route path="/" element={<Main />} />
         <Route path="*" element={<NotFound />} />
+        <Route path="/booklist" element={<BookList />} />
         <Route path="/bookview/:id" element={<Book />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/login" element={<Login />} />
@@ -52,10 +54,13 @@ const Router = () => {
             />
           }
         />
-        <Route 
+        <Route
           path="/admin/addrelay"
           element={
-            <ProtectedRoute element={<AdminAddRelay />} requiredRole="ROLE_ADMIN" />
+            <ProtectedRoute
+              element={<AdminAddRelay />}
+              requiredRole="ROLE_ADMIN"
+            />
           }
         />
         <Route 

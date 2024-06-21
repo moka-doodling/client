@@ -13,12 +13,12 @@ import pencil from '../../assets/images/pencil.svg';
 const Title = ({ theme, date, title, copy }) => {
   return (
     <Container>
-      <Img1 src={bling} />
       <CustomText>{date}</CustomText>
       <Rectangle theme={theme}>
+        <Img1 src={bling} />
         <CustomText2>{title}</CustomText2>
       </Rectangle>
-      <Img2 src={pencil} />
+      {theme !== 'booklist' && <Img2 src={pencil} />}
       <CustomText2>{copy}</CustomText2>
     </Container>
   );

@@ -28,8 +28,8 @@ const Login = () => {
   const [loginUserState, setLoginUserState] = useRecoilState(loginState);
 
   const onLoginSuccess = (accessToken, refreshToken) => {
-    console.log('at login success: ', accessToken, refreshToken);
-    console.log(jwtDecode(accessToken));
+    //console.log('at login success: ', accessToken, refreshToken);
+    //console.log(jwtDecode(accessToken));
     const expiredTime = jwtDecode(accessToken).exp;
 
     const nowInSeconds = Math.floor(Date.now() / 1000);
@@ -89,13 +89,17 @@ const Login = () => {
         setLoginUserInfo({
           username: username,
           memberId: response.data,
-          role: jwtDecode(authToken).auth
+          role: jwtDecode(authToken).auth,
         });
         setLoginUserState({
           isLogin: true,
         });
         console.log(loginUserInfo);
-        navigate('/');
+        if (jwtDecode(authToken).auth.includes('ROLE_ADMIN')) {
+          navigate('/admin/noticelist');
+        } else {
+          navigate('/');
+        }
       })
       .catch((error) => {
         console.error('Error saving data:', error);
@@ -104,7 +108,7 @@ const Login = () => {
 
   return (
     <>
-    <Header />
+      <Header />
       <Container>
         {/* <Image src={logo}></Image> */}
         <Box>
