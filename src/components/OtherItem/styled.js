@@ -27,7 +27,7 @@ export const Tape = styled.img`
 export const Wrapper = styled.div`
   margin-top: 7%;
   width: 85%;
-  height: 75%;
+  height: 73%;
   background-color: #fcf390;
   display: flex;
   align-items: center;
@@ -52,7 +52,7 @@ export const Info = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-top: 2%;
+  margin-top: 4%;
 `;
 
 export const ImageWrapper = styled.div`
@@ -69,7 +69,8 @@ export const ImageWrapper = styled.div`
 
 export const Image = styled.img`
   width: 80%;
-  height: auto;
+  max-height: 100%;
+  object-fit: contain;
 `;
 
 export const TextWrapper = styled.div`

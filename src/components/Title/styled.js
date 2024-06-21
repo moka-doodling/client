@@ -19,35 +19,40 @@ export const CustomText = styled.p`
   color: white;
   text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000,
     1px 1px 0 #000, 2px 2px 0 #000;
+  z-index: 1;
 `;
 
 export const Rectangle = styled.div`
   width: 15vw;
   height: 4vw;
   background-color: ${(props) =>
-    props.theme === 'yellow' ? '#fcf390' : '#BACDE6'};
+    props.theme === 'yellow'
+      ? '#fcf390'
+      : props.theme === 'booklist'
+      ? '#D8BFD8'
+      : '#BACDE6'};
   display: flex;
   align-items: center;
   justify-content: center;
   border: 3px solid black;
   border-radius: 10px;
   margin-bottom: 20px;
+  position: relative;
 `;
 
 export const CustomText2 = styled.p`
-  font-size: 1rem;
+  font-size: 1.5vw;
   text-align: center;
   font-weight: bold;
-  font-size: 20px;
 `;
 
 export const Img1 = styled.img`
   position: absolute;
-  top: -20%;
+  top: -30%;
   left: 0%;
   transform: translate(-50%, -50%);
-  width: 55%;
-  height: 55%;
+  width: 4vw;
+  height: 4vw;
 `;
 
 export const Img2 = styled.img`

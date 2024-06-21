@@ -103,7 +103,7 @@ const RelayDetail = () => {
       <Container>
         <Title
           theme={'blue'}
-          date={`${thisWeek}주차`}
+          date={`${thisWeek - 1}주차`}
           title={'릴레이 동화 만들기'}
         />
         {isMySubmissionLoad && isSelectedSubmission.length > 0 && (
