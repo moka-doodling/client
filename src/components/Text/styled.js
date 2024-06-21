@@ -36,6 +36,24 @@ const textStyles = {
     fontSize: '1rem',
     textAlign: 'center'
   },
+  text6: {
+    fontWeight: 'bold',
+    fontSize: '1rem',
+    textAlign: 'left'
+  },
+  text7: {
+    fontFamily: 'Crayon',
+    fontSize: '3rem',
+    textAlign: 'left',
+    color: '#fcf390',
+    textShadow: '2px 2px 3px rgba(0, 0, 0, 0.6)', 
+  },
+  text8: {
+    fontWeight: 'bold',
+    fontSize: '1rem',
+    textAlign: 'left',
+    color: 'red',
+  },
 };
 
 export const StyledText = styled.p`
