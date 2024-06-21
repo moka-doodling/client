@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Header } from '../../components';
+import { Header, MySubmissionModal } from '../../components';
 import {
   ButtonGroup,
   InfoContainer,
@@ -31,6 +31,8 @@ const MyPage = () => {
   const [mySubmissionsEnded, setMySubmissionsEnded] = useState(null);
   const [bagdeImage, setBadgeImage] = useState(null);
   const [selectedCnt, setSelectedCnt] = useState(null);
+  const [modalOpen, setModalOpen] = useState(false);
+  const [submissionId, setSubmissionId] = useState(null);
 
   const navigate = useNavigate();
 
@@ -113,6 +115,15 @@ const MyPage = () => {
       });
   };
 
+  const handleModalOpen = (id) => {
+    setSubmissionId(id);
+    setModalOpen(true);
+  };
+
+  const handleModalClose = () => {
+    setModalOpen(false);
+  };
+
   return (
     <>
       <Header />
@@ -153,14 +164,25 @@ const MyPage = () => {
           {mySubmissionsEnded &&
             mySubmissionsEnded.map((submission) => (
               <Submission
+                key={submission.relayId}
                 title={submission.title}
                 isSelected={submission.isSelected}
                 thumbnail={submission.sketch}
-                onClick={() => navigate(`/bookview/${submission.relayId}`)} // 완성된 책 뷰로 이동
+                onClick={() =>
+                  submission.isSelected
+                    ? navigate(`/bookview/${submission.relayId}`)
+                    : handleModalOpen(submission.submissionId)
+                }
               />
             ))}
         </OngoingSubmissionContainer>
       </SubmissionContainer>
+      {modalOpen && (
+        <MySubmissionModal
+          submissionId={submissionId}
+          handleModalClose={handleModalClose}
+        />
+      )}
     </>
   );
 };

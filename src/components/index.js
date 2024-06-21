@@ -9,3 +9,4 @@ export { default as OtherItem } from './OtherItem';
 export { default as OtherItemList } from './OtherItemList';
 export { default as Title } from './Title';
 export { default as Preview } from './Preview';
+export { default as MySubmissionModal } from './MySubmissionModal';
