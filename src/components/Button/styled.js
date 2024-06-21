@@ -96,6 +96,18 @@ const buttonStyles = {
     font-size: 1rem;
     width: 10vw;
   `,
+  yellowChangePwBtn: css`
+    ${commonStyles}
+    width: 5vw;
+    height: 4vh;
+    background: #fcf390;
+  `,
+  whiteChangePwBtn: css`
+    ${commonStyles}
+    width: 5vw;
+    height: 4vh;
+    background: white;
+  `,
 };
 
 export const StyledButton = styled.button`
