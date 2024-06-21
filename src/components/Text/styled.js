@@ -54,6 +54,12 @@ const textStyles = {
     textAlign: 'left',
     color: 'red',
   },
+  text9: {
+    fontWeight: 'bold',
+    fontSize: '1rem',
+    textAlign: 'center',
+    color: 'red',
+  },
 };
 
 export const StyledText = styled.p`
