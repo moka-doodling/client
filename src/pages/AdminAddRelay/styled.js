@@ -69,7 +69,7 @@ export const FormWrapper = styled.form`
     margin-bottom: 5vh;
 `;
 
-export const FormLeft = styled.div`
+export const FormLeft = styled.form`
     flex: 1;
     display: flex;
     flex-direction: column;
@@ -77,7 +77,7 @@ export const FormLeft = styled.div`
     justify-content: center;
 `;
 
-export const FormRight = styled.div`
+export const FormRight = styled.form`
     flex: 1;
     display: flex;
     flex-direction: column;
@@ -119,6 +119,23 @@ export const Separator = styled.div`
   height: 3px;
   background-color: black; /* 선의 색상 */
   margin-top: 2vh;
+`;
+
+export const StyledButton = styled.button`
+  min-height: 5vh;
+  width: 30%;
+  border-radius: 5px;
+  border: 3px solid black;
+  box-shadow: 4px 4px 0px 0px black;
+  transition: background-color 0.3s ease;
+  &:active,
+  &:focus {
+    transform: scale(0.95);
+  }
+  &:hover {
+    transform: scale(1);
+    cursor: pointer;
+  }
 `;
 
 
