@@ -19,6 +19,13 @@ const inputFieldStyles = {
       color: gray;
     }
   `,
+  changePasswordForm: css`
+    ${commonStyles}
+    width: 15vw;
+    height: 4vh;
+    padding: 0.5vh 1vh;
+    font-size: 2vh;
+  `,
 };
 
 export const StyledInputField = styled.input`
