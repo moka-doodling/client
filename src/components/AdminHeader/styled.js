@@ -7,14 +7,14 @@ export const Container = styled.div`
   height: 60vh;
   position: fixed;
   z-index: 10;
-  border-right: 3px solid black; 
-  border-bottom: 3px solid black;
-  top: 0;
-  left: 0;
+  border: 3px solid black; 
+  top: 2vh;
+  left: 2vw;
   display: flex;
   flex-direction: column; 
   align-items: center;
   background-color: white;
+  border-radius: 7px;
 `;
 
 export const ButtonGroup = styled.div`

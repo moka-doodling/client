@@ -52,7 +52,7 @@ const Header = ({ theme }) => {
     <WhiteBox>
       <Container>
         <NavGroup login={loginUserState.isLogin}>
-          <Link to="/">
+          <Link to="/list">
             <NavMenu imgsrc={relay} category={'릴레이 동화 만들기'} />
           </Link>
           <Link to="/">
