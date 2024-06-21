@@ -64,7 +64,8 @@ const AdminAddRelay = () => {
 
   const [relayId, setRelayId] = useState(null);
 
-  const [url, setUrl] = useState(null);
+  const [relayUrl, setRelayUrl] = useState(null);
+  const [submissionUrl, setSubmissionUrl] = useState(null);
 
   const handleRelayChange = (e) => {
     const { name, value } = e.target;
@@ -100,7 +101,7 @@ const AdminAddRelay = () => {
         canvas.height = img.height;
         ctx.drawImage(img, 0, 0, img.width, img.height);
         const dataURL = canvas.toDataURL('image/webp', 0.1);
-        setUrl(dataURL);
+        setRelayUrl(dataURL);
         console.log('data url -> ' + dataURL);
         console.log('dat');
       };
@@ -112,28 +113,37 @@ const AdminAddRelay = () => {
     handleFileChange(e, () => {
       setFormRelay((prevData) => ({
         ...prevData,
-        cover: url,
+        cover: relayUrl,
       }));
     });
   };
 
   useEffect(() => {
-    if (url) {
+    if (relayUrl) {
       setFormRelay((prevData) => ({
         ...prevData,
-        cover: url,
+        cover: relayUrl,
       }));
     }
-  }, [url]);
+  }, [relayUrl]);
 
   const handleSubmissionFileChange = (e) => {
     handleFileChange(e, (result) => {
       setFormSubmission((prevData) => ({
         ...prevData,
-        sketch: result,
+        sketch: submissionUrl,
       }));
     });
   };
+
+  useEffect(() => {
+    if (submissionUrl) {
+      setFormRelay((prevData) => ({
+        ...prevData,
+        cover: submissionUrl,
+      }));
+    }
+  }, [submissionUrl]);
 
   const handleRelaySubmit = async (e) => {
     e.preventDefault();
