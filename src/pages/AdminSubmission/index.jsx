@@ -2,18 +2,15 @@ import React, {useEffect, useState} from 'react';
 
 import {
     Container,
-    HeaderContainer,
     StyledRectangle,
-    ButtonGroup,
-    WhiteBox,
     TitleRectangle,
     ContestCard, 
     ContestImage,
     ContestDetails,
-    WeekWrapper
+    WeekWrapper,
+    WeekBtn
 } from './styled';
 
-import { Link } from 'react-router-dom';
 import Text from '../../components/Text';
 import Button from "../../components/Button";
 import AdminHeader from "../../components/AdminHeader"
@@ -60,12 +57,27 @@ const AdminSubmission = () => {
     };
 
     const handleSelectedSubmission = async (submissionId) => {
+        if (selectedSubmission && selectedSubmission !== submissionId) {
+            alert('당선작을 취소하고 다시 선택해주세요');
+            return;
+        }
+
+        const isDeselecting = selectedSubmission === submissionId;
+
         try {
-            const response = await axiosInstance.patch(`/admin/submission/${submissionId}`);
+            const response = isDeselecting
+                ? await axiosInstance.patch(`/admin/unsubmission/${submissionId}`)
+                : await axiosInstance.patch(`/admin/submission/${submissionId}`);
             console.log('Select submission response: ', response);
-            // 성공적으로 선택한 경우 해당 공모전 상태를 업데이트
             if (response.status === 200) {
-                setSelectedSubmission(submissionId);
+                setItemsSubmission((prevItems) =>
+                    prevItems.map((submission) =>
+                        submission.submissionId === submissionId
+                            ? { ...submission, isSelected: !submission.isSelected }
+                            : submission
+                    )
+                );
+                setSelectedSubmission(isDeselecting ? null : submissionId);
             }
         } catch (error) {
             console.error('Error selecting submission: ', error);
@@ -82,8 +94,14 @@ const AdminSubmission = () => {
                 <StyledRectangle>
                     {items_relay.length > 0 ? (
                         items_relay.map((item, index) => (
-                            <ContestCard key={index}>
-                                <ContestImage src={item.cover} alt={item.title} />
+                            <ContestCard 
+                                key={index}
+                                selected={item.relayId === selectedRelayId}
+                            >
+                                <ContestImage 
+                                    src={item.cover} 
+                                    alt={item.title} 
+                                />
                                 <ContestDetails>
                                     <Text theme="text3">{item.title}</Text>
                                     <Text theme="text3">
@@ -92,7 +110,9 @@ const AdminSubmission = () => {
                                     <br></br>
                                     <Button
                                         theme="extendedWhiteBtn"
-                                        onClick={() => handleSelectedRelayId(item.relayId)}
+                                        onClick={() => {
+                                            handleSelectedRelayId(item.relayId)}
+                                        }
                                     >
                                         공모전 선택
                                     </Button>
@@ -106,13 +126,13 @@ const AdminSubmission = () => {
 
                 <WeekWrapper>
                     {Array.from({ length: 4 }, (_, i) => i + 1).map((weekOption) => (
-                        <Button
+                        <WeekBtn
                             key={weekOption}
-                            theme="whiteBtn"
+                            selected={weekOption === selectedWeek}
                             onClick={() => handleSelectedWeek(weekOption)}
                         >
                             Week {weekOption}
-                        </Button>
+                        </WeekBtn>
                     ))}
                     <br></br>
                     <br></br>
@@ -127,7 +147,10 @@ const AdminSubmission = () => {
                 <StyledRectangle>
                     {items_submission.length > 0 ? (
                         items_submission.map((submission, index) => (
-                            <ContestCard key={index} onClick={() => handleSelectedSubmission(submission.submissionId)}>
+                            <ContestCard 
+                                key={index} 
+                                selected={submission.isSelected}
+                                onClick={() => handleSelectedSubmission(submission.submissionId)}>
                                 <ContestImage src={submission.sketch} alt={submission.title} />
                                 <ContestDetails>
                                     <Text theme="text3">{submission.title}</Text>

@@ -47,9 +47,7 @@ export const StyledRectangle = styled.div`
   align-items: center;
   flex-direction: row;
   border-radius: 30px;
-  position: relative;
   overflow-x: auto;
-  justify-content: center;
 `;
 
 export const ButtonGroup = styled.div`
@@ -108,6 +106,9 @@ export const ContestCard = styled.div`
   margin-left: 2vw;
   margin-right: 2vw;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  ${({ selected }) => selected && `
+    background-color: #fcf390; 
+  `}
 `;
 
 export const ContestDetails = styled.div`
@@ -130,4 +131,21 @@ export const WeekWrapper = styled.div`
   gap: 1vw;
 `;
 
+export const WeekBtn = styled.button`
+  height: 6vh;
+  border-radius: 5px;
+  border: 3px solid black;
+  box-shadow: 4px 4px 0px 0px black;
+  transition: background-color 0.3s ease;
+  background: ${({ selected }) => (selected ? '#fcf390' : 'white')};
+  &:active,
+  &:focus {
+    transform: scale(0.95);
+  }
+  &:hover {
+    transform: scale(1);
+    cursor: pointer;
+  }
+  width: 5vw;
+`;
 
