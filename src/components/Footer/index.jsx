@@ -14,7 +14,6 @@ import {
   BottomRow,
   CopyrightText,
 } from './styled';
-import logo from '../../assets/images/mini_logo.png';
 
 const Footer = () => {
   return (
