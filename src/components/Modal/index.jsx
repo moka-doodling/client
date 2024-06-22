@@ -11,8 +11,10 @@ import {
 
 import { Button, AlertModal } from '../../components';
 
-const Modal = ({ show, onClose, data, type, onDelete }) => {
+const Modal = ({ show, onClose, data, type, onDelete, onSubmit, onCancel }) => {
   const [showAlertModal, setShowAlertModal] = useState(false);
+  const [showSubmitAlertModal, setSubmitShowAlertModal] = useState(false);
+  const [showCancelAlertModal, setCancelAlertModal] = useState(false);
   const [alertText, setAlertText] = useState('');
 
   if (!show) return null;
@@ -29,6 +31,28 @@ const Modal = ({ show, onClose, data, type, onDelete }) => {
   const handleConfirmDelete = () => {
     setShowAlertModal(false);
     onDelete();
+  };
+
+  const handleConfirmSubmit = () => {
+    setSubmitShowAlertModal(false);
+    onSubmit();
+  };
+
+  const handleConfirmCancel = () => {
+    setCancelAlertModal(false);
+    onCancel();
+  };
+
+  const handleSubmit = () => {
+    onSubmit();
+    setAlertText('당선작 선정이 완료되었습니다'); 
+    setShowAlertModal(true); 
+  }
+
+  const handleCancelSubmission = () => {
+    onCancel();
+    setAlertText('당선작 선정이 취소되었습니다'); 
+    setShowAlertModal(true); 
   };
 
   const handleModalClose = () => {
@@ -48,14 +72,22 @@ const Modal = ({ show, onClose, data, type, onDelete }) => {
       <ModalBackdrop onClick={onClose}>
         <ModalContent onClick={(e) => e.stopPropagation()}>
           <ModalHeader>
-            <p>{data.title}</p>
+            <p>{data.title || '상세 정보'}</p>
           </ModalHeader>
           <ModalBody>
             {type === 'notice' ? (
-              <div>
-                <p>{data.content}</p>
-              </div>
-            ) : (
+                <div>
+                    <p>{data.content}</p>
+                </div>
+            ) : type === 'submission' ? (
+                <div>
+                    <ImageWrapper>
+                        <Image src={data.sketch} alt="스케치 이미지" />
+                    </ImageWrapper>
+                    <p>내용: {data.content}</p>
+                    <p>추천 수: {data.recommendCnt}</p>
+                </div>
+            ) : ( 
               <div>
                 <ImageWrapper>
                   <Image src={data.cover} alt="표지 이미지" />
@@ -76,16 +108,25 @@ const Modal = ({ show, onClose, data, type, onDelete }) => {
           </ModalBody>
           <ModalFooter>
             {type === 'notice' ? (
-              <Button theme="newYellowBtn" onClick={handleDelete}>
+            <Button theme="newYellowBtn" onClick={handleDelete}>
                 공지사항 삭제
-              </Button>
+            </Button>
+            ) : type === 'submission' ? (
+                <>
+                <Button theme="newYellowBtn" onClick={handleSubmit}>
+                  당선작 선정
+                </Button>
+                <Button theme="newYellowBtn" onClick={handleCancelSubmission}>
+                  당선작 선정 취소
+                </Button>
+              </>
             ) : (
-              <Button theme="newYellowBtn" onClick={handleDelete}>
+            <Button theme="newYellowBtn" onClick={handleDelete}>
                 공모전 마감
-              </Button>
+            </Button>
             )}
             <Button theme="whiteBtn" onClick={onClose}>
-              닫기
+                닫기
             </Button>
           </ModalFooter>
         </ModalContent>
@@ -96,6 +137,22 @@ const Modal = ({ show, onClose, data, type, onDelete }) => {
           handleModalClose={handleModalClose}
           handleConfirm={handleConfirmDelete}
           type="confirm"
+        />
+      )}
+      {showSubmitAlertModal && (
+        <AlertModal
+            alertText={alertText}
+            handleModalClose={handleModalClose}
+            handleConfirm={handleConfirmSubmit}
+            type="submit"
+        />
+      )}
+        {showCancelAlertModal && (
+        <AlertModal
+            alertText={alertText}
+            handleModalClose={handleModalClose}
+            handleConfirm={handleConfirmCancel}
+            type="cancel"
         />
       )}
     </>
