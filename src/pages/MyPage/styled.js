@@ -35,10 +35,10 @@ export const MyInfo = styled.div`
 `;
 
 export const BadgeImage = styled.img`
-  width: 8vh;
-  height: 8vh;
+  width: 10vh;
+  height: 10vh;
   background-color: white;
-  border: 1px solid black;
+  // border: 1px solid black;
 `;
 
 export const ButtonGroup = styled.div`
