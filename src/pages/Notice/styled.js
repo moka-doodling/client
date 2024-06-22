@@ -12,29 +12,28 @@ export const Container = styled.div`
 
 export const TableWrapper = styled.div`
   height: 60vh;
-  width: 50vw;
+  width: 55vw;
   align-items: center;
   justify-content: center;
   overflow-y: auto;
-  padding-right: 20px; 
+  padding-right: 20px;
   margin: 0 auto;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
   &::-webkit-scrollbar {
-    width: 2vw; 
+    width: 2vw;
     background-color: white;
     border-radius: 50px;
   }
   &::-webkit-scrollbar-thumb {
-    background-color: #fcf390; /* 스크롤바 색상 */
+    background-color: #fcf390;
     border: 3px solid black;
     height: 7vh;
-    border-radius: 50px; /* 스크롤바 모양 */
+    border-radius: 50px;
   }
 `;
 
 export const StyledRectangle = styled.div`
   width: 60vw;
-  max-width: 100%;
   height: 70vh;
   background-color: #e5e5e5;
   display: flex;

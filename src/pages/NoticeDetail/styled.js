@@ -55,17 +55,13 @@ export const ContentRectangle = styled.div`
   flex-direction: column;
   border-radius: 30px;
   position: relative;
+  font-size: 1.4vw;
   gap: 5vh;
   padding: 2vw;
   background-image: url(${note});
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
-  white-space: pre-wrap;
-  white-space: pre-line;
-`;
-
-export const TextWrapper = styled.p`
   white-space: pre-wrap;
   white-space: pre-line;
 `;
