@@ -35,6 +35,10 @@ const buttonStyles = {
     width: 5vw;
     background: white;
   `,
+  newYellowBtn: css`
+    ${commonStyles}
+    background: #fcf390;
+  `,
   yellowLoginBtn: css`
     ${commonStyles}
     width: 6vw;

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Text, Button, AlertModal } from '../../components';
+import { Text, Button, AlertModal, Modal } from '../../components';
 import {
   Container,
   StyledRectangle,
@@ -10,6 +10,8 @@ import {
   WeekWrapper,
   WeekBtn,
   Separator,
+  ImageWrapper,
+  TextWrapper,
 } from './styled';
 
 import AdminHeader from '../../components/AdminHeader';
@@ -109,7 +111,9 @@ const AdminSubmission = () => {
                 key={index}
                 selected={item.relayId === selectedRelayId}
               >
-                <ContestImage src={item.cover} alt={item.title} />
+                <ImageWrapper>
+                  <ContestImage src={item.cover} alt={item.title} />
+                </ImageWrapper>
                 <ContestDetails>
                   <Text theme="text3">{item.title}</Text>
                   <Text theme="text3">
@@ -166,10 +170,15 @@ const AdminSubmission = () => {
                   handleSelectedSubmission(submission.submissionId)
                 }
               >
-                <ContestImage src={submission.sketch} alt={submission.title} />
+                <ImageWrapper>
+                  <ContestImage
+                    src={submission.sketch}
+                    alt={submission.title}
+                  />
+                </ImageWrapper>
                 <ContestDetails>
-                  <Text theme="text3">{submission.title}</Text>
-                  <Text theme="text3">{submission.content}</Text>
+                  <TextWrapper>{submission.content}</TextWrapper>
+                  <Text theme="text3">추천 수 : {submission.recommendCnt}</Text>
                 </ContestDetails>
               </ContestCard>
             ))

@@ -20,7 +20,7 @@ export const HeaderContainer = styled.div`
   top: 5vh;
   left: 0;
   display: flex;
-  flex-direction: row; 
+  flex-direction: row;
   justify-content: center;
   align-items: center;
   margin: 0 10vw;
@@ -32,22 +32,32 @@ export const Container = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-direction: column; 
+  flex-direction: column;
   gap: 40px;
   margin-top: 5vh;
   margin-bottom: 5vh;
-  margin-left: 20vw; 
+  margin-left: 20vw;
 `;
 
 export const StyledRectangle = styled.div`
   width: 70vw;
   height: 50vh;
+  padding: 1vw;
   background-color: #e5e5e5;
   display: flex;
   align-items: center;
-  flex-direction: row;
   border-radius: 30px;
   overflow-x: auto;
+  overflow-y: hidden;
+  &::-webkit-scrollbar {
+    width: 2vw;
+    border-radius: 30px;
+  }
+  &::-webkit-scrollbar-thumb {
+    border: 2px solid #e5e5e5;
+    background-color: #fcf390;
+    border-radius: 30px;
+  }
 `;
 
 export const ButtonGroup = styled.div`
@@ -56,16 +66,6 @@ export const ButtonGroup = styled.div`
   justify-content: space-between;
   align-items: center;
   padding-left: 10vw;.
-`;
-
-const commonStyles = css`
-  border-radius: 5px;
-  border: 3px solid black;
-  transition: background-color 0.3s ease;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
 `;
 
 export const TitleRectangle = styled.div`
@@ -86,26 +86,25 @@ export const TitleRectangle = styled.div`
 
 export const ContestImage = styled.img`
   width: 100%;
-  height: auto;
-  border-radius: 10px;
-  background-color: white;
+  max-height: 100%;
+  object-fit: contain;
 `;
 
 export const ContestCard = styled.div`
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
-  padding: 30px;
   border: 1px solid #ddd;
   border-radius: 10px;
-  margin-left: 2vw;
-  margin-right: 2vw;
   width: 18vw;
+  min-width: 18vw;
+  margin: 0 1vw;
   height: 40vh;
-  margin-top: 3vh;
-  margin-bottom: 3vh;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  ${({ selected }) => selected && `
+  ${({ selected }) =>
+    selected &&
+    `
     background-color: #fcf390; 
   `}
 `;
@@ -151,6 +150,23 @@ export const WeekBtn = styled.button`
 export const Separator = styled.div`
   width: 70%;
   height: 3px;
-  background-color: black; /* 선의 색상 */
+  background-color: black;
   margin-top: 2vh;
+`;
+
+export const ImageWrapper = styled.div`
+  background: white;
+  width: 15vw;
+  height: 22vh;
+`;
+
+export const TextWrapper = styled.div`
+  width: 15vw;
+  height: 4vh;
+  padding-top: 1vh;
+  font-size: 1.2vw;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  margin-bottom: 1vh;
 `;

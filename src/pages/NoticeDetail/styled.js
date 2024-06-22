@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import note from '../../assets/images/bookcontent.svg';
 
 export const Container = styled.div`
   width: 100vw;
@@ -34,6 +35,11 @@ export const StyledRectangle = styled.div`
   padding: 20px;
 `;
 
+export const TextContainer = styled.div`
+  width: 85%;
+  text-align: left;
+`;
+
 export const ButtonGroup = styled.div`
   width: 40vw;
   display: flex;
@@ -45,13 +51,21 @@ export const ButtonGroup = styled.div`
 export const ContentRectangle = styled.div`
   width: 50vw;
   height: 40vh;
-  background-color: white;
   display: flex;
-  align-items: center;
-  justify-content: center;
   flex-direction: column;
   border-radius: 30px;
   position: relative;
   gap: 5vh;
-  padding: 20px;
+  padding: 2vw;
+  background-image: url(${note});
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  white-space: pre-wrap;
+  white-space: pre-line;
+`;
+
+export const TextWrapper = styled.p`
+  white-space: pre-wrap;
+  white-space: pre-line;
 `;

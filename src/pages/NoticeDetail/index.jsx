@@ -3,11 +3,16 @@ import { useParams } from 'react-router-dom';
 import { axiosInstance } from '../../apis';
 import { Header, Text, Title, Footer } from '../../components';
 
-import { Container, StyledRectangle, ContentRectangle } from './styled';
+import {
+  Container,
+  StyledRectangle,
+  ContentRectangle,
+  TextContainer,
+} from './styled';
 
 const NoticeDetail = () => {
   const { noticeId } = useParams();
-  const [detailInfo, setDetailInfo] = useState([]);
+  const [detailInfo, setDetailInfo] = useState(null);
 
   useEffect(() => {
     const fetchNoticeDetails = async () => {
@@ -33,10 +38,10 @@ const NoticeDetail = () => {
       <Container>
         <Title theme={'notice'} date={`중요`} title={'공지사항 상세보기'} />
         <StyledRectangle>
-          <Text theme="text3">{detailInfo.title}</Text>
-          <ContentRectangle>
-            <Text>{detailInfo.content}</Text>
-          </ContentRectangle>
+          <TextContainer>
+            <Text theme="infotext">{detailInfo.title}</Text>
+          </TextContainer>
+          <ContentRectangle>{detailInfo.content}</ContentRectangle>
         </StyledRectangle>
       </Container>
       <Footer />
