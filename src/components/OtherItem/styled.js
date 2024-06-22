@@ -1,6 +1,6 @@
 import styled from 'styled-components';
-import heart from '../../assets/images/heart.svg';
-import whiteheart from '../../assets/images/whiteheart.svg';
+import whiteheart from '../../assets/images/jisumade_empty.png';
+import heart from '../../assets/images/jisumade_pink.png';
 
 export const Container = styled.div`
   display: flex;
@@ -94,8 +94,8 @@ export const HeartButton = styled.button`
   background: url(${(props) => (props.filled === 'true' ? heart : whiteheart)})
     no-repeat center center;
   background-size: contain;
-  width: 24px;
-  height: 24px;
+  width: 35px;
+  height: 35px;
   border: none;
   cursor: pointer;
 
@@ -119,7 +119,7 @@ export const HeartButtonWrapper = styled.div`
   height: 50px;
   flex-shrink: 0;
   border-radius: 20px;
-  border: 1px solid #000;
+  border: 2px solid #000;
   background: #fff;
   display: flex;
   align-items: center;
@@ -133,7 +133,7 @@ export const RecommendCount = styled.div`
   height: 3vh;
   line-height: 3vh;
   border-radius: 20px;
-  border: 1px solid #000;
+  border: 2px solid #000;
   background: #fcf390;
   text-align: center;
 `;
