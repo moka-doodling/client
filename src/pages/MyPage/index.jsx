@@ -24,6 +24,8 @@ import {
   PaginationButtonRight,
   PaginationButtonLeft,
   SubmissionPageBtnContainer,
+  BadgeInfoContainer,
+  BadgeInfoGroup,
 } from './styled';
 
 import badge_level1 from '../../assets/images/badge_level1.svg';
@@ -31,6 +33,7 @@ import badge_level2 from '../../assets/images/badge_level2.svg';
 import badge_level3 from '../../assets/images/badge_level3.svg';
 import badge_level4 from '../../assets/images/badge_level4.svg';
 import badge_level5 from '../../assets/images/badge_level5.svg';
+import badge_info from '../../assets/images/badge_info.svg';
 import ChangePasswordModal from '../../components/ChangePasswordModal';
 
 const MyPage = () => {
@@ -55,16 +58,15 @@ const MyPage = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
+    // 당선작 기준 수정
     if (selectedCnt >= 10) {
       setBadgeImage(badge_level5);
-    } else if (selectedCnt >= 7) {
-      setBadgeImage(badge_level4);
     } else if (selectedCnt >= 5) {
-      setBadgeImage(badge_level3);
+      setBadgeImage(badge_level4);
     } else if (selectedCnt >= 3) {
-      setBadgeImage(badge_level2);
+      setBadgeImage(badge_level3);
     } else if (selectedCnt >= 1) {
-      setBadgeImage(badge_level1);
+      setBadgeImage(badge_level2);
     } else {
       setBadgeImage(badge_level1);
     }
@@ -180,22 +182,28 @@ const MyPage = () => {
     <>
       <Header />
       <InfoContainer>
-        <MyInfo>
-          <BadgeImage src={badgeImage}></BadgeImage>
-          <Text theme={'usernametext'}>{loginUserInfo['username']}</Text>
-        </MyInfo>
-        <ButtonGroup>
-          <Button theme={'withdrawBtn'} onClick={withdrawUser}>
-            회원탈퇴
-          </Button>
-          <Button theme={'changePwBtn'} onClick={handleChangePwModalOpen}>
-            비밀번호 변경
-          </Button>
-        </ButtonGroup>
+        <BadgeInfoGroup>
+          <MyInfo>
+            <BadgeImage src={badgeImage}></BadgeImage>
+            <Text theme={'usernametext'}>{loginUserInfo['username']}</Text>
+            <ButtonGroup>
+              <Button theme={'withdrawBtn'} onClick={withdrawUser}>
+                회원탈퇴
+              </Button>
+              <Button theme={'changePwBtn'} onClick={handleChangePwModalOpen}>
+                비밀번호 변경
+              </Button>
+            </ButtonGroup>
+          </MyInfo>
+          <BadgeInfoContainer src={badge_info} />
+        </BadgeInfoGroup>
       </InfoContainer>
       <SubmissionContainer>
         <SubmissionTitle>
           <Text theme={'text4'}>내가 만든 이야기(진행 중)</Text>
+          <Text theme={'text10'}>
+            진행 중인 이야기는 상세 페이지를 확인할 수 있어요!
+          </Text>
         </SubmissionTitle>
         <SubmissionPageBtnContainer>
           <PaginationButtonLeft
@@ -224,6 +232,9 @@ const MyPage = () => {
       <SubmissionContainer>
         <SubmissionTitle>
           <Text theme={'text4'}>내가 만든 이야기(완성)</Text>
+          <Text theme={'text10'}>
+            당선 뱃지가 있는 제출물은 완성된 책으로 만나보세요!
+          </Text>
         </SubmissionTitle>
         <SubmissionPageBtnContainer>
           <PaginationButtonLeft
