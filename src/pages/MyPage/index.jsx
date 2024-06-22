@@ -22,11 +22,13 @@ import {
   OngoingSubmissionContainer,
   SubmissionTitle,
 } from './styled';
+
 import badge_level1 from '../../assets/images/badge_level1.svg';
 import badge_level2 from '../../assets/images/badge_level2.svg';
 import badge_level3 from '../../assets/images/badge_level3.svg';
 import badge_level4 from '../../assets/images/badge_level4.svg';
 import badge_level5 from '../../assets/images/badge_level5.svg';
+import ChangePasswordModal from '../../components/ChangePasswordModal';
 
 const MyPage = () => {
   const [loginUserState, setLoginUserState] = useRecoilState(loginState);
@@ -37,6 +39,8 @@ const MyPage = () => {
   const [selectedCnt, setSelectedCnt] = useState(null);
   const [modalOpen, setModalOpen] = useState(false);
   const [submissionId, setSubmissionId] = useState(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [changePwModalOpen, setChangePwModalOpen] = useState(false);
 
   const navigate = useNavigate();
 
@@ -128,6 +132,14 @@ const MyPage = () => {
     setModalOpen(false);
   };
 
+  const handleChangePwModalOpen = () => {
+    setChangePwModalOpen(true);
+  };
+
+  const handleChangePwModalClose = () => {
+    setChangePwModalOpen(false);
+  };
+
   return (
     <>
       <Header />
@@ -140,12 +152,14 @@ const MyPage = () => {
           <Button theme={'withdrawBtn'} onClick={withdrawUser}>
             회원탈퇴
           </Button>
-          <Button theme={'changePwBtn'}>비밀번호 변경</Button>
+          <Button theme={'changePwBtn'} onClick={handleChangePwModalOpen}>
+            비밀번호 변경
+          </Button>
         </ButtonGroup>
       </InfoContainer>
       <SubmissionContainer>
         <SubmissionTitle>
-          <Text theme={'text4'}>내가 만든 그림책(진행 중)</Text>
+          <Text theme={'text4'}>내가 만든 이야기(진행 중)</Text>
         </SubmissionTitle>
         <OngoingSubmissionContainer>
           {mySubmissionsOngoing &&
@@ -162,7 +176,7 @@ const MyPage = () => {
 
       <SubmissionContainer>
         <SubmissionTitle>
-          <Text theme={'text4'}>내가 만든 그림책(완성)</Text>
+          <Text theme={'text4'}>내가 만든 이야기(완성)</Text>
         </SubmissionTitle>
         <OngoingSubmissionContainer>
           {mySubmissionsEnded &&
@@ -186,6 +200,9 @@ const MyPage = () => {
           submissionId={submissionId}
           handleModalClose={handleModalClose}
         />
+      )}
+      {changePwModalOpen && (
+        <ChangePasswordModal handleModalClose={handleChangePwModalClose} />
       )}
       <Footer />
     </>

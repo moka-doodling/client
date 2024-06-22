@@ -8,6 +8,8 @@ import {
   ButtonGroup,
   Title,
   Box,
+  ErrorStateContainer,
+  ButtonContainer,
 } from './styled';
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
@@ -25,9 +27,9 @@ const Login = () => {
   const [loginUserInfo, setLoginUserInfo] = useRecoilState(loginInfo);
   const [loginUserState, setLoginUserState] = useRecoilState(loginState);
 
+  const [errorState, setErrorState] = useState(null);
+
   const onLoginSuccess = (accessToken, refreshToken) => {
-    //console.log('at login success: ', accessToken, refreshToken);
-    //console.log(jwtDecode(accessToken));
     const expiredTime = jwtDecode(accessToken).exp;
 
     const nowInSeconds = Math.floor(Date.now() / 1000);
@@ -69,9 +71,11 @@ const Login = () => {
 
   const handleLogin = () => {
     if (!username || !password) {
-      alert('닉네임과 비밀번호를 모두 입력해주세요.');
+      setErrorState('닉네임과 비밀번호를 모두 입력해주세요.');
       return;
     }
+
+    setErrorState(null);
 
     axiosInstance
       .post('/member/login', {
@@ -100,6 +104,7 @@ const Login = () => {
         }
       })
       .catch((error) => {
+        setErrorState('아이디 또는 비밀번호가 일치하지 않습니다.');
         console.error('Error saving data:', error);
       });
   };
@@ -130,9 +135,14 @@ const Login = () => {
             ></InputField>
           </InputFieldGroup>
           <ButtonGroup>
-            <Button theme={'loginBtn'} onClick={handleLogin}>
-              시작하기
-            </Button>
+            <ButtonContainer>
+              <Button theme={'loginBtn'} onClick={handleLogin}>
+                시작하기
+              </Button>
+            </ButtonContainer>
+            <ErrorStateContainer>
+              <Text theme={'text9'}>{errorState}</Text>
+            </ErrorStateContainer>
           </ButtonGroup>
         </Box>
       </Container>

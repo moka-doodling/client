@@ -50,3 +50,17 @@ export const ButtonGroup = styled.div`
   margin-top: 10%;
   width: 100%;
 `;
+
+export const ButtonContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+`;
+
+export const ErrorStateContainer = styled.div`
+  width: 100%;
+  margin: 3vh 0;
+  justify-content: center;
+  align-items: center;
+`;
