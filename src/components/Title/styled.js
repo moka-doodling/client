@@ -30,6 +30,8 @@ export const Rectangle = styled.div`
       ? '#fcf390'
       : props.theme === 'booklist'
       ? '#D8BFD8'
+      : props.theme === 'notice'
+      ? '#8ed8ac'
       : '#BACDE6'};
   display: flex;
   align-items: center;
@@ -62,4 +64,11 @@ export const Img2 = styled.img`
   transform: translate(-50%, -50%);
   width: 70%;
   height: 70%;
+  ${({ theme }) =>
+    theme === 'notice' &&
+    `
+    transform: scaleX(-1) rotate(-15deg);
+    bottom: 10%;
+    right: -30%;
+  `}
 `;

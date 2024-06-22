@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { axiosInstance } from '../../apis';
 import { useRecoilValue } from 'recoil';
 import { loginInfo } from '../../store/atoms';
-import { Header, Title } from '../../components';
+import { Footer, Header, Title } from '../../components';
 import {
   Container,
   BookContainer,
@@ -95,6 +95,7 @@ const BookList = () => {
           <ShelfImage src={shelf} />
         </Shelf>
       </Container>
+      <Footer />
     </>
   );
 };

@@ -98,7 +98,7 @@ export const Shelf = styled.div`
 export const ShelfImage = styled.img`
   width: 90vw;
   height: auto;
-  bottom: -65%;
+  bottom: -50%;
   left: 50%;
   transform: translateX(-50%);
   position: absolute;

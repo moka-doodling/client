@@ -10,6 +10,7 @@ import {
   Button,
   OtherItemList,
   Title,
+  Footer,
 } from '../../components';
 import { Container, StyledTextArea, Wrapper, ButtonContainer } from './styled';
 
@@ -128,6 +129,7 @@ const RelayDetail = () => {
         </Wrapper>
         {thisWeek && <OtherItemList relayId={id} week={thisWeek} />}
       </Container>
+      <Footer />
     </>
   );
 };
