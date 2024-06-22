@@ -24,8 +24,13 @@ const AdminSubmission = () => {
   const [selectedRelayId, setSelectedRelayId] = useState(null);
   const [items_submission, setItemsSubmission] = useState([]);
   const [selectedSubmission, setSelectedSubmission] = useState(null);
+  const [canceledSubmission, setCanceledSubmission] = useState(null);
   const [showAlertModal, setShowAlertModal] = useState(false);
   const [alertText, setAlertText] = useState('');
+  const [showModal, setShowModal] = useState(false);
+  const [selectedSubmissionDetail, setSelectedSubmissionDetail] = useState(null);
+
+
 
   useEffect(() => {
     const fetchRelays = async () => {
@@ -70,32 +75,52 @@ const AdminSubmission = () => {
       return;
     }
 
-    const isDeselecting = selectedSubmission === submissionId;
-
     try {
-      const response = isDeselecting
-        ? await axiosInstance.patch(`/admin/unsubmission/${submissionId}`)
-        : await axiosInstance.patch(`/admin/submission/${submissionId}`);
+      const response = await axiosInstance.patch(`/admin/submission/${submissionId}`);
       console.log('Select submission response: ', response);
       if (response.status === 200) {
         setItemsSubmission((prevItems) =>
           prevItems.map((submission) =>
             submission.submissionId === submissionId
-              ? { ...submission, isSelected: !submission.isSelected }
-              : submission
           )
         );
-        setSelectedSubmission(isDeselecting ? null : submissionId);
+        setSelectedSubmission(submissionId);
       }
     } catch (error) {
       console.error('Error selecting submission: ', error);
     }
   };
 
-  const handleModalClose = () => {
-    setShowAlertModal(false);
+  const handleCanceledSubmission = async (submissionId) => {
+    try {
+      const response = await axiosInstance.patch(`/admin/unsubmission/${submissionId}`);
+      console.log('Cancle submission response: ', response);
+      if (response.status === 200) {
+        setItemsSubmission((prevItems) =>
+          prevItems.map((submission) =>
+            submission.submissionId === submissionId
+          )
+        );
+        setCanceledSubmission(submissionId);
+      }
+    } catch (error) {
+      console.error('Error canceling submission: ', error);
+    }
   };
 
+  const handleModalOpen = (submission) => {
+    setSelectedSubmissionDetail(submission);
+    setShowModal(true);
+  };
+
+  const handleModalClose = () => {
+    setShowModal(false);
+  };
+
+  const handleAlertModalClose = () => {
+    setShowAlertModal(false);
+  };
+  
   return (
     <>
       <AdminHeader />
@@ -166,8 +191,9 @@ const AdminSubmission = () => {
               <ContestCard
                 key={index}
                 selected={submission.isSelected}
+                isSelected={items_submission.isSelected === 1}
                 onClick={() =>
-                  handleSelectedSubmission(submission.submissionId)
+                    handleModalOpen(submission)
                 }
               >
                 <ImageWrapper>
@@ -190,6 +216,22 @@ const AdminSubmission = () => {
       {showAlertModal && (
         <AlertModal alertText={alertText} handleModalClose={handleModalClose} />
       )}
+      {showModal && (
+        <Modal
+            show={showModal}
+            onClose={handleModalClose}
+            data={{ 
+                submissionId: selectedSubmissionDetail.submissionId,
+                content: selectedSubmissionDetail.content,
+                recommendCnt: selectedSubmissionDetail.recommendCnt,
+                sketch: selectedSubmissionDetail.sketch,
+            }}
+            type="submission" 
+            onSubmit={() => handleSelectedSubmission(selectedSubmissionDetail.submissionId)}
+            onCancel={() => handleCanceledSubmission(selectedSubmissionDetail.submissionId)}
+            onDelete={null}
+        />
+        )};
     </>
   );
 };
