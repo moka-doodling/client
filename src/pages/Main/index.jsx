@@ -1,5 +1,5 @@
 import React from 'react';
-import { Header } from '../../components';
+import { Header, Footer } from '../../components';
 import { Link } from 'react-router-dom';
 import {
   Container,
@@ -63,6 +63,7 @@ const Main = () => {
           <InfoDetail src={info} />
         </InfoWrapper>
       </Container>
+      <Footer />
     </>
   );
 };

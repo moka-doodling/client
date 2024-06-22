@@ -1,10 +1,8 @@
 import InputField from '../../components/InputField';
 import Text from '../../components/Text';
 import Button from '../../components/Button';
-import logo from '../../assets/images/logo.svg';
 import {
   Container,
-  Image,
   InputFieldGroup,
   ButtonGroup,
   Title,
@@ -15,7 +13,7 @@ import {
 import { useState } from 'react';
 import { axiosInstance } from '../../apis';
 import { useNavigate } from 'react-router-dom';
-import { Header } from '../../components';
+import { Header, Footer } from '../../components';
 
 const SignUp = () => {
   const [username, setUsername] = useState('');
@@ -75,7 +73,6 @@ const SignUp = () => {
     <>
       <Header />
       <Container>
-        <Image src={logo}></Image>
         <Box>
           <Title>
             <Text theme={'loginTitle'}>회원가입</Text>
@@ -115,6 +112,7 @@ const SignUp = () => {
           </ButtonGroup>
         </Box>
       </Container>
+      <Footer />
     </>
   );
 };
