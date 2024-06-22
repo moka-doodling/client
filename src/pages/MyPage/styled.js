@@ -69,6 +69,7 @@ export const OngoingSubmissionContainer = styled.div`
   gap: 3vw;
   flex-wrap: nowrap;
   margin-top: 2vh;
+  position: relative;
   overflow-x: auto;
   // border: 10px solid black;
 `;
@@ -84,4 +85,43 @@ export const SubmissionTitle = styled.div`
   top: 0;
   left: 4vw;
   // border: 10px solid red;
+`;
+
+export const PaginationContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+`;
+
+export const PaginationButton = styled.button`
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  margin: 0 5px;
+  cursor: pointer;
+  &:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+  }
+`;
+
+export const PaginationButtonLeft = styled.button`
+  font-family: 'Crayon', sans-serif;
+  width: 5%;
+  font-size: 2em;
+  background: none;
+  border: none;
+  cursor: pointer;
+  user-select: none;
+`;
+
+export const PaginationButtonRight = styled.button`
+  font-family: 'Crayon', sans-serif;
+  width: 5%;
+  font-size: 2em;
+  background: none;
+  border: none;
+  cursor: pointer;
+  user-select: none;
 `;

@@ -35,8 +35,8 @@ const Login = () => {
     const nowInSeconds = Math.floor(Date.now() / 1000);
     const remainingTime = expiredTime - nowInSeconds;
 
-    document.cookie = `auth=${accessToken}; path=/; SameSite=Strict; HttpOnly;`;
-    document.cookie = `refresh=${refreshToken}; path=/; SameSite=Strict; HttpOnly;`;
+    document.cookie = `auth=${accessToken}; path=/; SameSite=Strict;`;
+    document.cookie = `refresh=${refreshToken}; path=/; SameSite=Strict;`;
 
     console.log('remainingTime: ', remainingTime);
     axiosInstance.defaults.headers.common['Authorization'] = `${accessToken}`;

@@ -21,6 +21,10 @@ import {
   SubmissionContainer,
   OngoingSubmissionContainer,
   SubmissionTitle,
+  PaginationContainer,
+  PaginationButton,
+  PaginationButtonRight,
+  PaginationButtonLeft,
 } from './styled';
 
 
@@ -36,12 +40,19 @@ const MyPage = () => {
   const [loginUserInfo, setLoginUserInfo] = useRecoilState(loginInfo);
   const [mySubmissionsOngoing, setMySubmissionsOngoing] = useState(null);
   const [mySubmissionsEnded, setMySubmissionsEnded] = useState(null);
-  const [bagdeImage, setBadgeImage] = useState(null);
+  const [badgeImage, setBadgeImage] = useState(null);
   const [selectedCnt, setSelectedCnt] = useState(null);
   const [modalOpen, setModalOpen] = useState(false);
   const [submissionId, setSubmissionId] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [changePwModalOpen, setChangePwModalOpen] = useState(false);
+
+  const [ongoingPage, setOngoingPage] = useState(1); // 페이징 처리 위한 상태 (1부터 시작)
+  const [endedPage, setEndedPage] = useState(1); // 페이징 처리 위한 상태 (1부터 시작)
+  const [ongoingPrev, setOngoingPrev] = useState(false);
+  const [ongoingNext, setOngoingNext] = useState(false);
+  const [endedPrev, setEndedPrev] = useState(false);
+  const [endedNext, setEndedNext] = useState(false);
 
   const navigate = useNavigate();
 
@@ -63,10 +74,19 @@ const MyPage = () => {
 
   useEffect(() => {
     console.log(loginUserInfo);
-    getAllMySubmissions('ongoing');
-    getAllMySubmissions('ended');
+    getAllMySubmissions('ongoing', ongoingPage);
+    getAllMySubmissions('ended', endedPage);
     getMySelectedCnt();
-  }, []);
+  }, [loginUserInfo]);
+
+  useEffect(() => {
+    getAllMySubmissions('ongoing', ongoingPage);
+  }, [ongoingPage]);
+
+  useEffect(() => {
+    console.log('change: ', endedPage);
+    getAllMySubmissions('ended', endedPage);
+  }, [endedPage]);
 
   useEffect(() => {
     console.log('mySubmission ongoing: ', mySubmissionsOngoing);
@@ -85,18 +105,21 @@ const MyPage = () => {
       });
   };
 
-  // filtering 조건에 따라 진행 중인/완료된 공모전에 내가 제출한 내역 전부 조회
-  const getAllMySubmissions = async (filtering) => {
+  const getAllMySubmissions = async (filtering, page) => {
     await axiosInstance
       .get(
-        `/member/${loginUserInfo['memberId']}/mypages?filtering=${filtering}`
+        `/member/${loginUserInfo['memberId']}/mypages/paging?filtering=${filtering}&offset=${page}`
       )
       .then((response) => {
         console.log(response.data);
         if (filtering === 'ongoing') {
-          setMySubmissionsOngoing(response.data);
+          setMySubmissionsOngoing(response.data.mySubmissions);
+          setOngoingPrev(response.data.prev);
+          setOngoingNext(response.data.next);
         } else if (filtering === 'ended') {
-          setMySubmissionsEnded(response.data);
+          setMySubmissionsEnded(response.data.mySubmissions);
+          setEndedPrev(response.data.prev);
+          setEndedNext(response.data.next);
         }
       })
       .catch((error) => {
@@ -141,12 +164,26 @@ const MyPage = () => {
     setChangePwModalOpen(false);
   };
 
+  const handleOngoingPageChange = (page) => {
+    setMySubmissionsOngoing(null);
+    if (page > 0) {
+      setOngoingPage(page);
+    }
+  };
+
+  const handleEndedPageChange = (page) => {
+    setMySubmissionsEnded(null);
+    if (page > 0) {
+      setEndedPage(page);
+    }
+  };
+
   return (
     <>
       <Header />
       <InfoContainer>
         <MyInfo>
-          <BadgeImage src={bagdeImage}></BadgeImage>
+          <BadgeImage src={badgeImage}></BadgeImage>
           <Text theme={'usernametext'}>{loginUserInfo['username']}</Text>
         </MyInfo>
         <ButtonGroup>
@@ -162,10 +199,17 @@ const MyPage = () => {
         <SubmissionTitle>
           <Text theme={'text4'}>내가 만든 이야기(진행 중)</Text>
         </SubmissionTitle>
+        <PaginationButtonLeft
+          onClick={() => handleOngoingPageChange(ongoingPage - 1)}
+          disabled={!ongoingPrev}
+        >
+          &lt;
+        </PaginationButtonLeft>
         <OngoingSubmissionContainer>
           {mySubmissionsOngoing &&
             mySubmissionsOngoing.map((submission) => (
               <Submission
+                key={submission.relayId}
                 title={submission.title}
                 isSelected={submission.isSelected}
                 thumbnail={submission.sketch}
@@ -173,12 +217,25 @@ const MyPage = () => {
               />
             ))}
         </OngoingSubmissionContainer>
+        <PaginationButtonRight
+          onClick={() => handleOngoingPageChange(ongoingPage + 1)}
+          disabled={!ongoingNext}
+        >
+          &gt;
+        </PaginationButtonRight>
       </SubmissionContainer>
 
       <SubmissionContainer>
         <SubmissionTitle>
           <Text theme={'text4'}>내가 만든 이야기(완성)</Text>
         </SubmissionTitle>
+
+        <PaginationButtonLeft
+          onClick={() => handleEndedPageChange(endedPage - 1)}
+          disabled={!endedPrev}
+        >
+          &lt;
+        </PaginationButtonLeft>
         <OngoingSubmissionContainer>
           {mySubmissionsEnded &&
             mySubmissionsEnded.map((submission) => (
@@ -195,6 +252,12 @@ const MyPage = () => {
               />
             ))}
         </OngoingSubmissionContainer>
+        <PaginationButtonRight
+          onClick={() => handleEndedPageChange(endedPage + 1)}
+          disabled={!endedNext}
+        >
+          &gt;
+        </PaginationButtonRight>
       </SubmissionContainer>
       {modalOpen && (
         <MySubmissionModal
