@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import imgsrc from '../../assets/images/book_mockup.png';
 
 export const Container = styled.div`
   width: 100vw;
@@ -12,53 +11,70 @@ export const Container = styled.div`
 `;
 
 export const BookContainer = styled.div`
+  flex: 0 0 auto;
   width: 12vw;
   height: 30vh;
-  padding-left: 1vw;
-  padding-top: 2vh;
-  background-image: url(${imgsrc});
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
   border: none;
   font-size: 1rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
   z-index: 1;
+  position: relative;
+  margin-right: 2vw;
+`;
+
+export const BookImage = styled.img`
+  width: 100%;
+  max-height: 100%;
+  object-fit: contain;
 `;
 
 export const Cover = styled.img`
-  width: 60%;
-  height: auto;
+  width: 8vw;
+  height: 12vh;
+  position: absolute;
+  top: 25%;
+  left: 55%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
 `;
 
 export const BookTitle = styled.p`
   margin-top: 5%;
+  width: 8vw;
   text-align: center;
   font-family: 'Crayon', sans-serif;
+  position: absolute;
+  top: 55%;
+  left: 55%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 `;
 
 export const CrownImage = styled.img`
-  top: -100%;
-  left: -20%;
+  top: -110%;
+  left: -35%;
   width: 3vw;
   height: auto;
   transform: translate(-50%, -50%);
   position: absolute;
-  transform: rotate(-10deg);
-  z-index: 2;
+  transform: rotate(-30deg);
+  z-index: 3;
 `;
 
 export const StyledButton = styled.button`
-  margin-top: 10%;
-  height: 5vh;
-  width: 50%;
+  width: 5vw;
+  height: 4vh;
   border-radius: 5px;
   border: 3px solid black;
   box-shadow: 4px 4px 0px 0px black;
   cursor: pointer;
-  position: relative;
+  position: absolute;
+  top: 80%;
+  left: 55%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
 `;
 
 export const CategoryWrapper = styled.div`
@@ -98,8 +114,32 @@ export const Shelf = styled.div`
 export const ShelfImage = styled.img`
   width: 90vw;
   height: auto;
-  bottom: -50%;
+  bottom: -45%;
   left: 50%;
   transform: translateX(-50%);
   position: absolute;
+`;
+
+export const PageButton = styled.img`
+  font-family: 'Crayon', sans-serif;
+  width: 5%;
+  font-size: 3vw;
+  background: none;
+  border: none;
+  cursor: pointer;
+  transform: translateX(-50%);
+  position: absolute;
+  z-index: 1;
+  ${({ theme }) =>
+    theme === 'prev' &&
+    `
+  top: 30%;
+  left: -5%;
+  `}
+  ${({ theme }) =>
+    theme === 'next' &&
+    `
+  top: 30%;
+  right: -10%;
+  `}
 `;
