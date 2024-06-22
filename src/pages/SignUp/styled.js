@@ -39,16 +39,19 @@ export const InputFieldGroup = styled.div`
   flex-direction: column;
   align-items: center;
   width: 100%;
-  margin-top: 16vh;
-  gap: 22px;
+  margin-top: 14vh;
+  padding: 1vh 0;
+  gap: 1vh;
+  // border: 10px solid black;
 `;
 
 export const ButtonGroup = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 10%;
+  margin-top: 2vh;
   width: 100%;
+  // border: 10px solid black;
 `;
 
 export const ButtonContainer = styled.div`
@@ -60,7 +63,8 @@ export const ButtonContainer = styled.div`
 
 export const ErrorStateContainer = styled.div`
   width: 100%;
-  margin: 3vh 0;
+  height: 1vh;
+  // margin: 3vh 0;
   justify-content: center;
   align-items: center;
 `;
