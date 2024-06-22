@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { Button } from  '../index';
+import { Button } from '../index';
 import { StyledButton } from '../Button/styled';
 
 export const Container = styled.div`
@@ -34,14 +34,14 @@ export const ClickImg = styled.img`
 `;
 
 export const ButtonArea = styled.div`
-  position: absolute; 
+  position: absolute;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
   height: 10vh;
   width: 20vw;
-  bottom: 20px;
+  bottom: 10%;
 `;
 
 export const CustomButton = styled(StyledButton)`
@@ -50,11 +50,22 @@ export const CustomButton = styled(StyledButton)`
   bottom: 10px;
 `;
 
-
-export const CoverImg = styled.img`
+export const ImageWrapper = styled.div`
+  flex: 0 0 auto;
+  width: 80%;
   height: 45%;
   position: absolute;
-  top: 60px;
+  top: 6vh;
+  border-radius: 5px;
+  border: 3px solid black;
+  box-shadow: 2px 2px 0px 0px black;
+`;
+
+export const CoverImg = styled.img`
+  width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  border-radius: 5px;
 `;
 
 export const TitleRectangle = styled.div`
@@ -63,7 +74,7 @@ export const TitleRectangle = styled.div`
   border-radius: 5px;
   border: 3px solid black;
   transition: background-color 0.3s ease;
-  background-color: #8ED8AC;
+  background-color: #8ed8ac;
 
   display: flex;
   justify-content: center;

@@ -11,6 +11,7 @@ import {
   OtherItemList,
   Title,
   Footer,
+  AlertModal,
 } from '../../components';
 import { Container, StyledTextArea, Wrapper, ButtonContainer } from './styled';
 
@@ -22,6 +23,8 @@ const RelayDetail = () => {
   const [isMySubmission, setIsMySubmission] = useState(null);
   const [isMySubmissionLoad, setIsMySubmissionLoad] = useState(false);
   const [thisWeek, setThisWeek] = useState(null);
+  const [showAlertModal, setShowAlertModal] = useState(false);
+  const [alertText, setAlertText] = useState('');
 
   const loginInfoData = useRecoilValue(loginInfo);
   const memberId = loginInfoData.memberId;
@@ -62,9 +65,10 @@ const RelayDetail = () => {
 
   const handleSubmit = () => {
     if (isMySubmission) {
-      alert(
-        '한 릴레이당 하나만 제출할 수 있습니다! 수정을 원하시면 삭제 후 다시 제출해주세요.'
+      setAlertText(
+        '한 릴레이당 하나만 제출할 수 있습니다!\n수정을 원하시면 삭제 후 다시 제출해주세요.'
       );
+      setShowAlertModal(true);
       return;
     }
 
@@ -83,14 +87,18 @@ const RelayDetail = () => {
       .then((response) => {
         console.log(response.data);
         fetchMySubmissionData(thisWeek);
-        alert('등록이 완료되었습니다.');
-
+        setAlertText('제출이 완료되었습니다.');
+        setShowAlertModal(true);
         setText('');
         canvasRef.current.clearCanvas();
       })
       .catch((error) => {
         console.error('Error saving data:', error);
       });
+  };
+
+  const handleModalClose = () => {
+    setShowAlertModal(false);
   };
 
   useEffect(() => {
@@ -130,6 +138,9 @@ const RelayDetail = () => {
         {thisWeek && <OtherItemList relayId={id} week={thisWeek} />}
       </Container>
       <Footer />
+      {showAlertModal && (
+        <AlertModal alertText={alertText} handleModalClose={handleModalClose} />
+      )}
     </>
   );
 };

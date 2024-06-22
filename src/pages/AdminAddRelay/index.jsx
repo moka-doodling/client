@@ -14,10 +14,9 @@ import {
   StyledButton,
 } from './styled';
 
-import Text from '../../components/Text';
+import { Text, AlertModal } from '../../components';
 import AdminHeader from '../../components/AdminHeader';
 import { axiosInstance } from '../../apis';
-import Button from '../../components/Button';
 
 function getThumbFile(_IMG) {
   // 리사이징할 가로 세로 크기
@@ -67,6 +66,8 @@ const AdminAddRelay = () => {
 
   const [relayUrl, setRelayUrl] = useState(null);
   const [submissionUrl, setSubmissionUrl] = useState(null);
+  const [showAlertModal, setShowAlertModal] = useState(false);
+  const [alertText, setAlertText] = useState('');
 
   const handleRelayChange = (e) => {
     const { name, value } = e.target;
@@ -98,7 +99,7 @@ const AdminAddRelay = () => {
       img.onload = function () {
         const canvas = document.createElement('canvas');
         const ctx = canvas.getContext('2d');
-        const width =400;
+        const width = 400;
         const height = (img.height / img.width) * width;
 
         canvas.width = width;
@@ -113,12 +114,16 @@ const AdminAddRelay = () => {
   };
 
   const handleRelayFileChange = (e) => {
-    handleFileChange(e, () => {
-      setFormRelay((prevData) => ({
-        ...prevData,
-        cover: relayUrl,
-      }));
-    }, setRelayUrl);
+    handleFileChange(
+      e,
+      () => {
+        setFormRelay((prevData) => ({
+          ...prevData,
+          cover: relayUrl,
+        }));
+      },
+      setRelayUrl
+    );
   };
 
   useEffect(() => {
@@ -131,12 +136,16 @@ const AdminAddRelay = () => {
   }, [relayUrl]);
 
   const handleSubmissionFileChange = (e) => {
-    handleFileChange(e, (result) => {
-      setFormSubmission((prevData) => ({
-        ...prevData,
-        sketch: submissionUrl,
-      }));
-    }, setSubmissionUrl);
+    handleFileChange(
+      e,
+      (result) => {
+        setFormSubmission((prevData) => ({
+          ...prevData,
+          sketch: submissionUrl,
+        }));
+      },
+      setSubmissionUrl
+    );
   };
 
   useEffect(() => {
@@ -175,11 +184,12 @@ const AdminAddRelay = () => {
         ...prevData,
         relayId: newRelayId,
       }));
-
-      alert('공모전 등록에 성공했습니다.');
+      setAlertText('공모전 등록에 성공했습니다.');
+      setShowAlertModal(true);
     } catch (error) {
       console.error('Error submitting form:', error);
-      alert('공모전 등록에 실패했습니다.');
+      setAlertText('공모전 등록에 실패했습니다.');
+      setShowAlertModal(true);
     }
   };
 
@@ -188,7 +198,8 @@ const AdminAddRelay = () => {
     try {
       //Submission 데이터 전송
       if (!relayId) {
-        alert('먼저 공모전을 등록해주세요.');
+        setAlertText('먼저 공모전을 등록해주세요.');
+        setShowAlertModal(true);
         return;
       }
 
@@ -206,12 +217,18 @@ const AdminAddRelay = () => {
         submissionFormData,
         {}
       );
-      
-      alert('1번째 게시물 등록에 성공했습니다.');
+
+      setAlertText('1번째 게시물 등록에 성공했습니다.');
+      setShowAlertModal(true);
     } catch (error) {
       console.error('Error submitting form:', error);
-      alert('1번째 게시물 등록에 실패했습니다.');
+      setAlertText('1번째 게시물 등록에 실패했습니다.');
+      setShowAlertModal(true);
     }
+  };
+
+  const handleModalClose = () => {
+    setShowAlertModal(false);
   };
 
   const RadioSelectForm = ({ label, name, value, onChange }) => {
@@ -219,11 +236,23 @@ const AdminAddRelay = () => {
       <FormField>
         <div>
           <label>
-            <input type="radio" name={name} value="0" checked={value === '0'} onChange={onChange} />
+            <input
+              type="radio"
+              name={name}
+              value="0"
+              checked={value === '0'}
+              onChange={onChange}
+            />
             유아부
           </label>
           <label>
-            <input type="radio" name={name} value="1" checked={value === '1'} onChange={onChange} />
+            <input
+              type="radio"
+              name={name}
+              value="1"
+              checked={value === '1'}
+              onChange={onChange}
+            />
             초등부
           </label>
         </div>
@@ -257,7 +286,7 @@ const AdminAddRelay = () => {
                 name="age"
                 value={formRelay.age}
                 onChange={handleRelayChange}
-                />
+              />
               <FormField>
                 <FormLabel>시작 날짜</FormLabel>
                 <FormInput
@@ -311,11 +340,16 @@ const AdminAddRelay = () => {
                   required
                 />
               </FormField>
-              <StyledButton type="submit" onClick={handleSubmissionSubmit}>1주차 제출물 등록</StyledButton>
+              <StyledButton type="submit" onClick={handleSubmissionSubmit}>
+                1주차 제출물 등록
+              </StyledButton>
             </FormRight>
           </FormWrapper>
         </StyledRectangle>
       </Container>
+      {showAlertModal && (
+        <AlertModal alertText={alertText} handleModalClose={handleModalClose} />
+      )}
     </>
   );
 };
