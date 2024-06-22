@@ -60,13 +60,27 @@ export const TitleRectangle = styled.div`
   margin-top: 3vh;
 `;
 
+export const SubTitleWrapper = styled.div`
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 10vh;
+  width: 20vw;
+  flex-direction: column;\
+  position: absolute;
+  top: -5%;
+  left: 50%;
+  transform: translateX(-50%);
+`;
+
 export const FormWrapper = styled.form`
     width: 100%;
-    height: 80%;
+    height: 100%;
     display: flex;
     flex-direction: row;
-    gap: 20px;
-    margin-bottom: 5vh;
+    gap: 5vw;
 `;
 
 export const FormLeft = styled.form`
@@ -75,6 +89,10 @@ export const FormLeft = styled.form`
     flex-direction: column;
     gap: 20px;
     justify-content: center;
+    align-items: center;
+    height: 100%;
+    position: relative;
+    margin-top: 3vh;
 `;
 
 export const FormRight = styled.form`
@@ -82,12 +100,17 @@ export const FormRight = styled.form`
     display: flex;
     flex-direction: column;
     gap: 20px;
-    justify-content: center;
+    justify-content: center;    
+    align-items: center;
+    height: 100%;
+    position: relative;
+    margin-top: 3vh;
 `;
 
 export const FormField = styled.div`
     display: flex;
     flex-direction: column;
+    width: 100%;
 `;
 
 export const FormLabel = styled.label`
@@ -115,7 +138,7 @@ export const FormText = styled.textarea`
 `;
 
 export const Separator = styled.div`
-  width: 70%;
+  width: 80%;
   height: 3px;
   background-color: black; /* 선의 색상 */
   margin-top: 2vh;
@@ -127,13 +150,16 @@ export const StyledButton = styled.button`
   border-radius: 5px;
   border: 3px solid black;
   box-shadow: 4px 4px 0px 0px black;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease;  
+  position: absolute;
+  bottom: 5%;
+  left: 50%;
+  transform: translateX(-50%);
   &:active,
   &:focus {
-    transform: scale(0.95);
+    transform: scale(0.95) translateX(-50%);
   }
   &:hover {
-    transform: scale(1);
     cursor: pointer;
   }
 `;

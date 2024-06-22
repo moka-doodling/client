@@ -12,6 +12,7 @@ import {
   FormText,
   Separator,
   StyledButton,
+  SubTitleWrapper
 } from './styled';
 
 import { Text, AlertModal } from '../../components';
@@ -271,6 +272,9 @@ const AdminAddRelay = () => {
         <StyledRectangle>
           <FormWrapper>
             <FormLeft onSubmit={handleRelaySubmit}>
+                <SubTitleWrapper>
+                    <Text theme="text3">[ 공모전 등록하기 ]</Text>
+                </SubTitleWrapper>
               <FormField>
                 <FormLabel>제목</FormLabel>
                 <FormInput
@@ -321,8 +325,11 @@ const AdminAddRelay = () => {
               </StyledButton>
             </FormLeft>
             <FormRight onSubmit={handleSubmissionSubmit}>
+                <SubTitleWrapper>
+                    <Text theme="text3">[ 첫번째 페이지 등록하기 ]</Text>
+                </SubTitleWrapper>
               <FormField>
-                <FormLabel>1주차 그림 업로드</FormLabel>
+                <FormLabel>첫번째 그림 업로드</FormLabel>
                 <input
                   type="file"
                   name="sketch"
@@ -331,7 +338,7 @@ const AdminAddRelay = () => {
                 />
               </FormField>
               <FormField>
-                <FormLabel>1주차 글 업로드</FormLabel>
+                <FormLabel>첫번째 글 업로드</FormLabel>
                 <FormText
                   type="text"
                   name="content"
@@ -341,7 +348,7 @@ const AdminAddRelay = () => {
                 />
               </FormField>
               <StyledButton type="submit" onClick={handleSubmissionSubmit}>
-                1주차 제출물 등록
+                첫번째 제출물 등록
               </StyledButton>
             </FormRight>
           </FormWrapper>
