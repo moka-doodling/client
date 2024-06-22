@@ -1,4 +1,6 @@
 import styled from 'styled-components';
+import button_next from '../../assets/images/button_next.svg';
+import button_prev from '../../assets/images/button_prev.svg';
 
 export const Container = styled.div`
   width: 80vw;
@@ -59,11 +61,19 @@ export const SubmissionContainer = styled.div`
   // border: 10px solid black;
 `;
 
+export const SubmissionPageBtnContainer = styled.div`
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  // border: 10px solid red;
+`;
+
 export const OngoingSubmissionContainer = styled.div`
   margin: 0 auto;
   overflow: hidden;
   padding: 4vh 4vw;
-  width: 80vw;
+  width: 80%;
   height: 30vh;
   display: flex;
   gap: 3vw;
@@ -71,7 +81,7 @@ export const OngoingSubmissionContainer = styled.div`
   margin-top: 2vh;
   position: relative;
   overflow-x: auto;
-  // border: 10px solid black;
+  // border: 10px solid red;
 `;
 
 export const Submission = styled.div`
@@ -87,41 +97,30 @@ export const SubmissionTitle = styled.div`
   // border: 10px solid red;
 `;
 
-export const PaginationContainer = styled.div`
-  display: flex;
-  justify-content: center;
-  margin-top: 20px;
-`;
-
-export const PaginationButton = styled.button`
-  background-color: #007bff;
-  color: white;
-  border: none;
-  padding: 10px 20px;
-  margin: 0 5px;
-  cursor: pointer;
-  &:disabled {
-    background-color: #ccc;
-    cursor: not-allowed;
-  }
-`;
-
 export const PaginationButtonLeft = styled.button`
-  font-family: 'Crayon', sans-serif;
-  width: 5%;
-  font-size: 2em;
-  background: none;
+  background-image: url(${button_prev});
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 6vw;
+  height: 6vh;
   border: none;
   cursor: pointer;
-  user-select: none;
+  background-color: transparent;
+  opacity: ${({ disabled }) => (disabled ? 0.5 : 1)};
+  pointer-events: ${({ disabled }) => (disabled ? 'none' : 'auto')};
 `;
 
 export const PaginationButtonRight = styled.button`
-  font-family: 'Crayon', sans-serif;
-  width: 5%;
-  font-size: 2em;
-  background: none;
+  background-image: url(${button_next});
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 6vw;
+  height: 6vh;
   border: none;
   cursor: pointer;
-  user-select: none;
+  background-color: transparent;
+  opacity: ${({ disabled }) => (disabled ? 0.5 : 1)};
+  pointer-events: ${({ disabled }) => (disabled ? 'none' : 'auto')};
 `;

@@ -21,12 +21,10 @@ import {
   SubmissionContainer,
   OngoingSubmissionContainer,
   SubmissionTitle,
-  PaginationContainer,
-  PaginationButton,
   PaginationButtonRight,
   PaginationButtonLeft,
+  SubmissionPageBtnContainer,
 } from './styled';
-
 
 import badge_level1 from '../../assets/images/badge_level1.svg';
 import badge_level2 from '../../assets/images/badge_level2.svg';
@@ -199,65 +197,60 @@ const MyPage = () => {
         <SubmissionTitle>
           <Text theme={'text4'}>내가 만든 이야기(진행 중)</Text>
         </SubmissionTitle>
-        <PaginationButtonLeft
-          onClick={() => handleOngoingPageChange(ongoingPage - 1)}
-          disabled={!ongoingPrev}
-        >
-          &lt;
-        </PaginationButtonLeft>
-        <OngoingSubmissionContainer>
-          {mySubmissionsOngoing &&
-            mySubmissionsOngoing.map((submission) => (
-              <Submission
-                key={submission.relayId}
-                title={submission.title}
-                isSelected={submission.isSelected}
-                thumbnail={submission.sketch}
-                onClick={() => navigate(`/relaydetail/${submission.relayId}`)} // 진행 중인 공모 페이지로 이동
-              />
-            ))}
-        </OngoingSubmissionContainer>
-        <PaginationButtonRight
-          onClick={() => handleOngoingPageChange(ongoingPage + 1)}
-          disabled={!ongoingNext}
-        >
-          &gt;
-        </PaginationButtonRight>
+        <SubmissionPageBtnContainer>
+          <PaginationButtonLeft
+            onClick={() => handleOngoingPageChange(ongoingPage - 1)}
+            disabled={!ongoingPrev}
+          />
+          <OngoingSubmissionContainer>
+            {mySubmissionsOngoing &&
+              mySubmissionsOngoing.map((submission) => (
+                <Submission
+                  key={submission.relayId}
+                  title={submission.title}
+                  isSelected={submission.isSelected}
+                  thumbnail={submission.sketch}
+                  onClick={() => navigate(`/relaydetail/${submission.relayId}`)} // 진행 중인 공모 페이지로 이동
+                />
+              ))}
+          </OngoingSubmissionContainer>
+          <PaginationButtonRight
+            onClick={() => handleOngoingPageChange(ongoingPage + 1)}
+            disabled={!ongoingNext}
+          />
+        </SubmissionPageBtnContainer>
       </SubmissionContainer>
 
       <SubmissionContainer>
         <SubmissionTitle>
           <Text theme={'text4'}>내가 만든 이야기(완성)</Text>
         </SubmissionTitle>
-
-        <PaginationButtonLeft
-          onClick={() => handleEndedPageChange(endedPage - 1)}
-          disabled={!endedPrev}
-        >
-          &lt;
-        </PaginationButtonLeft>
-        <OngoingSubmissionContainer>
-          {mySubmissionsEnded &&
-            mySubmissionsEnded.map((submission) => (
-              <Submission
-                key={submission.relayId}
-                title={submission.title}
-                isSelected={submission.isSelected}
-                thumbnail={submission.sketch}
-                onClick={() =>
-                  submission.isSelected
-                    ? navigate(`/bookview/${submission.relayId}`)
-                    : handleModalOpen(submission.submissionId)
-                }
-              />
-            ))}
-        </OngoingSubmissionContainer>
-        <PaginationButtonRight
-          onClick={() => handleEndedPageChange(endedPage + 1)}
-          disabled={!endedNext}
-        >
-          &gt;
-        </PaginationButtonRight>
+        <SubmissionPageBtnContainer>
+          <PaginationButtonLeft
+            onClick={() => handleEndedPageChange(endedPage - 1)}
+            disabled={!endedPrev}
+          />
+          <OngoingSubmissionContainer>
+            {mySubmissionsEnded &&
+              mySubmissionsEnded.map((submission) => (
+                <Submission
+                  key={submission.relayId}
+                  title={submission.title}
+                  isSelected={submission.isSelected}
+                  thumbnail={submission.sketch}
+                  onClick={() =>
+                    submission.isSelected
+                      ? navigate(`/bookview/${submission.relayId}`)
+                      : handleModalOpen(submission.submissionId)
+                  }
+                />
+              ))}
+          </OngoingSubmissionContainer>
+          <PaginationButtonRight
+            onClick={() => handleEndedPageChange(endedPage + 1)}
+            disabled={!endedNext}
+          />
+        </SubmissionPageBtnContainer>
       </SubmissionContainer>
       {modalOpen && (
         <MySubmissionModal
@@ -270,7 +263,6 @@ const MyPage = () => {
       )}
 
       <Footer />
-
     </>
   );
 };
