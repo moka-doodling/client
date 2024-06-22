@@ -23,6 +23,7 @@ import {
   SubmissionTitle,
 } from './styled';
 
+
 import badge_level1 from '../../assets/images/badge_level1.svg';
 import badge_level2 from '../../assets/images/badge_level2.svg';
 import badge_level3 from '../../assets/images/badge_level3.svg';
@@ -204,7 +205,9 @@ const MyPage = () => {
       {changePwModalOpen && (
         <ChangePasswordModal handleModalClose={handleChangePwModalClose} />
       )}
+
       <Footer />
+
     </>
   );
 };
