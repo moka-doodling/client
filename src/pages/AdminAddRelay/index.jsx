@@ -10,7 +10,6 @@ import {
   FormLabel,
   FormInput,
   FormText,
-  FormRadio,
   Separator,
   StyledButton,
 } from './styled';
@@ -104,7 +103,7 @@ const AdminAddRelay = () => {
 
         canvas.width = width;
         canvas.height = height;
-        ctx.drawImage(img, 0, 0, img.width, img.height);
+        ctx.drawImage(img, 0, 0, width, height);
         const dataURL = canvas.toDataURL('image/webp', 0.1);
         setUrlFunction(dataURL);
         console.log('data url -> ' + dataURL);
