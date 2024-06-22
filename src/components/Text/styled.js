@@ -24,7 +24,7 @@ const textStyles = {
   },
   usernametext: {
     fontFamily: 'Crayon',
-    fontSize: '3rem',
+    fontSize: '2.5rem',
     textAlign: 'center',
   },
   text4: {
@@ -64,6 +64,11 @@ const textStyles = {
     fontSize: '2vw',
     color: 'black',
     fontWeight: 'bold',
+  },
+  text10: {
+    fontWeight: 'bold',
+    fontSize: '1rem',
+    textAlign: 'center',
   },
 };
 

@@ -91,14 +91,20 @@ const buttonStyles = {
   withdrawBtn: css`
     ${commonStyles}
     background: white;
-    font-size: 1rem;
-    width: 10vw;
+    font-size: 0.8rem;
+    width: 5.5vw;
+    height: 4vh;
+    border: 2px solid black;
+    box-shadow: 0 0 0 0;
   `,
   changePwBtn: css`
     ${commonStyles}
     background: #fcf390;
-    font-size: 1rem;
-    width: 10vw;
+    font-size: 0.8rem;
+    width: 5.5vw;
+    height: 4vh;
+    border: 2px solid black;
+    box-shadow: 0 0 0 0;
   `,
   yellowChangePwBtn: css`
     ${commonStyles}

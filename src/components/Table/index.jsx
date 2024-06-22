@@ -2,15 +2,9 @@ import React, { useState } from 'react';
 
 import {
     StyledTable,
-    StyledThTitle,
-    StyledThDate,
-    StyledThWriter,
-    StyledThAge,
-    StyledTdTitle,
-    StyledTdDate,
-    StyledTdWriter,
-    StyledTdAge,
-    StyledTr
+    StyledTh,
+    StyledTd,
+    StyledTr,
  } from './styled';
 
  import { Link } from 'react-router-dom';
@@ -18,13 +12,13 @@ import {
 
 const ListItem = ({ item, isAdmin, type, onRowClick, isActive, onDelete }) => {
     const [showModal, setShowModal] = useState(false);
+
     const formatDate = (timestamp) => {
         const date = new Date(timestamp);
-        return date.toLocaleDateString('en-US', {
-            year: 'numeric',
-            month: 'long',
-            day: 'numeric',
-        });
+        const year = date.getFullYear();
+        const month = date.getMonth() + 1;
+        const day = date.getDate();
+        return `${year}년 ${month}월 ${day}일`;
     };
 
     const handleOpenModal = () => {
@@ -47,25 +41,26 @@ const ListItem = ({ item, isAdmin, type, onRowClick, isActive, onDelete }) => {
             <StyledTr isActive={isActive}>
                 {type === 'notice' ? (
                     <>
-                        <StyledTdTitle>
+                        <StyledTd theme="titleTd" type="notice">
                             {isAdmin ? (
                                 <h1 onClick={handleOpenModal}>{item.title}</h1>
                             ) : (
                                 <Link to={`/noticedetail/${item.noticeId}`}>{item.title}</Link>
                             )}
-                        </StyledTdTitle>
-                        <StyledTdDate>{formatDate(item.regdate)}</StyledTdDate>
-                        <StyledTdWriter>관리자</StyledTdWriter>
+                        </StyledTd>
+                        <StyledTd theme="dateTd" type="notice">{formatDate(item.regdate)}</StyledTd>
+                        <StyledTd theme="writerTd" type="notice">관리자</StyledTd>
                     </>
                 ) : (
                     <>
-                        <StyledTdTitle>
+                        <StyledTd theme="titleTd" type="relay">
                             <h1 onClick={handleOpenModal}>{item.title}</h1>
-                        </StyledTdTitle>
-                        <StyledTdAge>
+                        </StyledTd>
+                        <StyledTd theme="ageTd" type="relay">
                             {item.age === 0 ? '유아부' : item.age === 1 ? '초등부' : '기타'}
-                        </StyledTdAge>
-                        <StyledTdWriter>관리자</StyledTdWriter>
+                        </StyledTd>
+                        <StyledTd theme="writerTd" type="relay">관리자</StyledTd>
+                        <StyledTd theme="statusTd" type="relay">{item.isEnd ? '종료' : '진행중'}</StyledTd>
                     </>
                 )}
             </StyledTr>
@@ -79,8 +74,8 @@ const ListItem = ({ item, isAdmin, type, onRowClick, isActive, onDelete }) => {
                 }
                 ) : {
                     title: item.title,
-                    startdate: formatDate(item.startdate),
-                    enddate: formatDate(item.enddate),
+                    startdate: item.startdate,
+                    enddate: item.enddate,
                     age: item.age,
                     cover: item.cover,
                     isEnd: item.isEnd
@@ -105,15 +100,16 @@ const ItemList = ({ items, isAdmin, type, onDelete }) => {
                 <tr>
                     {type === 'notice' ? (
                         <>
-                            <StyledThTitle>공지사항 제목</StyledThTitle>
-                            <StyledThDate>등록 날짜</StyledThDate>
-                            <StyledThWriter>작성자</StyledThWriter>
+                            <StyledTh theme="titleTh" type="notice">공지사항 제목</StyledTh>
+                            <StyledTh theme="dateTh" type="notice">등록 날짜</StyledTh>
+                            <StyledTh theme="writerTh" type="notice">작성자</StyledTh>
                         </>
                     ) : (
                         <>
-                            <StyledThTitle>공모전 제목</StyledThTitle>
-                            <StyledThAge>연령대</StyledThAge>
-                            <StyledThWriter>작성자</StyledThWriter>
+                            <StyledTh theme="titleTh" type="relay">공모전 제목</StyledTh>
+                            <StyledTh theme="ageTh" type="relay">연령대</StyledTh>
+                            <StyledTh theme="writerTh" type="relay">작성자</StyledTh>
+                            <StyledTh theme="statusTh" type="relay">진행 여부</StyledTh>
                         </>
                     )}
                 </tr>
