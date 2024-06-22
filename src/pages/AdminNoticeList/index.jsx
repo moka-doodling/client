@@ -15,32 +15,32 @@ import { axiosInstance } from '../../apis';
 
 const AdminNoticeList = () => {
     const [items_notice, setItemsNotice] = useState([]);
-    const [items_relay, setItemsRelay] = useState([]);
+
+    const fetchNotices = async() => {
+        try {
+            const response = await axiosInstance.get('/admin/notice/list');
+            console.log('response : ' + response);
+            setItemsNotice(response.data);
+        } catch (error) {
+            console.error('Error fetching notice : ', error);
+        }
+    };
 
     useEffect(() => {
-        const fetchNotices = async() => {
-            try {
-                const response = await axiosInstance.get('/admin/notice/list');
-                console.log('response : ' + response);
-                setItemsNotice(response.data);
-            } catch (error) {
-                console.error('Error fetching notice : ', error);
-            }
-        };
-
-        const fetchRelays = async() => {
-            try {
-                const response = await axiosInstance.get('/admin/relay/list');
-                console.log('response : ' + response);
-                setItemsRelay(response.data);
-            } catch (error) {
-                console.error('Error fetching relay : ', error);
-            }
-        }
-
         fetchNotices();
-        fetchRelays();
     }, []);
+
+
+    const handleDelete = async (id) => {
+        try {
+            await axiosInstance.patch(`/admin/notice/${id}`);
+            setItemsNotice(prevItems => prevItems.filter(item => item.noticeId !== id));
+            fetchNotices();
+            console.log('Notice 삭제 성공: ', id);
+        } catch (error) {
+            console.error('Notice 삭제 실패: ', error);
+        }
+    };
 
     return (
         <>
@@ -52,7 +52,7 @@ const AdminNoticeList = () => {
                         <Text theme="text3">공지사항</Text>
                     </TitleRectangle>
                     <TableWrapper>
-                        {items_notice.length > 0 && <Table items={items_notice} isAdmin={true} type="notice"/>}
+                        {items_notice.length > 0 && <Table items={items_notice} isAdmin={true} type="notice" onDelete={handleDelete} />}
                     </TableWrapper>
                 </StyledRectangle>
             </Container>

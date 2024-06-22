@@ -98,7 +98,7 @@ export const FormLabel = styled.label`
 export const FormInput = styled.input`
     height: 5vh;
     padding: 8px;
-    border: 1px solid #ccc;
+    border: 3px solid #ccc;
     border-radius: 4px;
     font-size: 16px;
 `;
@@ -107,7 +107,7 @@ export const FormText = styled.textarea`
     height: 10vh;
     max-height: 175px;
     padding: 8px;
-    border: 1px solid #ccc;
+    border: 3px solid #ccc;
     border-radius: 4px;
     font-size: 16px;
     resize: vertical; /* Allow vertical resize */

@@ -16,7 +16,7 @@ import {
  import { Link } from 'react-router-dom';
  import Modal from '../Modal';
 
-const ListItem = ({ item, isAdmin, type, onRowClick, isActive}) => {
+const ListItem = ({ item, isAdmin, type, onRowClick, isActive, onDelete }) => {
     const [showModal, setShowModal] = useState(false);
     const formatDate = (timestamp) => {
         const date = new Date(timestamp);
@@ -35,6 +35,11 @@ const ListItem = ({ item, isAdmin, type, onRowClick, isActive}) => {
     const handleCloseModal = () => {
         setShowModal(false);
         onRowClick(null); // Reset the active row
+    };
+
+    const handleDelete = () => {
+        onDelete(type === 'notice' ? item.noticeId : item.relayId);
+        setShowModal(false); // Modal 닫기
     };
 
     return (
@@ -67,8 +72,13 @@ const ListItem = ({ item, isAdmin, type, onRowClick, isActive}) => {
             <Modal
                 show={showModal}
                 onClose={handleCloseModal}
-                title={item.title}
-                content={type === 'notice' ? item.content : {
+                onDelete={handleDelete}
+                data={type === 'notice' ? ( {
+                    title: item.title,
+                    content: item.content
+                }
+                ) : {
+                    title: item.title,
                     startdate: formatDate(item.startdate),
                     enddate: formatDate(item.enddate),
                     age: item.age,
@@ -82,7 +92,7 @@ const ListItem = ({ item, isAdmin, type, onRowClick, isActive}) => {
     );
 };
 
-const ItemList = ({ items, isAdmin, type }) => {
+const ItemList = ({ items, isAdmin, type, onDelete }) => {
     const [activeRow, setActiveRow] = useState(null);
 
     const handleRowClick = (id) => {
@@ -117,6 +127,7 @@ const ItemList = ({ items, isAdmin, type }) => {
                         type={type}
                         onRowClick={handleRowClick}
                         isActive={activeRow === (type === 'notice' ? item.noticeId : item.relayId)}
+                        onDelete={onDelete}
                     />
                 ))}
             </tbody>
@@ -124,9 +135,9 @@ const ItemList = ({ items, isAdmin, type }) => {
     );
 };
 
-const Table = ({items, isAdmin, type}) => {
+const Table = ({items, isAdmin, type, onDelete}) => {
   return (
-    <ItemList items={items} isAdmin={isAdmin} type={type}/>
+    <ItemList items={items} isAdmin={isAdmin} type={type} onDelete={onDelete}/>
   );
 };
 

@@ -19,8 +19,19 @@ export const TableWrapper = styled.div`
   width: 100%;
   align-items: center;
   justify-content: center;
+
   overflow-y: auto;
-  margin: 0 auto;q
+  &::-webkit-scrollbar {
+      width: 2vw;
+      border-radius: 30px;
+      background-color: white;
+  }
+  &::-webkit-scrollbar-thumb {
+      background-color: #fcf390; /* 스크롤바 색상 */
+      border: 3px solid black;
+      height: 10vh;
+      border-radius: 30px; /* 스크롤바 모양 */
+  }
 `;
 
 export const StyledRectangle = styled.div`

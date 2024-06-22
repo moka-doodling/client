@@ -10,6 +10,7 @@ import {
   FormLabel,
   FormInput,
   FormText,
+  FormRadio,
   Separator,
   StyledButton,
 } from './styled';
@@ -214,6 +215,23 @@ const AdminAddRelay = () => {
     }
   };
 
+  const RadioSelectForm = ({ label, name, value, onChange }) => {
+    return (
+      <FormField>
+        <div>
+          <label>
+            <input type="radio" name={name} value="0" checked={value === '0'} onChange={onChange} />
+            유아부
+          </label>
+          <label>
+            <input type="radio" name={name} value="1" checked={value === '1'} onChange={onChange} />
+            초등부
+          </label>
+        </div>
+      </FormField>
+    );
+  };
+
   return (
     <>
       <AdminHeader />
@@ -235,16 +253,12 @@ const AdminAddRelay = () => {
                   required
                 />
               </FormField>
-              <FormField>
-                <FormLabel>연령대</FormLabel>
-                <FormInput
-                  type="number"
-                  name="age"
-                  value={formRelay.age}
-                  onChange={handleRelayChange}
-                  required
+              <RadioSelectForm
+                label="연령대"
+                name="age"
+                value={formRelay.age}
+                onChange={handleRelayChange}
                 />
-              </FormField>
               <FormField>
                 <FormLabel>시작 날짜</FormLabel>
                 <FormInput

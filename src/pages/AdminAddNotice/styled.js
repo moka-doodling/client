@@ -99,7 +99,7 @@ export const FormInput = styled.input`
     width: 70%;
     height: 40%;
     padding: 8px;
-    border: 1px solid #ccc;
+    border: 3px solid black;
     border-radius: 4px;
     font-size: 16px;
 `;
@@ -109,7 +109,7 @@ export const FormText = styled.textarea`
     height: 60%;
     max-height: 175px;
     padding: 8px;
-    border: 1px solid #ccc;
+    border: 3px solid black;
     border-radius: 4px;
     font-size: 16px;
     resize: vertical; /* Allow vertical resize */
