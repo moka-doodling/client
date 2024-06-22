@@ -5,7 +5,7 @@ import {
   Img,
   AgeWrapper,
 } from './styled';
-import { Header, Text, Title, Preview } from '../../components';
+import { Header, Text, Title, Preview, Footer } from '../../components';
 
 import child1 from '../../assets/images/child1.svg';
 import child2 from '../../assets/images/child2.svg';
@@ -87,6 +87,7 @@ const List = () => {
           </AgeWrapper>
         </StyledRectangle>
       </ListWrapper>
+      <Footer />
     </>
   );
 };

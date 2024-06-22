@@ -2,17 +2,10 @@ import styled from 'styled-components';
 
 export const Container = styled.div`
   position: relative;
-`;
-
-export const Image = styled.img`
-  width: 20vh;
-  height: 20vh;
-  background-color: white;
-  align-items: center;
-  justify-content: center;
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
+  width: 100vw;
+  height: 72vh;
+  margin-top: 22vh;
+  padding-top: 6vh;
 `;
 
 export const Box = styled.div`
@@ -25,9 +18,9 @@ export const Box = styled.div`
   align-items: center;
   justify-content: center;
   position: absolute;
-  top: 28vh;
+  top: 50%;
   left: 50%;
-  transform: translateX(-50%);
+  transform: translate(-50%, -50%);
   background: #fef380;
 `;
 

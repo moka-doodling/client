@@ -25,6 +25,7 @@ const OtherItemList = ({ relayId, week }) => {
 
   useEffect(() => {
     fetchData();
+    console.log(items);
   }, []);
 
   return (

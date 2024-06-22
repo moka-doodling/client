@@ -1,11 +1,9 @@
 import InputField from '../../components/InputField';
 import Text from '../../components/Text';
 import Button from '../../components/Button';
-import logo from '../../assets/images/logo.svg';
 import {
   Container,
   LogoWrapper,
-  Image,
   InputFieldGroup,
   ButtonGroup,
   Title,
@@ -17,7 +15,7 @@ import { axiosInstance } from '../../apis';
 import { jwtDecode } from 'jwt-decode';
 import { loginInfo, loginState } from '../../store/atoms';
 import { useRecoilState } from 'recoil';
-import { Header } from '../../components';
+import { Footer, Header } from '../../components';
 
 const Login = () => {
   const [username, setUsername] = useState('');
@@ -138,6 +136,7 @@ const Login = () => {
           </ButtonGroup>
         </Box>
       </Container>
+      <Footer />
     </>
   );
 };

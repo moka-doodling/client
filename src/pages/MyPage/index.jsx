@@ -1,5 +1,18 @@
 import React, { useEffect, useState } from 'react';
-import { Header, MySubmissionModal } from '../../components';
+import { jwtDecode } from 'jwt-decode';
+import { loginInfo, loginState } from '../../store/atoms';
+import { axiosInstance } from '../../apis';
+import { useRecoilState } from 'recoil';
+import { useNavigate } from 'react-router-dom';
+import {
+  Footer,
+  Header,
+  MySubmissionModal,
+  Button,
+  Text,
+  Submission,
+} from '../../components';
+
 import {
   ButtonGroup,
   InfoContainer,
@@ -9,15 +22,6 @@ import {
   OngoingSubmissionContainer,
   SubmissionTitle,
 } from './styled';
-
-import { jwtDecode } from 'jwt-decode';
-import { loginInfo, loginState } from '../../store/atoms';
-import { axiosInstance } from '../../apis';
-import { useRecoilState } from 'recoil';
-import Button from '../../components/Button';
-import Text from '../../components/Text';
-import Submission from '../../components/Submission';
-import { useNavigate } from 'react-router-dom';
 import badge_level1 from '../../assets/images/badge_level1.svg';
 import badge_level2 from '../../assets/images/badge_level2.svg';
 import badge_level3 from '../../assets/images/badge_level3.svg';
@@ -183,6 +187,7 @@ const MyPage = () => {
           handleModalClose={handleModalClose}
         />
       )}
+      <Footer />
     </>
   );
 };
