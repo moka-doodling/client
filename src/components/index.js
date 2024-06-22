@@ -12,4 +12,5 @@ export { default as Title } from './Title';
 export { default as Table } from './Table';
 export { default as Preview } from './Preview';
 export { default as MySubmissionModal } from './MySubmissionModal';
+export { default as AlertModal } from './AlertModal';
 export { default as Footer } from './Footer';
