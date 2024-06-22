@@ -1,14 +1,13 @@
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 
 export const Container = styled.div`
   width: 100vw;
-  height: 150vh;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  flex-direction: column; 
-  gap: 40px;
-  margin-bottom: 10vh;
+  margin-top: 22vh;
+  padding-top: 6vh;
 `;
 
 export const TableWrapper = styled.div`
@@ -41,32 +40,6 @@ export const ButtonGroup = styled.div`
   justify-content: space-between;
   align-items: center;
   padding-top: 5vh;.
-`;
-
-export const TitleRectangle = styled.div`
-  border-radius: 5px;
-  border: 3px solid black;
-  transition: background-color 0.3s ease;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;    
-  height: 6vh;
-  background-color: #8ED8AC;
-  width: 15vw;
-`;
-
-export const TitleWrapper = styled.div`
-  width: 20vw;
-  display: flex;
-  align-items: center;
-  position: absolute;
-  top: -3vh;
-  gap: 1vw;
-`;
-
-export const Img= styled.img`
-  width: 5vw;
 `;
 
 export const ContentRectangle = styled.div`
