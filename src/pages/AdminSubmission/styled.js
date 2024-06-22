@@ -68,25 +68,20 @@ const commonStyles = css`
   justify-content: center;
 `;
 
-const rectangleStyles = {
-  title: css`
-    ${commonStyles}
-    height: 6vh;
-    background-color: #BACDE6;
-    width: 15vw;
-  `,
-  subTitle: css`
-    ${commonStyles}
-    height: 6vh;
-    background-color: #8ED8AC;
-    width: 100px;
-    position: absolute;
-    top: -3vh;
-  `,
-};
-
 export const TitleRectangle = styled.div`
-  ${({ theme }) => rectangleStyles[theme]}
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 10vh;
+  background-color: white;
+  width: 20vw;
+  flex-direction: column;
+  position: relative;
+  top: -5vh;
+  margin-right: 8vw;
+  margin-top: 3vh;
 `;
 
 export const ContestImage = styled.img`
@@ -100,11 +95,15 @@ export const ContestCard = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 20px;
+  padding: 30px;
   border: 1px solid #ddd;
   border-radius: 10px;
   margin-left: 2vw;
   margin-right: 2vw;
+  width: 18vw;
+  height: 40vh;
+  margin-top: 3vh;
+  margin-bottom: 3vh;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   ${({ selected }) => selected && `
     background-color: #fcf390; 
@@ -149,3 +148,9 @@ export const WeekBtn = styled.button`
   width: 5vw;
 `;
 
+export const Separator = styled.div`
+  width: 70%;
+  height: 3px;
+  background-color: black; /* 선의 색상 */
+  margin-top: 2vh;
+`;

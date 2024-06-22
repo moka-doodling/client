@@ -8,7 +8,8 @@ import {
     ContestImage,
     ContestDetails,
     WeekWrapper,
-    WeekBtn
+    WeekBtn,
+    Separator
 } from './styled';
 
 import Text from '../../components/Text';
@@ -88,8 +89,9 @@ const AdminSubmission = () => {
         <>
             <AdminHeader />
             <Container>
-                <TitleRectangle theme="title">
-                    <Text theme="text3">공모전 선택</Text>
+                <TitleRectangle>
+                    <Text theme="text3">당선작 선정</Text>
+                    <Separator />
                 </TitleRectangle>
                 <StyledRectangle>
                     {items_relay.length > 0 ? (
