@@ -31,19 +31,18 @@ export const Cover = styled.img`
   width: 8vw;
   height: 12vh;
   position: absolute;
-  top: 25%;
+  top: 20%;
   left: 55%;
   transform: translate(-50%, -50%);
   z-index: 2;
 `;
 
 export const BookTitle = styled.p`
-  margin-top: 5%;
   width: 8vw;
   text-align: center;
   font-family: 'Crayon', sans-serif;
   position: absolute;
-  top: 55%;
+  top: 45%;
   left: 55%;
   transform: translate(-50%, -50%);
   z-index: 2;
@@ -71,7 +70,7 @@ export const StyledButton = styled.button`
   box-shadow: 4px 4px 0px 0px black;
   cursor: pointer;
   position: absolute;
-  top: 80%;
+  top: 65%;
   left: 55%;
   transform: translate(-50%, -50%);
   z-index: 2;
@@ -79,6 +78,7 @@ export const StyledButton = styled.button`
 
 export const CategoryWrapper = styled.div`
   width: 10vw;
+  margin-bottom: 5vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -103,7 +103,7 @@ export const BottomImage = styled.img`
 export const Shelf = styled.div`
   width: 65vw;
   margin-top: 5vh;
-  margin-bottom: 10vh;
+  margin-bottom: 5vh;
   height: 30vh;
   display: flex;
   align-items: center;
@@ -114,7 +114,7 @@ export const Shelf = styled.div`
 export const ShelfImage = styled.img`
   width: 90vw;
   height: auto;
-  bottom: -45%;
+  bottom: -30%;
   left: 50%;
   transform: translateX(-50%);
   position: absolute;
@@ -126,9 +126,11 @@ export const PageButton = styled.img`
   font-size: 3vw;
   background: none;
   border: none;
-  cursor: pointer;
+  cursor: ${({ disabled }) => (disabled ? 'default' : 'pointer')};
   transform: translateX(-50%);
   position: absolute;
+  opacity: ${({ disabled }) => (disabled ? 0.5 : 1)};
+  pointer-events: ${({ disabled }) => (disabled ? 'none' : 'auto')};
   z-index: 1;
   ${({ theme }) =>
     theme === 'prev' &&
