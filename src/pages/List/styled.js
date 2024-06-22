@@ -43,6 +43,10 @@ export const AgeWrapper = styled.div`
   `}
 `;
 
+export const InfoImage = styled.img`
+  width: 20vw;
+`;
+
 export const StyledRectangle = styled.div`
   width: 80vw;
   height: 65vh;
