@@ -25,6 +25,7 @@ const RelayDetail = () => {
   const [thisWeek, setThisWeek] = useState(null);
   const [showAlertModal, setShowAlertModal] = useState(false);
   const [alertText, setAlertText] = useState('');
+  const [confirmSubmission, setConfirmSubmission] = useState(false);
 
   const loginInfoData = useRecoilValue(loginInfo);
   const memberId = loginInfoData.memberId;
@@ -71,6 +72,16 @@ const RelayDetail = () => {
       setShowAlertModal(true);
       return;
     }
+    setAlertText(
+      '그린 그림은 제출 전에만 다운로드 가능합니다.\n 제출하시겠습니다?'
+    );
+    setShowAlertModal(true);
+    setConfirmSubmission(true);
+  };
+
+  const handleConfirm = () => {
+    setShowAlertModal(false);
+    setConfirmSubmission(false);
 
     if (!canvasRef.current) return;
 
@@ -99,6 +110,7 @@ const RelayDetail = () => {
 
   const handleModalClose = () => {
     setShowAlertModal(false);
+    setConfirmSubmission(false);
   };
 
   useEffect(() => {
@@ -139,7 +151,12 @@ const RelayDetail = () => {
       </Container>
       <Footer />
       {showAlertModal && (
-        <AlertModal alertText={alertText} handleModalClose={handleModalClose} />
+        <AlertModal
+          alertText={alertText}
+          handleModalClose={handleModalClose}
+          handleConfirm={confirmSubmission ? handleConfirm : null}
+          type={confirmSubmission ? 'confirm' : 'alert'}
+        />
       )}
     </>
   );

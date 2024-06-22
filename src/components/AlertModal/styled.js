@@ -15,8 +15,8 @@ export const Container = styled.div`
   border: 2px solid #323232;
   background: #fff;
   box-shadow: 4px 4px 0px 0px #323232;
-  width: 30vw;
-  height: 25vh;
+  width: 35vw;
+  height: 30vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -48,4 +48,12 @@ export const CloseButton = styled.button`
   padding: 0.5rem 1rem;
   font-weight: bold;
   cursor: pointer;
+`;
+
+export const ButtonWrapper = styled.div`
+  width: 10vw;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  text-align: center;
 `;
