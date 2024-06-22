@@ -24,7 +24,7 @@ const textStyles = {
   },
   usernametext: {
     fontFamily: 'Crayon',
-    fontSize: '3rem',
+    fontSize: '2.5rem',
     textAlign: 'center',
   },
   text4: {
@@ -34,19 +34,19 @@ const textStyles = {
   },
   text5: {
     fontSize: '1rem',
-    textAlign: 'center'
+    textAlign: 'center',
   },
   text6: {
     fontWeight: 'bold',
     fontSize: '1rem',
-    textAlign: 'left'
+    textAlign: 'left',
   },
   text7: {
     fontFamily: 'Crayon',
     fontSize: '3rem',
     textAlign: 'left',
     color: '#fcf390',
-    textShadow: '2px 2px 3px rgba(0, 0, 0, 0.6)', 
+    textShadow: '2px 2px 3px rgba(0, 0, 0, 0.6)',
   },
   text8: {
     fontWeight: 'bold',
@@ -59,6 +59,11 @@ const textStyles = {
     fontSize: '1rem',
     textAlign: 'center',
     color: 'red',
+  },
+  text10: {
+    fontWeight: 'bold',
+    fontSize: '1rem',
+    textAlign: 'center',
   },
 };
 

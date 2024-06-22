@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import button_next from '../../assets/images/button_next.svg';
 import button_prev from '../../assets/images/button_prev.svg';
+import board_image from '../../assets/images/board_image.svg';
 
 export const Container = styled.div`
   width: 80vw;
@@ -16,18 +17,26 @@ export const Container = styled.div`
 
 export const InfoContainer = styled.div`
   width: 80vw;
-  height: 12vh;
+  height: 28vh;
   display: flex;
   align-items: center;
   justify-content: center;
   margin: 24vh 10vw 5vh 10vw;
-  gap: 25vw;
+`;
+export const BadgeInfoContainer = styled.img`
+  width: 25vw;
+  // border: 10px solid black;
+`;
+
+export const BadgeInfoGroup = styled.div`
+  width: 25vw;
+  display: flex;
+  flex-direction: column;
+  padding: 0 2vw;
   // border: 10px solid black;
 `;
 
 export const MyInfo = styled.div`
-  width: 20vw;
-  height: 10vh;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -37,26 +46,26 @@ export const MyInfo = styled.div`
 `;
 
 export const BadgeImage = styled.img`
-  width: 10vh;
-  height: 10vh;
+  width: 6vh;
+  height: 6vh;
   background-color: white;
   // border: 1px solid black;
 `;
 
 export const ButtonGroup = styled.div`
-  width: 30vw;
+  width: 8vw;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  flex-direction: row;
-  gap: 2vw;
+  gap: 0.5vw;
   // border: 10px solid black;
 `;
 
 export const SubmissionContainer = styled.div`
   width: 80vw;
   display: flex;
-  position: relative;
+  flex-direction: column;
   margin: 3vh 0 0 10vw;
   // border: 10px solid black;
 `;
@@ -73,7 +82,7 @@ export const OngoingSubmissionContainer = styled.div`
   margin: 0 auto;
   overflow: hidden;
   padding: 3vh 4vw 3vh 2vw;
-  width: 80%;
+  width: 100%;
   height: 30vh;
   display: flex;
   gap: 3vw;
@@ -81,9 +90,14 @@ export const OngoingSubmissionContainer = styled.div`
   margin-top: 5vh;
   position: relative;
   overflow-x: auto;
-  background-color: #FEF9CB;
+  radius: 10px;
   border: 3px solid black;
   border-radius: 5px;
+  background-color: white;
+  background-repeat: repeat;
+  background-size: cover;
+  background-position: center;
+  // border: 10px solid black;
 `;
 
 export const Submission = styled.div`
@@ -93,9 +107,11 @@ export const Submission = styled.div`
 `;
 
 export const SubmissionTitle = styled.div`
-  position: absolute;
-  top: 0;
-  left: 4vw;
+  height: 5vh;
+  display: flex;
+  flex-direction: column;
+  gap: 2vh;
+  padding: 0 2vw;
   // border: 10px solid red;
 `;
 
