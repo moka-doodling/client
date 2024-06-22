@@ -72,7 +72,7 @@ export const SubmissionPageBtnContainer = styled.div`
 export const OngoingSubmissionContainer = styled.div`
   margin: 0 auto;
   overflow: hidden;
-  padding: 4vh 4vw;
+  padding: 4vh 4vw 0 2vw;
   width: 80%;
   height: 30vh;
   display: flex;
@@ -102,7 +102,7 @@ export const PaginationButtonLeft = styled.button`
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
-  width: 6vw;
+  width: 3.5vw;
   height: 6vh;
   border: none;
   cursor: pointer;
@@ -116,7 +116,7 @@ export const PaginationButtonRight = styled.button`
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
-  width: 6vw;
+  width: 3.5vw;
   height: 6vh;
   border: none;
   cursor: pointer;
