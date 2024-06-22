@@ -41,6 +41,8 @@ const Header = ({ theme }) => {
           memberId: '',
           username: '',
         });
+        document.cookie = `auth=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`;
+        document.cookie = `refresh=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`;
         navigate('/login');
       })
       .catch((error) => {
