@@ -28,9 +28,8 @@ const AdminSubmission = () => {
   const [showAlertModal, setShowAlertModal] = useState(false);
   const [alertText, setAlertText] = useState('');
   const [showModal, setShowModal] = useState(false);
-  const [selectedSubmissionDetail, setSelectedSubmissionDetail] = useState(null);
-
-
+  const [selectedSubmissionDetail, setSelectedSubmissionDetail] =
+    useState(null);
 
   useEffect(() => {
     const fetchRelays = async () => {
@@ -71,20 +70,18 @@ const AdminSubmission = () => {
   const handleSelectedSubmission = async (submissionId) => {
     if (selectedSubmission && selectedSubmission !== submissionId) {
       setAlertText('당선작을 취소하고 다시 선택해주세요');
-      setShowAlertModal(true);
       return;
     }
 
     try {
-      const response = await axiosInstance.patch(`/admin/submission/${submissionId}`);
+      const response = await axiosInstance.patch(
+        `/admin/submission/${submissionId}`
+      );
       console.log('Select submission response: ', response);
       if (response.status === 200) {
-        setItemsSubmission((prevItems) =>
-          prevItems.map((submission) =>
-            submission.submissionId === submissionId
-          )
-        );
         setSelectedSubmission(submissionId);
+        setAlertText('당선작 선정이 완료되었습니다');
+        setShowAlertModal(true);
       }
     } catch (error) {
       console.error('Error selecting submission: ', error);
@@ -93,15 +90,14 @@ const AdminSubmission = () => {
 
   const handleCanceledSubmission = async (submissionId) => {
     try {
-      const response = await axiosInstance.patch(`/admin/unsubmission/${submissionId}`);
+      const response = await axiosInstance.patch(
+        `/admin/unsubmission/${submissionId}`
+      );
       console.log('Cancle submission response: ', response);
       if (response.status === 200) {
-        setItemsSubmission((prevItems) =>
-          prevItems.map((submission) =>
-            submission.submissionId === submissionId
-          )
-        );
         setCanceledSubmission(submissionId);
+        setAlertText('당선작 선정이 취소되었습니다');
+        setShowAlertModal(true);
       }
     } catch (error) {
       console.error('Error canceling submission: ', error);
@@ -120,7 +116,11 @@ const AdminSubmission = () => {
   const handleAlertModalClose = () => {
     setShowAlertModal(false);
   };
-  
+
+  useEffect(() => {
+    console.log(items_submission);
+  }, [items_submission]);
+
   return (
     <>
       <AdminHeader />
@@ -192,9 +192,7 @@ const AdminSubmission = () => {
                 key={index}
                 selected={submission.isSelected}
                 isSelected={items_submission.isSelected === 1}
-                onClick={() =>
-                    handleModalOpen(submission)
-                }
+                onClick={() => handleModalOpen(submission)}
               >
                 <ImageWrapper>
                   <ContestImage
@@ -214,24 +212,32 @@ const AdminSubmission = () => {
         </StyledRectangle>
       </Container>
       {showAlertModal && (
-        <AlertModal alertText={alertText} handleModalClose={handleModalClose} />
+        <AlertModal
+          alertText={alertText}
+          handleModalClose={handleAlertModalClose}
+        />
       )}
       {showModal && (
         <Modal
-            show={showModal}
-            onClose={handleModalClose}
-            data={{ 
-                submissionId: selectedSubmissionDetail.submissionId,
-                content: selectedSubmissionDetail.content,
-                recommendCnt: selectedSubmissionDetail.recommendCnt,
-                sketch: selectedSubmissionDetail.sketch,
-            }}
-            type="submission" 
-            onSubmit={() => handleSelectedSubmission(selectedSubmissionDetail.submissionId)}
-            onCancel={() => handleCanceledSubmission(selectedSubmissionDetail.submissionId)}
-            onDelete={null}
+          show={showModal}
+          onClose={handleModalClose}
+          data={{
+            submissionId: selectedSubmissionDetail.submissionId,
+            content: selectedSubmissionDetail.content,
+            recommendCnt: selectedSubmissionDetail.recommendCnt,
+            sketch: selectedSubmissionDetail.sketch,
+          }}
+          type="submission"
+          onSubmit={() =>
+            handleSelectedSubmission(selectedSubmissionDetail.submissionId)
+          }
+          onCancel={() =>
+            handleCanceledSubmission(selectedSubmissionDetail.submissionId)
+          }
+          onDelete={null}
         />
-        )};
+      )}
+      ;
     </>
   );
 };
