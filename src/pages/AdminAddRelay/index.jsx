@@ -56,7 +56,8 @@ const AdminAddRelay = () => {
   });
 
   const [formSubmission, setFormSubmission] = useState({
-    memberId: 0,
+    relayId: 0,
+    memberId: 1,
     content: '',
     sketch: null,
     week: 1,
@@ -83,7 +84,7 @@ const AdminAddRelay = () => {
     }));
   };
 
-  const handleFileChange = (e, callback) => {
+  const handleFileChange = (e, callback, setUrlFunction) => {
     const file = e.target.files[0];
     const reader = new FileReader();
     reader.onload = () => {
@@ -97,13 +98,15 @@ const AdminAddRelay = () => {
       img.onload = function () {
         const canvas = document.createElement('canvas');
         const ctx = canvas.getContext('2d');
-        canvas.width = img.width;
-        canvas.height = img.height;
+        const width =400;
+        const height = (img.height / img.width) * width;
+
+        canvas.width = width;
+        canvas.height = height;
         ctx.drawImage(img, 0, 0, img.width, img.height);
         const dataURL = canvas.toDataURL('image/webp', 0.1);
-        setRelayUrl(dataURL);
+        setUrlFunction(dataURL);
         console.log('data url -> ' + dataURL);
-        console.log('dat');
       };
     };
     return reader.readAsDataURL(file);
@@ -115,7 +118,7 @@ const AdminAddRelay = () => {
         ...prevData,
         cover: relayUrl,
       }));
-    });
+    }, setRelayUrl);
   };
 
   useEffect(() => {
@@ -133,14 +136,14 @@ const AdminAddRelay = () => {
         ...prevData,
         sketch: submissionUrl,
       }));
-    });
+    }, setSubmissionUrl);
   };
 
   useEffect(() => {
     if (submissionUrl) {
-      setFormRelay((prevData) => ({
+      setFormSubmission((prevData) => ({
         ...prevData,
-        cover: submissionUrl,
+        sketch: submissionUrl,
       }));
     }
   }, [submissionUrl]);
@@ -164,8 +167,15 @@ const AdminAddRelay = () => {
         {}
       );
 
-      const newRelayId = relayResponse.data.relayId;
+      const newRelayId = relayResponse.data;
       setRelayId(newRelayId);
+      console.log(newRelayId);
+
+      setFormSubmission((prevData) => ({
+        ...prevData,
+        relayId: newRelayId,
+      }));
+
       alert('공모전 등록에 성공했습니다.');
     } catch (error) {
       console.error('Error submitting form:', error);
@@ -183,26 +193,24 @@ const AdminAddRelay = () => {
       }
 
       const submissionFormData = new FormData();
-      submissionFormData.append('relayId', relayId);
       for (const key in formSubmission) {
-        submissionFormData.append(key, formSubmission);
+        submissionFormData.append(key, formSubmission[key]);
+      }
+
+      for (const pair of submissionFormData.entries()) {
+        console.log(`${pair[0]}: ${pair[1]}`);
       }
 
       const submissionResponse = await axiosInstance.post(
-        '/admin/addrelay',
+        '/submission',
         submissionFormData,
-        {
-          headers: {
-            'Content-Type': 'application/json',
-          },
-        }
+        {}
       );
-
-      console.log('Submission Response:', submissionResponse);
-      alert('1주차 제출물 등록에 성공했습니다.');
+      
+      alert('1번째 게시물 등록에 성공했습니다.');
     } catch (error) {
       console.error('Error submitting form:', error);
-      alert('1주차 제출물 등록에 실패했습니다.');
+      alert('1번째 게시물 등록에 실패했습니다.');
     }
   };
 
@@ -290,7 +298,7 @@ const AdminAddRelay = () => {
                   required
                 />
               </FormField>
-              <StyledButton type="submit">1주차 제출물 등록</StyledButton>
+              <StyledButton type="submit" onClick={handleSubmissionSubmit}>1주차 제출물 등록</StyledButton>
             </FormRight>
           </FormWrapper>
         </StyledRectangle>
