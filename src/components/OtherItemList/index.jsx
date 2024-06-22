@@ -36,7 +36,7 @@ const OtherItemList = ({ relayId, week }) => {
     console.log(items);
   }, []);
 
-  const filteredItems = items.filter((item) => item.memberName !== memberName);
+  const filteredItems = items.filter((item) => item.username !== memberName);
   const totalPages = Math.ceil(filteredItems.length / itemsPerPage);
 
   const handlePageClick = (pageNumber) => {
