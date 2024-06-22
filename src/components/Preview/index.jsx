@@ -5,6 +5,7 @@ import {
   ButtonArea,
   TitleRectangle,
   CustomButton,
+  ImageWrapper,
 } from './styled';
 import { CoverImg, ClickImg } from './styled';
 import { Text } from '../index';
@@ -25,11 +26,13 @@ const Preview = ({ cover, title, onClick }) => {
         <TitleRectangle>
           <Text theme="text3">{title}</Text>
         </TitleRectangle>
-
-        <CoverImg src={cover}></CoverImg>
-
+        <ImageWrapper>
+          <CoverImg src={cover}></CoverImg>
+        </ImageWrapper>
         <ButtonArea>
-          <CustomButton theme="extendedWhiteBtn" onClick={onClick}>공모전 참여하기</CustomButton>
+          <CustomButton theme="extendedWhiteBtn" onClick={onClick}>
+            공모전 참여하기
+          </CustomButton>
           <ClickImg src={click}></ClickImg>
         </ButtonArea>
       </StyledRectangle>
