@@ -12,13 +12,13 @@ import {
 
 const ListItem = ({ item, isAdmin, type, onRowClick, isActive, onDelete }) => {
     const [showModal, setShowModal] = useState(false);
+
     const formatDate = (timestamp) => {
         const date = new Date(timestamp);
-        return date.toLocaleDateString('en-US', {
-            year: 'numeric',
-            month: 'long',
-            day: 'numeric',
-        });
+        const year = date.getFullYear();
+        const month = date.getMonth() + 1;
+        const day = date.getDate();
+        return `${year}년 ${month}월 ${day}일`;
     };
 
     const handleOpenModal = () => {
@@ -74,8 +74,8 @@ const ListItem = ({ item, isAdmin, type, onRowClick, isActive, onDelete }) => {
                 }
                 ) : {
                     title: item.title,
-                    startdate: formatDate(item.startdate),
-                    enddate: formatDate(item.enddate),
+                    startdate: item.startdate,
+                    enddate: item.enddate,
                     age: item.age,
                     cover: item.cover,
                     isEnd: item.isEnd
