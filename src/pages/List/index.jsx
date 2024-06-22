@@ -4,11 +4,14 @@ import {
   ListWrapper,
   Img,
   AgeWrapper,
+  InfoImage,
 } from './styled';
 import { Header, Text, Title, Preview, Footer } from '../../components';
 
 import child1 from '../../assets/images/child1.svg';
 import child2 from '../../assets/images/child2.svg';
+import kin_info from '../../assets/images/kin_info.svg';
+import ele_info from '../../assets/images/ele_info.svg';
 import { useEffect, useState } from 'react';
 import { axiosInstance } from '../../apis';
 import { useNavigate } from 'react-router-dom';
@@ -52,6 +55,7 @@ const List = () => {
       <ListWrapper>
         <StyledRectangle>
           <AgeWrapper theme="age1">
+            <InfoImage src={kin_info} />
             <Img src={child1}></Img>
             <Text theme="text2">유아부</Text>
           </AgeWrapper>
@@ -82,6 +86,7 @@ const List = () => {
                 />
               ))}
           <AgeWrapper theme="age2">
+            <InfoImage src={ele_info} />
             <Img src={child2}></Img>
             <Text theme="text2">초등부</Text>
           </AgeWrapper>
