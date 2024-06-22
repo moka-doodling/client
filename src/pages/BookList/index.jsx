@@ -94,13 +94,12 @@ const BookList = () => {
         <Title theme={'booklist'} date={`완성된`} title={'책 살펴보기'} />
         {/* 유아부 */}
         <Shelf>
-          {preschoolNav.prev && (
-            <PageButton
-              theme={'prev'}
-              src={bookPrev}
-              onClick={() => setPreschoolPage((prev) => prev - 1)}
-            />
-          )}
+        <PageButton
+            theme={'prev'}
+            src={bookPrev}
+            onClick={() => setPreschoolPage((prev) => prev - 1)}
+            disabled={!preschoolNav.prev}
+          />
           <CategoryWrapper>
             <TopImage src={preschoolDept} />
             유아부
@@ -108,24 +107,22 @@ const BookList = () => {
           {bookData.preschool.map((book, index) => (
             <BookWrapper key={index} book={book} />
           ))}
-          {preschoolNav.next && (
-            <PageButton
-              theme={'next'}
-              src={bookNext}
-              onClick={() => setPreschoolPage((prev) => prev + 1)}
-            />
-          )}
+          <PageButton
+            theme={'next'}
+            src={bookNext}
+            onClick={() => setPreschoolPage((prev) => prev + 1)}
+            disabled={!preschoolNav.next}
+          />
           <ShelfImage src={shelf} />
         </Shelf>
         {/* 초등부 */}
         <Shelf>
-          {elementaryNav.prev && (
-            <PageButton
-              theme={'prev'}
-              src={bookPrev}
-              onClick={() => setElementaryPage((prev) => prev - 1)}
-            />
-          )}
+        <PageButton
+            theme={'prev'}
+            src={bookPrev}
+            onClick={() => setElementaryPage((prev) => prev - 1)}
+            disabled={!elementaryNav.prev}
+          />
           <CategoryWrapper>
             <BottomImage src={elementaryDept} />
             초등부
@@ -133,13 +130,12 @@ const BookList = () => {
           {bookData.elementary.map((book, index) => (
             <BookWrapper key={index} book={book} />
           ))}
-          {elementaryNav.next && (
-            <PageButton
-              theme={'next'}
-              src={bookNext}
-              onClick={() => setElementaryPage((prev) => prev + 1)}
-            />
-          )}
+          <PageButton
+            theme={'next'}
+            src={bookNext}
+            onClick={() => setElementaryPage((prev) => prev + 1)}
+            disabled={!elementaryNav.next}
+          />
           <ShelfImage src={shelf} />
         </Shelf>
       </Container>
