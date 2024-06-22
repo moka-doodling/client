@@ -72,16 +72,18 @@ export const SubmissionPageBtnContainer = styled.div`
 export const OngoingSubmissionContainer = styled.div`
   margin: 0 auto;
   overflow: hidden;
-  padding: 4vh 4vw 0 2vw;
+  padding: 3vh 4vw 3vh 2vw;
   width: 80%;
   height: 30vh;
   display: flex;
   gap: 3vw;
   flex-wrap: nowrap;
-  margin-top: 2vh;
+  margin-top: 5vh;
   position: relative;
   overflow-x: auto;
-  // border: 10px solid red;
+  background-color: #FEF9CB;
+  border: 3px solid black;
+  border-radius: 5px;
 `;
 
 export const Submission = styled.div`
