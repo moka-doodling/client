@@ -34,6 +34,7 @@
   font-family: 'Crayon';
   font-weight: 300;
   src: local('Pretendard Bold'),
+    url(../assets/font/Typo_CrayonM.woff) format('woff'),
     url(../assets/font/Typo_CrayonM.ttf) format('truetype');
 }
 *,
